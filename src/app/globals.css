@@ -1,27 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
+/**
+1. Correct the line height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+*/
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+Remove the margin in all browsers.
+*/
+
+body {
+  margin: 0;
+}
+
+/**
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Removes the default spacing and border for appropriate elements.
+ */
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+:root {
+  --background-rgb: rgb(242, 244, 255);
+  --bg-color: rgb(100, 113, 150);
+  --font-size: 16px;
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--bg-color);
+  background-color: var(--background-rgb);
+  padding-top: 20px;
+  font-size: var(--font-size);
+}
+
+.container {
+  width: 1120px;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+@layer base {
+  h1 {
+    @apply text-xl;
+  }
+  h2 {
+    @apply text-lg;
+  }
+}
+
+@layer components {
+  .button-category {
+    @apply bg-gray-light py-2 px-4 text-blue font-semibold rounded-lg hover:text-white hover:bg-blue text-xs hover:transition;
+  }
+
+  .button-feedback {
+    @apply bg-tertiary text-white font-semibold rounded-lg px-5 py-3 opacity-80 hover:bg-tertiary hover:opacity-100 transition-all;
+  }
+}
+
+.roadmap-tag {
+  align-self: center;
+  margin-right: 13px;
+  width: 7px;
+  height: 7px;
+  border-radius: 100%;
+}
+.roadmap-span {
+  justify-self: end;
+  align-self: self-start;
+  font-weight: 700;
+}
+
+@layer utilities {
+  .planned {
+    background-color: #f49f85;
+  }
+  .live {
+    background-color: #ad1fea;
+  }
+  .progress {
+    background-color: #62bcfa;
+  }
+}
+
+@layer components {
+  .sub-header {
+    @apply bg-secondary text-white pr-5 py-6 rounded-lg  flex justify-between;
+  }
+  .suggestion {
+    @apply bg-white text-gray py-5 px-6 flex rounded-lg my-3.5 items-baseline;
+  }
+
+  .suggestion-upvote {
+    @apply flex flex-col bg-gray-light items-center rounded-lg px-2 pt-2 pb-3 mr-8 text-sm;
+  }
+  .suggestion-content {
+    @apply flex flex-col items-start col-span-4;
+  }
+  .suggestion-msg {
+    @apply ml-auto self-center flex;
+  }
+  /* .btn-upvote {
+  } */
 }
