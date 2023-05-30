@@ -3,7 +3,7 @@ import Button from "./button/Button";
 
 const CategoriesMenu = () => {
   return (
-    <div className="bg-white p-5 my-4 rounded-lg flex flex-wrap gap-x-2 gap-y-2.5">
+    <div className="bg-white p-5 my-5 rounded-lg flex flex-wrap gap-x-2 gap-y-2.5">
       <Button className="button-category">All</Button>
       <Button className="button-category">UI</Button>
       <Button className="button-category">UX</Button>
