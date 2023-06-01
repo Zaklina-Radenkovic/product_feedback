@@ -1,16 +1,14 @@
+"use client";
 import FeedbackItem from "./FeedbackItem";
 import SubHeader from "../SubHeader";
-import { iProductFeedbacks } from "@/types/models";
+import { useFeedbackContext } from "@/state/feedback";
 
-// export interface iProductFeedbacks extends Feedback {
-//   productFeedbacks: Feedback[];
-// }
-
-const Feedbacks = ({ productFeedbacks }: iProductFeedbacks) => {
+const Feedbacks = () => {
+  const { filteredFeedbacks } = useFeedbackContext();
   return (
     <>
       <SubHeader />
-      {productFeedbacks.map((feedback) => {
+      {filteredFeedbacks.map((feedback) => {
         return <FeedbackItem key={feedback.id} feedback={feedback} />;
       })}
     </>

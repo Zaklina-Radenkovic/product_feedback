@@ -1,5 +1,5 @@
-// "use client";
-
+"use client";
+import { FeedbackProvider } from "@/state/feedback";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -17,11 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <FeedbackProvider> */}
       <body className={inter.className} suppressHydrationWarning={true}>
-        {children}
+        <FeedbackProvider>{children}</FeedbackProvider>
       </body>
-      {/* </FeedbackProvider> */}
     </html>
   );
 }
