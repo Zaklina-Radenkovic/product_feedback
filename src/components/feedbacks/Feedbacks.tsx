@@ -1,10 +1,10 @@
 import FeedbackItem from "./FeedbackItem";
 import SubHeader from "../SubHeader";
-import { Feedback } from "@/types/models";
+import { iProductFeedbacks } from "@/types/models";
 
-interface iProductFeedbacks {
-  productFeedbacks: Feedback[];
-}
+// export interface iProductFeedbacks extends Feedback {
+//   productFeedbacks: Feedback[];
+// }
 
 const Feedbacks = ({ productFeedbacks }: iProductFeedbacks) => {
   return (
