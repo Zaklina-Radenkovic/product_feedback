@@ -9,7 +9,7 @@ const CategoriesMenu = () => {
   const filterTasks = (event: BaseSyntheticEvent) => {
     setCategory(event.currentTarget.dataset["filter"]);
   };
-  console.log(category);
+
   return (
     <div className="bg-white p-5 my-5 rounded-lg flex flex-wrap gap-x-2 gap-y-2.5">
       <Button
@@ -21,7 +21,7 @@ const CategoriesMenu = () => {
       </Button>
       <Button
         className="button-category"
-        data-filter="ui"
+        data-filter="UI"
         onClick={filterTasks}
       >
         UI

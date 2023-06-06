@@ -1,17 +1,18 @@
 "use client";
+import NoSuggestion from "../NoSuggestion";
 import FeedbackItem from "./FeedbackItem";
-import SubHeader from "../SubHeader";
 import { useFeedbackContext } from "@/state/feedback";
 
 const Feedbacks = () => {
   const { filteredFeedbacks } = useFeedbackContext();
+  console.log(filteredFeedbacks);
   return (
-    <>
-      <SubHeader />
+    <div className="">
+      {filteredFeedbacks.length === 0 && <NoSuggestion />}
       {filteredFeedbacks.map((feedback) => {
         return <FeedbackItem key={feedback.id} feedback={feedback} />;
       })}
-    </>
+    </div>
   );
 };
 
