@@ -1,9 +1,9 @@
 "use client";
 import { FeedbackProvider } from "@/state/feedback";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Jost } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const jost = Jost({ subsets: ["latin"], variable: "--font-jost" });
 
 export const metadata = {
   title: "Create Next App",
@@ -17,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body
+        className={`${jost.variable} font-jost`}
+        suppressHydrationWarning={true}
+      >
         <FeedbackProvider>{children}</FeedbackProvider>
       </body>
     </html>

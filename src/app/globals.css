@@ -16,7 +16,7 @@
 */
 
 html {
-  line-height: 1.15; /* 1 */
+  /* line-height: 1.15; 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
@@ -26,6 +26,7 @@ Remove the margin in all browsers.
 
 body {
   margin: 0;
+  overflow-y: scroll;
 }
 
 /**

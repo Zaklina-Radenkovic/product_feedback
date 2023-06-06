@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -6,9 +9,6 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    fontFamily: {
-      jost: ["Jost", "sans-serif"],
-    },
     colors: {
       red: "red",
       gray: "#647196",
@@ -22,6 +22,9 @@ module.exports = {
       center: true,
     },
     extend: {
+      fontFamily: {
+        jost: ["var(--font-jost)", ...fontFamily.sans],
+      },
       backgroundImage: {
         // "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         // 'gradient-conic':
