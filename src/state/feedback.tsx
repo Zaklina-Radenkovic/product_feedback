@@ -17,17 +17,22 @@ const FeedbackContext = createContext<{
   category: string;
   setCategory: Dispatch<SetStateAction<string>>;
   filteredFeedbacks: any[];
+  count: number;
+  setCount: Dispatch<SetStateAction<number>>;
 }>({
   feedbacks: [],
   setFeedbacks: () => null,
   category: "",
   setCategory: () => null,
   filteredFeedbacks: [],
+  count: 0,
+  setCount: () => null,
 });
 
 export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
   const [feedbacks, setFeedbacks] = useState<Feedback[] | []>([]);
   const [category, setCategory] = useState<string>("all");
+  const [count, setCount] = useState(0);
 
   // useEffect(() => {
   //   addCollectionAndDocuments("feedbacks", PRODUCT_REQUESTS);
@@ -63,11 +68,13 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
   switch (category) {
     case "all":
       filteredFeedbacks = [...feedbacks];
+      // setCount(filteredFeedbacks.length);
       break;
     case "bug":
       filteredFeedbacks = filteredFeedbacks.filter(
         (feedback) => feedback.category === "Bug"
       );
+      // setCount(filteredFeedbacks.length);
       break;
     case "Enhancement":
       filteredFeedbacks = filteredFeedbacks.filter(
@@ -93,6 +100,10 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
       filteredFeedbacks = [...feedbacks];
   }
 
+  useEffect(() => {
+    setCount(filteredFeedbacks.length);
+  }, [filteredFeedbacks]);
+
   return (
     <FeedbackContext.Provider
       value={{
@@ -101,6 +112,8 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
         category,
         setCategory,
         filteredFeedbacks,
+        count,
+        setCount,
       }}
     >
       {children}

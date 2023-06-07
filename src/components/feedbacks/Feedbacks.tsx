@@ -5,7 +5,8 @@ import { useFeedbackContext } from "@/state/feedback";
 
 const Feedbacks = () => {
   const { filteredFeedbacks } = useFeedbackContext();
-  console.log(filteredFeedbacks);
+  // console.log(filteredFeedbacks);
+
   return (
     <div className="">
       {filteredFeedbacks.length === 0 && <NoSuggestion />}

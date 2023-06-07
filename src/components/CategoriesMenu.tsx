@@ -4,7 +4,7 @@ import Button from "./button/Button";
 import { BaseSyntheticEvent } from "react";
 
 const CategoriesMenu = () => {
-  const { setCategory, category } = useFeedbackContext();
+  const { setCategory } = useFeedbackContext();
 
   const filterTasks = (event: BaseSyntheticEvent) => {
     setCategory(event.currentTarget.dataset["filter"]);
