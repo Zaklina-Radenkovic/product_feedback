@@ -1,10 +1,14 @@
+"use client";
 import Image from "next/image";
 import suggestions from "../../public/assets/images/icon-suggestions.svg";
 import Button from "./button/Button";
+import { useFeedbackContext } from "@/state/feedback";
 
 const Navbar = () => {
+  const { count } = useFeedbackContext();
+
   return (
-    <div className="sub-header px-5">
+    <div className="navbar px-5">
       <div className="flex items-center">
         <Image
           priority
@@ -12,10 +16,22 @@ const Navbar = () => {
           alt="icon"
           className="inline-block "
         />
-        <span className="ml-3 font-bold">6 Sugestions</span>
+        <span className="ml-3 font-bold">{count} Suggestions</span>
 
-        <span className="ml-8">Sort by:</span>
-        <input />
+        <label className="ml-8 text-sm" htmlFor="search">
+          Sort by:
+        </label>
+
+        <select
+          name=""
+          id="search"
+          className="bg-secondary border-none text-gray-900 text-sm font-bold focus:outline-none visited:border-none p-2.5"
+        >
+          <option value="">Most Upvotes</option>
+          <option value="">Least Upvotes</option>
+          <option value="">Most Comments</option>
+          <option value="">Least Upvotes</option>
+        </select>
       </div>
       <Button className="button-feedback">+ Add feedback</Button>
     </div>

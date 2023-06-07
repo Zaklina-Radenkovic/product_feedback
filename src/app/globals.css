@@ -156,7 +156,7 @@ body {
 }
 
 @layer components {
-  .sub-header {
+  .navbar {
     @apply bg-secondary text-white pr-5 py-6 rounded-lg  flex justify-between;
   }
   .suggestion {
@@ -170,7 +170,7 @@ body {
     @apply flex flex-col items-start col-span-4;
   }
   .suggestion-msg {
-    @apply ml-auto self-center flex;
+    @apply ml-auto self-center flex items-center;
   }
   /* .btn-upvote {
   } */
