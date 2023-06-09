@@ -1,12 +1,39 @@
 "use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import suggestions from "../../public/assets/images/icon-suggestions.svg";
 import Button from "./button/Button";
 import { useFeedbackContext } from "@/state/feedback";
+import { useSortedFeedbackContext } from "@/state/sortedFeedback";
+
+const sortOptions = [
+  {
+    label: "Most Upvotes",
+    value: "mostUpvotes",
+  },
+  {
+    label: "Least Upvotes",
+    value: "leastUpvotes",
+  },
+  {
+    label: "Most Comments",
+    value: "mostComments",
+  },
+  {
+    label: "Least Comments",
+    value: "leastComments",
+  },
+];
 
 const Navbar = () => {
   const { count } = useFeedbackContext();
+  const { setSort } = useSortedFeedbackContext();
+  const [sortKey, setSortKey] = useState("mostUpvotes");
 
+  const handleSortChange = (event) => {
+    setSortKey(event.target.value);
+    setSort(sortKey);
+  };
   return (
     <div className="navbar px-5">
       <div className="flex items-center">
@@ -23,14 +50,18 @@ const Navbar = () => {
         </label>
 
         <select
-          name=""
-          id="search"
+          onChange={handleSortChange}
+          name="sort"
+          value={sortKey}
           className="bg-secondary border-none text-gray-900 text-sm font-bold focus:outline-none visited:border-none p-2.5"
         >
-          <option value="">Most Upvotes</option>
-          <option value="">Least Upvotes</option>
-          <option value="">Most Comments</option>
-          <option value="">Least Upvotes</option>
+          {sortOptions.map((option) => {
+            return (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            );
+          })}
         </select>
       </div>
       <Button className="button-feedback">+ Add feedback</Button>
