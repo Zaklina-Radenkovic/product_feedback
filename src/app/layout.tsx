@@ -2,6 +2,7 @@
 import { FeedbackProvider } from "@/state/feedback";
 import "./globals.css";
 import { Jost } from "next/font/google";
+import { SortedFeedbackProvider } from "@/state/sortedFeedback";
 
 const jost = Jost({ subsets: ["latin"], variable: "--font-jost" });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
         className={`${jost.variable} font-jost`}
         suppressHydrationWarning={true}
       >
-        <FeedbackProvider>{children}</FeedbackProvider>
+        <FeedbackProvider>
+          <SortedFeedbackProvider>{children}</SortedFeedbackProvider>
+        </FeedbackProvider>
       </body>
     </html>
   );

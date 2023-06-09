@@ -68,13 +68,13 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
   switch (category) {
     case "all":
       filteredFeedbacks = [...feedbacks];
-      // setCount(filteredFeedbacks.length);
+
       break;
     case "bug":
       filteredFeedbacks = filteredFeedbacks.filter(
         (feedback) => feedback.category === "Bug"
       );
-      // setCount(filteredFeedbacks.length);
+
       break;
     case "Enhancement":
       filteredFeedbacks = filteredFeedbacks.filter(
