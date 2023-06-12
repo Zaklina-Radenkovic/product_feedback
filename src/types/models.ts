@@ -26,7 +26,3 @@ export type Reply = {
   replayingTo: string;
   user: User;
 };
-
-export interface iProductFeedbacks {
-  productFeedbacks: Feedback[];
-}
