@@ -1,12 +1,11 @@
 "use client";
 import { useFeedbackContext } from "@/state/feedback";
 import Button from "./button/Button";
-import { BaseSyntheticEvent } from "react";
 
 const CategoriesMenu = () => {
   const { setCategory } = useFeedbackContext();
 
-  const filterTasks = (event: BaseSyntheticEvent) => {
+  const filterTasks = (event: React.BaseSyntheticEvent) => {
     setCategory(event.currentTarget.dataset["filter"]);
   };
 
