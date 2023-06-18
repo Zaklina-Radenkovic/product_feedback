@@ -1,10 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import suggestions from "../../public/assets/images/icon-suggestions.svg";
-import Button from "./button/Button";
 import { useFeedbackContext } from "@/state/feedback";
 import { useSortedFeedbackContext } from "@/state/sortedFeedback";
+import ButtonFeedback from "./button/ButtonFeedback";
 
 const sortOptions = [
   {
@@ -26,14 +26,14 @@ const sortOptions = [
 ];
 
 const Navbar = () => {
-  const { count } = useFeedbackContext();
-  const { setSort } = useSortedFeedbackContext();
+  const { setSort, count } = useSortedFeedbackContext();
   const [sortKey, setSortKey] = useState("mostUpvotes");
 
-  const handleSortChange = (event) => {
+  const handleSortChange = (event: React.BaseSyntheticEvent) => {
     setSortKey(event.target.value);
     setSort(sortKey);
   };
+
   return (
     <div className="navbar px-5">
       <div className="flex items-center">
@@ -64,7 +64,7 @@ const Navbar = () => {
           })}
         </select>
       </div>
-      <Button className="button-feedback">+ Add feedback</Button>
+      <ButtonFeedback />
     </div>
   );
 };
