@@ -10,7 +10,7 @@ const Feedbacks = () => {
 
   return (
     <div className="">
-      {/* {filteredFeedbacks.length === 0 && <NoSuggestion />} */}
+      {sortedFeedbacks?.length === 0 && <NoSuggestion />}
       {sortedFeedbacks &&
       sortedFeedbacks.length &&
       sortedFeedbacks !== undefined ? (
@@ -18,7 +18,8 @@ const Feedbacks = () => {
           return <FeedbackItem key={feedback.id} feedback={feedback} />;
         })
       ) : (
-        <NoSuggestion />
+        // <NoSuggestion />
+        <p>Loading....</p>
       )}
     </div>
   );

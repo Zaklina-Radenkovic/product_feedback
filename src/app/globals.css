@@ -86,11 +86,12 @@ body {
   color: var(--bg-color);
   background-color: var(--background-rgb);
   font-size: var(--font-size);
+  padding: 95px 165px 0;
+  max-width: 1440px;
 }
 
 .container {
-  margin: 0;
-  padding: 75px 135px 0;
+  max-width: 1110px;
 }
 
 /* @media (min-width: 1024px) {
@@ -114,6 +115,7 @@ body {
 @layer base {
   h1 {
     @apply text-xl;
+    line-height: 1.25rem;
   }
   h2 {
     @apply text-lg;
@@ -126,7 +128,7 @@ body {
   }
 
   .button-feedback {
-    @apply bg-tertiary text-white font-semibold rounded-lg px-5 py-3 opacity-80 hover:bg-tertiary hover:opacity-100 transition-all;
+    @apply bg-tertiary text-white font-semibold rounded-lg text-sm py-3 px-6 opacity-80 hover:bg-tertiary hover:opacity-100 transition-all;
   }
 }
 
@@ -139,7 +141,7 @@ body {
 }
 
 .roadmap-item {
-  background-color: #e45799;
+  /* background-color: #e45799; */
   border-radius: 5px;
   position: relative;
   padding-top: 5px;
@@ -184,10 +186,10 @@ body {
 
 @layer components {
   .navbar {
-    @apply bg-secondary text-white pr-5 py-6 rounded-lg  flex justify-between;
+    @apply bg-secondary text-white py-3.5 rounded-lg mb-5 flex justify-between;
   }
   .suggestion {
-    @apply bg-white text-gray py-5 px-6 flex rounded-lg my-3.5 items-baseline;
+    @apply bg-white text-gray py-7 px-8 flex rounded-lg my-5 items-baseline;
   }
 
   .suggestion-upvote {

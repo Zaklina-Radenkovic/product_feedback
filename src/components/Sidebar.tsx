@@ -1,14 +1,14 @@
 // "use client";
 import Header from "./Header";
 import CategoriesMenu from "./CategoriesMenu";
-import Roadmap from "@/components/roadmap/Roadmap";
+import RoadmapMenu from "@/components/roadmap/RoadmapMenu";
 
 const Sidebar = () => {
   return (
-    <div className="basis-[23.5%] ">
+    <div className="basis-[255px] shrink-0">
       <Header />
       <CategoriesMenu />
-      <Roadmap />
+      <RoadmapMenu />
     </div>
   );
 };

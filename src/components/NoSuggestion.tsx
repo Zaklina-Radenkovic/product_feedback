@@ -1,6 +1,6 @@
 import Image from "next/image";
 import emptyIllustration from "../../public/assets/images/illustration-empty.svg";
-import Button from "./button/Button";
+import ButtonFeedback from "./button/ButtonFeedback";
 
 const NoSuggestion = () => {
   return (
@@ -18,7 +18,7 @@ const NoSuggestion = () => {
         Got a suggestion? Found a bug that needs to be squashed? <br />
         We love hearing about new ideas to improve our app.
       </p>
-      <Button className="button-feedback">+ Add feedback</Button>
+      <ButtonFeedback />
     </div>
   );
 };

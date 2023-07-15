@@ -12,7 +12,7 @@ const FeedbackItem = ({ feedback }: iFeedbackItem) => {
   // console.log(feedback);
   const { upvotes, title, description, category } = feedback;
   return (
-    <div className="suggestion">
+    <div className="suggestion px-[35px]">
       <div className="suggestion-upvote">
         <button className="p-2">
           <Image priority src={arrowIconUp} alt="icon" />
@@ -20,8 +20,8 @@ const FeedbackItem = ({ feedback }: iFeedbackItem) => {
         <span className="text-secondary font-bold">{upvotes}</span>
       </div>
       <div className="suggestion-content">
-        <h3 className="text-secondary font-bold">{title}</h3>
-        <p className="pt-2.5 pb-4">{description}</p>
+        <h3 className="text-secondary font-bold leading-3">{title}</h3>
+        <p className="pb-[18px] pt-4">{description}</p>
         <Button className="button-category">{category}</Button>
       </div>
       <div className="suggestion-msg">

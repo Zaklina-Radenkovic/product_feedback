@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar px-5">
+    <div className="navbar pl-[25px] pr-[15px]">
       <div className="flex items-center">
         <Image
           priority
