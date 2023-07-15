@@ -2,16 +2,26 @@ import {
   useContext,
   createContext,
   useState,
+  useEffect,
   ReactNode,
   Dispatch,
   SetStateAction,
 } from "react";
+import { Feedback } from "@/types/models";
 
 const SortedFeedbackContext = createContext<{
-  sortedFeedbacks: [] | null;
+  sortedFeedbacks: Feedback[] | null;
   sort: string;
   setSort: Dispatch<SetStateAction<string>>;
-}>({ sortedFeedbacks: [], sort: "", setSort: () => null });
+  count: number;
+  setCount: Dispatch<SetStateAction<number>>;
+}>({
+  sortedFeedbacks: [],
+  sort: "",
+  setSort: () => null,
+  count: 0,
+  setCount: () => null,
+});
 import { useFeedbackContext } from "./feedback";
 
 export const SortedFeedbackProvider = ({
@@ -20,65 +30,46 @@ export const SortedFeedbackProvider = ({
   children: ReactNode;
 }) => {
   const [sort, setSort] = useState<string>("");
+  const [count, setCount] = useState(0);
   const { filteredFeedbacks } = useFeedbackContext();
-  //   let sortedFeedbacks = [...filteredFeedbacks];
 
-  const sortedFeedbacks = filteredFeedbacks.slice().sort((a, b) => {
-    switch (sort) {
-      case "mostUpvotes":
-        return a.upvotes - b.upvotes;
+  const sortedFeedbacks = filteredFeedbacks
+    .filter((item) => item.status === "suggestion")
+    .sort((a, b) => {
+      switch (sort) {
+        case "mostUpvotes":
+          return a.upvotes - b.upvotes;
+        case "leastUpvotes":
+          return b.upvotes - a.upvotes;
+        case "mostComments":
+          if (!a.comments) {
+            return -1;
+          }
+          if (!b.comments) {
+            return 1;
+          }
+          return a.comments.length - b.comments.length;
+        case "leastComments":
+          if (!a.comments) {
+            return 1;
+          }
+          if (!b.comments) {
+            return -1;
+          }
+          return b.comments.length - a.comments.length;
+        default:
+          return a.upvotes - b.upvotes;
+      }
+    });
 
-      case "leastUpvotes":
-        return b.upvotes - a.upvotes;
-
-      case "mostComments":
-        if (!a.comments) {
-          return -1;
-        }
-        if (!b.comments) {
-          return 1;
-        }
-        return a.comments.length - b.comments.length;
-
-      case "leastComments":
-        if (!a.comments) {
-          return 1;
-        }
-        if (!b.comments) {
-          return -1;
-        }
-        return b.comments.length - a.comments.length;
-      //   default:
-      //     return sortedFeedbacks;
-    }
-  });
-
-  //   switch (sort) {
-  //     case "mostUpvotes":
-  //       sortedFeedbacks.sort((a, b) => a.upvotes - b.upvotes);
-
-  //       break;
-  //     case "leastUpvotes":
-  //       sortedFeedbacks.sort((a, b) => b.upvotes - a.upvotes);
-  //       break;
-  //     case "mostComments":
-  //       sortedFeedbacks.sort(
-  //         (a, b) =>
-  //           sortedFeedbacks.comments && a.comments.length - b.comments.length
-  //       );
-  //       break;
-  //     case "leastComments":
-  //       sortedFeedbacks.sort(
-  //         (a, b) =>
-  //           sortedFeedbacks.comments && b.comments.length - a.comments.length
-  //       );
-  //       break;
-  //     default:
-  //       sortedFeedbacks = [...filteredFeedbacks];
-  //   }
+  useEffect(() => {
+    setCount(sortedFeedbacks.length);
+  }, [sortedFeedbacks]);
 
   return (
-    <SortedFeedbackContext.Provider value={{ sortedFeedbacks, sort, setSort }}>
+    <SortedFeedbackContext.Provider
+      value={{ sortedFeedbacks, sort, setSort, count, setCount }}
+    >
       {children}
     </SortedFeedbackContext.Provider>
   );

@@ -17,22 +17,23 @@ const FeedbackContext = createContext<{
   category: string;
   setCategory: Dispatch<SetStateAction<string>>;
   filteredFeedbacks: any[];
-  count: number;
-  setCount: Dispatch<SetStateAction<number>>;
+  plannedFeedbacks: any[];
+  inProgressFeedbacks: any[];
+  liveFeedbacks: any[];
 }>({
   feedbacks: [],
   setFeedbacks: () => null,
   category: "",
   setCategory: () => null,
   filteredFeedbacks: [],
-  count: 0,
-  setCount: () => null,
+  plannedFeedbacks: [],
+  inProgressFeedbacks: [],
+  liveFeedbacks: [],
 });
 
 export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
   const [feedbacks, setFeedbacks] = useState<Feedback[] | []>([]);
   const [category, setCategory] = useState<string>("all");
-  const [count, setCount] = useState(0);
 
   // useEffect(() => {
   //   addCollectionAndDocuments("feedbacks", PRODUCT_REQUESTS);
@@ -68,13 +69,11 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
   switch (category) {
     case "all":
       filteredFeedbacks = [...feedbacks];
-
       break;
     case "bug":
       filteredFeedbacks = filteredFeedbacks.filter(
         (feedback) => feedback.category === "Bug"
       );
-
       break;
     case "Enhancement":
       filteredFeedbacks = filteredFeedbacks.filter(
@@ -100,9 +99,22 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
       filteredFeedbacks = [...feedbacks];
   }
 
-  useEffect(() => {
-    setCount(filteredFeedbacks.length);
-  }, [filteredFeedbacks]);
+  const plannedFeedbacks = filteredFeedbacks
+    .filter((item) => item.status === "planned")
+    .map((item) => {
+      return { ...item, color: "#f49f85" };
+    });
+
+  const inProgressFeedbacks = filteredFeedbacks
+    .filter((item) => item.status === "in-progress")
+    .map((item) => {
+      return { ...item, color: "#62bcfa" };
+    });
+  const liveFeedbacks = filteredFeedbacks
+    .filter((item) => item.status === "live")
+    .map((item) => {
+      return { ...item, color: "#ad1fea" };
+    });
 
   return (
     <FeedbackContext.Provider
@@ -112,8 +124,9 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
         category,
         setCategory,
         filteredFeedbacks,
-        count,
-        setCount,
+        plannedFeedbacks,
+        inProgressFeedbacks,
+        liveFeedbacks,
       }}
     >
       {children}
