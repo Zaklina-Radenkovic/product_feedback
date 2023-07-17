@@ -7,7 +7,9 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
 /**
@@ -16,7 +18,8 @@
 */
 
 html {
-  /* line-height: 1.15; 1 */
+  box-sizing: border-box;
+  line-height: 1;
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
@@ -41,7 +44,7 @@ select,
 textarea {
   font-family: inherit;
   font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
+  line-height: 1; /* 1 */
   margin: 0; /* 2 */
 }
 
@@ -71,7 +74,7 @@ pre {
   --background-end-rgb: 255, 255, 255;
   --background-rgb: rgb(242, 244, 255);
   --bg-color: rgb(100, 113, 150);
-  --font-size: 16px;
+  --font-size: 1rem;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -86,12 +89,12 @@ body {
   color: var(--bg-color);
   background-color: var(--background-rgb);
   font-size: var(--font-size);
-  padding: 95px 165px 0;
-  max-width: 1440px;
+  padding: 95px 11.4%;
+  max-width: 144rem;
 }
 
 .container {
-  max-width: 1110px;
+  max-width: 111rem;
 }
 
 /* @media (min-width: 1024px) {
@@ -115,28 +118,34 @@ body {
 @layer base {
   h1 {
     @apply text-xl;
-    line-height: 1.25rem;
+    line-height: 1;
   }
   h2 {
     @apply text-lg;
+    line-height: 1;
+  }
+  p {
+    @apply text-base;
+    line-height: 1;
   }
 }
 
 @layer components {
   .button-category {
-    @apply bg-gray-light py-2 px-4 text-blue font-semibold rounded-lg hover:text-white hover:bg-blue text-xs hover:transition;
+    @apply bg-gray-light py-2.5 px-[1rem] text-primary font-semibold rounded-lg hover:text-white hover:bg-primary focus:bg-primary focus:text-white text-xs/3 hover:transition focus:transition-all;
   }
 
   .button-feedback {
-    @apply bg-tertiary text-white font-semibold rounded-lg text-sm py-3 px-6 opacity-80 hover:bg-tertiary hover:opacity-100 transition-all;
+    @apply bg-tertiary text-white font-semibold rounded-lg  opacity-80 hover:bg-tertiary hover:opacity-100 transition-all;
+    font-size: 0.93rem;
+    padding: 0.875rem 1.375rem;
   }
 }
 
 .roadmap {
-  padding: 3rem 0 1.75rem;
+  margin-top: 2.875rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(auto, 1fr));
-  /* justify-items: center; */
   column-gap: 1.5rem;
 }
 
@@ -161,7 +170,7 @@ body {
 
 .roadmap-tag {
   align-self: center;
-  margin-right: 13px;
+  margin-right: 0.81rem;
   width: 7px;
   height: 7px;
   border-radius: 100%;
@@ -177,23 +186,23 @@ body {
     background-color: #f49f85;
   }
   .live {
-    background-color: #ad1fea;
+    background-color: #62bcfa;
   }
   .progress {
-    background-color: #62bcfa;
+    background-color: #ad1fea;
   }
 }
 
 @layer components {
   .navbar {
-    @apply bg-secondary text-white py-3.5 rounded-lg mb-5 flex justify-between;
+    @apply bg-secondary text-white py-3.5 rounded-lg mb-6 flex justify-between items-center;
   }
   .suggestion {
-    @apply bg-white text-gray py-7 px-8 flex rounded-lg my-5 items-baseline;
+    @apply bg-white text-gray py-7 pl-8 pr-9 flex rounded-lg my-5 items-baseline;
   }
 
   .suggestion-upvote {
-    @apply flex flex-col bg-gray-light items-center rounded-lg px-2 pt-2 pb-3 mr-8 text-sm;
+    @apply flex flex-col bg-gray-light items-center rounded-lg pb-3 mr-10;
   }
   .suggestion-content {
     @apply flex flex-col items-start col-span-4;

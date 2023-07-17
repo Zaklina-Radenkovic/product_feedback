@@ -1,8 +1,12 @@
 import React from "react";
 
-const Button = ({ children, className, onClick, ...props }: any) => {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+}
+
+const Button = ({ children, className, ...props }: Props) => {
   return (
-    <button className={className} onClick={onClick} {...props}>
+    <button type="button" className={className} {...props}>
       {children}
     </button>
   );

@@ -12,16 +12,16 @@ const FeedbackItem = ({ feedback }: iFeedbackItem) => {
   // console.log(feedback);
   const { upvotes, title, description, category } = feedback;
   return (
-    <div className="suggestion px-[35px]">
+    <div className="suggestion">
       <div className="suggestion-upvote">
-        <button className="p-2">
+        <button className="pb-[11px] px-3.5 pt-3">
           <Image priority src={arrowIconUp} alt="icon" />
         </button>
-        <span className="text-secondary font-bold">{upvotes}</span>
+        <span className="text-secondary font-bold text-[13px]">{upvotes}</span>
       </div>
       <div className="suggestion-content">
-        <h3 className="text-secondary font-bold leading-3">{title}</h3>
-        <p className="pb-[18px] pt-4">{description}</p>
+        <h3 className="text-secondary font-bold text-lg/6">{title}</h3>
+        <p className="py-2.5">{description}</p>
         <Button className="button-category">{category}</Button>
       </div>
       <div className="suggestion-msg">
@@ -31,7 +31,7 @@ const FeedbackItem = ({ feedback }: iFeedbackItem) => {
           alt="icon"
           className="bg-slate-900"
         />
-        <span className="ml-1 text-secondary font-bold">2</span>
+        <span className="ml-2.5 text-secondary font-bold">2</span>
       </div>
     </div>
   );

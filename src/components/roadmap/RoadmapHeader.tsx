@@ -5,8 +5,8 @@ import arrowIconLeft from "../../../public/icon-arrow-left.svg";
 
 const RoadmapHeader = () => {
   return (
-    <header className="navbar p-7 text-white font-bold items-center">
-      <div className="grid grid-rows-2 gap-2">
+    <header className="navbar p-[1.875rem] font-bold mb-0">
+      <div className="grid grid-rows-2 gap-2.5">
         <div className="flex items-center">
           <Image
             priority
@@ -14,9 +14,9 @@ const RoadmapHeader = () => {
             alt="icon"
             className="inline-block mr-3.5"
           />
-          <Button className="text-sm">Go Back</Button>
+          <Button className="text-xs/3 hover:underline">Go Back</Button>
         </div>
-        <h1>Roadmap</h1>
+        <h2>Roadmap</h2>
       </div>
       <ButtonFeedback />
     </header>

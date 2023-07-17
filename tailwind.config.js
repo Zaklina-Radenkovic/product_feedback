@@ -10,16 +10,23 @@ module.exports = {
   ],
   theme: {
     colors: {
-      red: "red",
+      red: "#d73737",
+      orange: "#f49f85",
       gray: "#647196",
       secondary: "#3a4374",
       tertiary: "#ad1fea",
       white: "#fff",
+      "blue-live": "#62bcfa",
       "gray-light": "#f7f8fd",
-      blue: "#4661e6",
+      primary: "#4661e6",
+      blue: "#373f68",
+      background: "#f2f4ff",
     },
     container: {
       center: true,
+    },
+    borderRadius: {
+      lg: "10px",
     },
     extend: {
       fontFamily: {

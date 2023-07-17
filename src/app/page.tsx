@@ -18,7 +18,7 @@ export default async function Home() {
   // console.log(productFeedbacks);
 
   return (
-    <div className="container flex gap-x-[30px] mx-auto">
+    <div className="container flex gap-x-[30px]">
       <Sidebar />
       <main className="basis-3/4">
         <Navbar />
