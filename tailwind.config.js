@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     colors: {
       red: "#d73737",
-      orange: "#f49f85",
+      "orange-planned": "#f49f85",
       gray: "#647196",
       secondary: "#3a4374",
       tertiary: "#ad1fea",

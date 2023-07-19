@@ -102,18 +102,18 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
   const plannedFeedbacks = filteredFeedbacks
     .filter((item) => item.status === "planned")
     .map((item) => {
-      return { ...item, color: "#f49f85" };
+      return { ...item, color: "orange-planned" };
     });
 
   const inProgressFeedbacks = filteredFeedbacks
     .filter((item) => item.status === "in-progress")
     .map((item) => {
-      return { ...item, color: "#62bcfa" };
+      return { ...item, color: "blue-live" };
     });
   const liveFeedbacks = filteredFeedbacks
     .filter((item) => item.status === "live")
     .map((item) => {
-      return { ...item, color: "#ad1fea" };
+      return { ...item, color: "tertiary" };
     });
 
   return (
