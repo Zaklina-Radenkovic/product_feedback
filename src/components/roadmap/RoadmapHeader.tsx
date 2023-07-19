@@ -16,7 +16,7 @@ const RoadmapHeader = () => {
           />
           <Button className="text-xs/3 hover:underline">Go Back</Button>
         </div>
-        <h2>Roadmap</h2>
+        <h3>Roadmap</h3>
       </div>
       <ButtonFeedback />
     </header>

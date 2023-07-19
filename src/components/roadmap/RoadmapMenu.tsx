@@ -8,7 +8,7 @@ const RoadmapMenu = () => {
   return (
     <div className="bg-white p-[25px] pb-[30px] rounded-lg flex flex-col">
       <div className="flex justify-between items-center gap-2 pb-6">
-        <h2 className="font-bold text-secondary">Roadmap</h2>
+        <h3 className="font-bold text-secondary">Roadmap</h3>
         <Link
           href="/roadmap"
           className="text-xs/3 underline text-primary hover:text-primary/75 font-semibold hover:transition"

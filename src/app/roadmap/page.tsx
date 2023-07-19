@@ -1,11 +1,11 @@
 import RoadmapHeader from "@/components/roadmap/RoadmapHeader";
-import RoadmapItems from "@/components/roadmap/RoadmapItems";
+import Roadmap from "@/components/roadmap/Roadmap";
 
-export default function Roadmap() {
+export default function RoadmapPage() {
   return (
     <div className="container">
       <RoadmapHeader />
-      <RoadmapItems />
+      <Roadmap />
     </div>
   );
 }
