@@ -64,6 +64,7 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
     getFeedbacksMap();
   }, []);
 
+  //sorted feedbacks by category property
   let filteredFeedbacks: any[] = [...feedbacks];
 
   switch (category) {
@@ -99,21 +100,43 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
       filteredFeedbacks = [...feedbacks];
   }
 
+  //sorted feedbacks by status property
   const plannedFeedbacks = filteredFeedbacks
     .filter((item) => item.status === "planned")
-    .map((item) => {
-      return { ...item, color: "orange-planned" };
-    });
 
+    .map((item) => {
+      console.log(item.status);
+      return {
+        ...item,
+        status: item.status.replace(/(^\w|-\w)/g, (s: string) =>
+          s.toUpperCase()
+        ),
+        color: "orange-planned",
+      };
+    });
+  console.log(plannedFeedbacks);
   const inProgressFeedbacks = filteredFeedbacks
     .filter((item) => item.status === "in-progress")
     .map((item) => {
-      return { ...item, color: "blue-live" };
+      return {
+        ...item,
+        status: item.status.replace(/(^\w|-\w)/g, (s: string) =>
+          s.toUpperCase()
+        ),
+        color: "blue-live",
+      };
     });
+
   const liveFeedbacks = filteredFeedbacks
     .filter((item) => item.status === "live")
     .map((item) => {
-      return { ...item, color: "tertiary" };
+      return {
+        ...item,
+        status: item.status.replace(/(^\w|-\w)/g, (s: string) =>
+          s.toUpperCase()
+        ),
+        color: "tertiary",
+      };
     });
 
   return (

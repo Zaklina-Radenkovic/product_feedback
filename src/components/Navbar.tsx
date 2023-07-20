@@ -2,7 +2,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import suggestions from "../../public/assets/images/icon-suggestions.svg";
-import { useFeedbackContext } from "@/state/feedback";
 import { useSortedFeedbackContext } from "@/state/sortedFeedback";
 import ButtonFeedback from "./button/ButtonFeedback";
 

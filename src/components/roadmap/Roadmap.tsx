@@ -11,21 +11,21 @@ const Roadmap = () => {
       id: 1,
       name: "Planned",
       description: "Ideas prioritized for research",
-      color: "peach",
+      color: "orange-planned",
       feedbacks: plannedFeedbacks,
     },
     {
       id: 2,
       name: "In-Progress",
       description: "Currently being developed",
-      color: "violet",
+      color: "blue-live",
       feedbacks: inProgressFeedbacks,
     },
     {
       id: 3,
       name: "Live",
       description: "Release features",
-      color: "blue",
+      color: "tertiary",
       feedbacks: liveFeedbacks,
     },
   ];
@@ -38,7 +38,11 @@ const Roadmap = () => {
             {data.name} ({data.feedbacks.length})
           </h3>
           <p className="mb-9">{data.description}</p>
-          <RoadmapListItems key={data.id} feedbacksList={data.feedbacks} />
+          <RoadmapListItems
+            key={data.id}
+            feedbacksList={data.feedbacks}
+            name={data.name}
+          />
         </div>
       ))}
     </div>

@@ -1,5 +1,5 @@
 const page = () => {
-  return <div>Edit Feedback</div>;
+  return <div>Edit Suggestion</div>;
 };
 
 export default page;

@@ -1,11 +1,9 @@
 "use client";
 import { useSortedFeedbackContext } from "@/state/sortedFeedback";
 import NoSuggestion from "../NoSuggestion";
-import FeedbackItem from "./FeedbackItem";
-import { useFeedbackContext } from "@/state/feedback";
+import SuggestionItem from "./SuggestionItem";
 
-const Feedbacks = () => {
-  // const { filteredFeedbacks, feedbacks } = useFeedbackContext();
+const Suggestions = () => {
   const { sortedFeedbacks } = useSortedFeedbackContext();
 
   return (
@@ -14,8 +12,13 @@ const Feedbacks = () => {
       {sortedFeedbacks &&
       sortedFeedbacks.length &&
       sortedFeedbacks !== undefined ? (
-        sortedFeedbacks?.map((feedback) => {
-          return <FeedbackItem key={feedback.id} feedback={feedback} />;
+        sortedFeedbacks?.map((sortedFeedback) => {
+          return (
+            <SuggestionItem
+              key={sortedFeedback.id}
+              sortedFeedback={sortedFeedback}
+            />
+          );
         })
       ) : (
         // <NoSuggestion />
@@ -25,4 +28,4 @@ const Feedbacks = () => {
   );
 };
 
-export default Feedbacks;
+export default Suggestions;

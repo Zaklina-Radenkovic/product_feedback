@@ -150,12 +150,12 @@ body {
 }
 
 .roadmap-item {
-  /* background-color: white;
-  padding: 25px;
-  width: 260px;
+  background-color: white;
+  padding: 28px 24px;
+  max-width: 18.5rem;
   border-radius: 10px;
-  height: 250px;
-  margin-bottom: 20px; */
+  min-height: 250px;
+  margin-bottom: 20px;
 }
 
 .roadmap-tag {
@@ -176,10 +176,10 @@ body {
     background-color: #f49f85;
   }
   .live {
-    background-color: #62bcfa;
-  }
-  .progress {
     background-color: #ad1fea;
+  }
+  .in-progress {
+    background-color: #62bcfa;
   }
 }
 
@@ -191,15 +191,16 @@ body {
     @apply bg-white text-gray py-7 pl-8 pr-9 flex rounded-lg my-5 items-baseline;
   }
 
-  .suggestion-upvote {
-    @apply flex flex-col bg-gray-light items-center rounded-lg pb-3 mr-10;
-  }
   .suggestion-content {
     @apply flex flex-col items-start col-span-4;
   }
-  .suggestion-msg {
+  .msg {
     @apply ml-auto self-center flex items-center;
   }
-  /* .btn-upvote {
-  } */
+  .btn-upvote {
+    @apply flex flex-col bg-gray-light w-10 h-[50px] items-center rounded-lg p-2.5 mr-10 gap-2.5;
+  }
+  .btn-upvote-x {
+    @apply btn-upvote flex flex-row justify-center mr-0 w-[60px] h-10 gap-2;
+  }
 }

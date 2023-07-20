@@ -1,5 +1,5 @@
-import Button from "./Button";
 import Image from "next/image";
+import Button from "./Button";
 import arrowIconUp from "../../../public/icon-arrow-up.svg";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -10,10 +10,10 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const ButtonVote = ({ children, onClick, className, ...props }: Props) => {
   return (
     <div className={className}>
-      <Button className={className} {...props}>
-        <Image src={arrowIconUp} alt="icon" />
+      <Button {...props}>
+        <Image priority src={arrowIconUp} alt="icon" />
       </Button>
-      <span className={className}>{children}</span>
+      <span className="text-secondary font-bold text-[13px]">{children}</span>
     </div>
   );
 };

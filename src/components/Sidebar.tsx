@@ -1,4 +1,3 @@
-// "use client";
 import Header from "./Header";
 import CategoriesMenu from "./CategoriesMenu";
 import RoadmapMenu from "@/components/roadmap/RoadmapMenu";

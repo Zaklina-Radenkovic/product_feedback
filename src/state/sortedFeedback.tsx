@@ -33,6 +33,7 @@ export const SortedFeedbackProvider = ({
   const [count, setCount] = useState(0);
   const { filteredFeedbacks } = useFeedbackContext();
 
+  //feedbacks with status 'suggestion' sorted by most/least upvotes and comments
   const sortedFeedbacks = filteredFeedbacks
     .filter((item) => item.status === "suggestion")
     .sort((a, b) => {

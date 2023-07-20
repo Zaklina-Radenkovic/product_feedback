@@ -1,5 +1,6 @@
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
+  className: string | undefined;
 }
 
 const Button = ({ children, className, ...props }: Props) => {

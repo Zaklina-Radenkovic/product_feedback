@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
 import { useFeedbackContext } from "../../state/feedback";
+
 const RoadmapMenu = () => {
   const { plannedFeedbacks, inProgressFeedbacks, liveFeedbacks } =
     useFeedbackContext();
-  console.log(plannedFeedbacks);
+  // console.log(inProgressFeedbacks);
   return (
     <div className="bg-white p-[25px] pb-[30px] rounded-lg flex flex-col">
       <div className="flex justify-between items-center gap-2 pb-6">
@@ -19,17 +20,19 @@ const RoadmapMenu = () => {
       <div className="grid grid-cols-2 grid-rows-3 justify-items-start">
         <div className="flex pb-3">
           <span className="roadmap-tag planned"></span>
-          <p>Planned</p>
+          <p>{plannedFeedbacks?.reduce((acc, item) => item.status, [])}</p>
         </div>
         <span className="roadmap-span">{plannedFeedbacks.length}</span>
         <div className=" flex pb-3">
-          <span className="roadmap-tag progress"></span>
-          <p>In-progress</p>
+          <span className="roadmap-tag in-progress"></span>
+          <p>{inProgressFeedbacks?.reduce((acc, item) => item.status, [])}</p>
         </div>
         <span className="roadmap-span">{inProgressFeedbacks.length}</span>
         <div className=" flex self-baseline">
           <span className="roadmap-tag live"></span>
-          <p className="self-center">Live</p>
+          <p className="self-center">
+            {liveFeedbacks?.reduce((acc, item) => item.status, [])}
+          </p>
         </div>
         <span className="roadmap-span">{liveFeedbacks.length}</span>
       </div>
