@@ -23,7 +23,7 @@ const RoadmapItem = ({ feedback, name }: any) => {
   return (
     <div className={`roadmap-item border-t-4 ${borderColor[color]}`}>
       <div className="flex pb-4">
-        <span className={`roadmap-tag ${status}`}></span>
+        <span className={`roadmap-tag ${status.toLowerCase()}`}></span>
         <p className="pt-7.5">{name}</p>
       </div>
       <h3 className="text-blue font-bold pb-3">{title}</h3>
