@@ -2,7 +2,7 @@ import Image from "next/image";
 import emptyIllustration from "../../public/assets/images/illustration-empty.svg";
 import ButtonFeedback from "./button/ButtonFeedback";
 
-const NoSuggestion = () => {
+const NoFeedback = () => {
   return (
     <div className="grid py-28 content-center justify-items-center suggestion">
       <Image
@@ -23,4 +23,4 @@ const NoSuggestion = () => {
   );
 };
 
-export default NoSuggestion;
+export default NoFeedback;

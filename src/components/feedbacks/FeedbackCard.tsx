@@ -1,21 +1,23 @@
+import Link from "next/link";
 import ButtonVote from "../button/ButtonVote";
 import Button from "../button/Button";
 import CommentsIcon from "../comments/CommentsIcon";
 import { Feedback } from "@/types/models";
-import { useFeedbackContext } from "@/state/feedback";
 
 interface iSuggestionItem {
   sortedFeedback: Feedback;
 }
 
-const SuggestionItem = ({ sortedFeedback }: iSuggestionItem) => {
-  // const { upvotes, setUpvotes } = useFeedbackContext();
-  const { upvotes, title, description, category, comments } = sortedFeedback;
+const FeedbackCard = ({ sortedFeedback }: iSuggestionItem) => {
+  const { upvotes, title, description, category, comments, id } =
+    sortedFeedback;
   return (
-    <div className="suggestion">
+    <div className="feedback">
       <ButtonVote className="btn-upvote">{upvotes}</ButtonVote>
-      <div className="suggestion-content">
-        <h3 className="text-secondary font-bold text-lg/6">{title}</h3>
+      <div className="feedback-content">
+        <Link href={`/feedback/${id}`}>
+          <h3 className="text-secondary font-bold text-lg/6">{title}</h3>
+        </Link>
         <p className="py-2.5">{description}</p>
         <Button className="button-category">{category}</Button>
       </div>
@@ -30,4 +32,4 @@ const SuggestionItem = ({ sortedFeedback }: iSuggestionItem) => {
   );
 };
 
-export default SuggestionItem;
+export default FeedbackCard;

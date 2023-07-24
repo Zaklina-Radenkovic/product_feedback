@@ -63,7 +63,7 @@ const Navbar = () => {
           })}
         </select>
       </div>
-      <ButtonFeedback />
+      <ButtonFeedback> &#43; Add feedback </ButtonFeedback>
     </div>
   );
 };

@@ -114,7 +114,7 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
         color: "orange-planned",
       };
     });
-  console.log(plannedFeedbacks);
+
   const inProgressFeedbacks = filteredFeedbacks
     .filter((item) => item.status === "in-progress")
     .map((item) => {

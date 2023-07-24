@@ -1,6 +1,6 @@
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
-import Suggestions from "@/components/suggestions/Suggestions";
+import Feedbacks from "@/components/feedbacks/Feedbacks";
 
 export default async function Home() {
   return (
@@ -8,7 +8,7 @@ export default async function Home() {
       <Sidebar />
       <main className="basis-3/4">
         <Navbar />
-        <Suggestions />
+        <Feedbacks />
       </main>
     </div>
   );
