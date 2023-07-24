@@ -5,14 +5,15 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: () => void;
 }
 
-const ButtonFeedback = ({ onClick, ...props }: Props) => {
+const ButtonFeedback = ({ onClick, children, ...props }: Props) => {
   return (
     <Button
       className="button-feedback text-[15px]"
       onClick={onClick}
       {...props}
     >
-      &#43; Add feedback
+      {/* &#43; Add feedback */}
+      {children}
     </Button>
   );
 };

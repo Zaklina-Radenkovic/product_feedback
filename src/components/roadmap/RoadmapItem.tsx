@@ -13,13 +13,7 @@ const RoadmapItem = ({ feedback, name }: any) => {
     "blue-live": "border-blue-live",
     tertiary: "border-tertiary",
   };
-  // let statusCapitalize = status.split(" ");
-  // for (let i = 0; i < statusCapitalize.length; i++) {
-  //   statusCapitalize[i] =
-  //     statusCapitalize[i].charAt(0) + statusCapitalize[i].slice(1);
-  // }
-  // statusCapitalize = statusCapitalize.join(" ");
-  // console.log(statusCapitalize);
+
   return (
     <div className={`roadmap-item border-t-4 ${borderColor[color]}`}>
       <div className="flex pb-4">

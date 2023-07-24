@@ -1,24 +1,17 @@
-import Image from "next/image";
-import Button from "@/components/button/Button";
+import Link from "next/link";
 import ButtonFeedback from "@/components/button/ButtonFeedback";
-import arrowIconLeft from "../../../public/icon-arrow-left.svg";
+import GoBackButton from "../button/GoBackButton";
 
 const RoadmapHeader = () => {
   return (
     <header className="navbar p-[1.875rem] font-bold mb-0">
       <div className="grid grid-rows-2 gap-2.5">
-        <div className="flex items-center">
-          <Image
-            priority
-            src={arrowIconLeft}
-            alt="icon"
-            className="inline-block mr-3.5"
-          />
-          <Button className="text-xs/3 hover:underline">Go Back</Button>
-        </div>
+        <Link href="/">
+          <GoBackButton className="text-white" stroke="#fff" />
+        </Link>
         <h3>Roadmap</h3>
       </div>
-      <ButtonFeedback />
+      <ButtonFeedback> &#43; Add feedback </ButtonFeedback>
     </header>
   );
 };
