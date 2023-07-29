@@ -19,7 +19,7 @@ module.exports = {
       "blue-live": "#62bcfa",
       "gray-light": "#f7f8fd",
       primary: "#4661e6",
-      blue: "#373f68",
+      // blue: "#373f68",
       background: "#f2f4ff",
     },
     container: {
