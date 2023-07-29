@@ -5,24 +5,24 @@ export type Feedback = {
   upvotes: number;
   status: string;
   description: string;
-  comments: Comment[];
+  comments: CommentType[];
 };
 
-export type Comment = {
+export type CommentType = {
   id: string;
   content: string;
-  user: User;
-  replies: Reply[];
+  user: UserType;
+  replies: ReplyType[];
 };
 
-export type User = {
+export type UserType = {
   image: string;
   name: string;
   username: string;
 };
 
-export type Reply = {
+export type ReplyType = {
   content: string;
   replayingTo: string;
-  user: User;
+  user: UserType;
 };
