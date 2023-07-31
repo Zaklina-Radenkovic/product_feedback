@@ -1,10 +1,11 @@
 "use client";
+import Link from "next/link";
 import Button from "../button/Button";
 import ButtonVote from "../button/ButtonVote";
 import CommentsIcon from "../comments/CommentsIcon";
 
 const RoadmapItem = ({ feedback, name }: any) => {
-  const { status, title, description, category, upvotes, comments, color } =
+  const { status, title, description, category, upvotes, comments, color, id } =
     feedback;
   console.log(status);
 
@@ -20,11 +21,15 @@ const RoadmapItem = ({ feedback, name }: any) => {
         <span className={`roadmap-tag ${status.toLowerCase()}`}></span>
         <p className="pt-7.5">{name}</p>
       </div>
-      <h3 className="text-blue font-bold pb-3">{title}</h3>
+      <Link href={`/feedback/${id}`}>
+        <h3 className="text-secondary font-bold pb-3">{title}</h3>
+      </Link>
       <p className="leading-5 pb-5">{description}</p>
       <Button className="button-category">{category}</Button>
       <div className="flex flex-row justify-between items-center mt-3.5">
-        <ButtonVote className="btn-upvote-x">{upvotes}</ButtonVote>
+        <ButtonVote className="btn-upvote-x" onClick={() => {}}>
+          {upvotes}
+        </ButtonVote>
         <CommentsIcon
           className={`ml-1.5 font-bold ${
             !comments?.length ? "text-gray/75" : "text-secondary"

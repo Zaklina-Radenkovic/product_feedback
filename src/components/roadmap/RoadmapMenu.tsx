@@ -27,20 +27,20 @@ const RoadmapMenu = () => {
           ></span>
           <p>{plannedFeedbacks?.reduce((acc, item) => item.status, [])}</p>
         </div>
-        <span className="roadmap-span">{plannedFeedbacks.length}</span>
+        <span className="roadmap-span">{plannedFeedbacks?.length}</span>
         <div className=" flex pb-3">
           <span
-            className={`roadmap-tag ${inProgressFeedbacks.reduce(
+            className={`roadmap-tag ${inProgressFeedbacks?.reduce(
               (acc, item) => item.status.toLowerCase(),
               []
             )}`}
           ></span>
           <p>{inProgressFeedbacks?.reduce((acc, item) => item.status, [])}</p>
         </div>
-        <span className="roadmap-span">{inProgressFeedbacks.length}</span>
+        <span className="roadmap-span">{inProgressFeedbacks?.length}</span>
         <div className=" flex self-baseline">
           <span
-            className={`roadmap-tag ${liveFeedbacks.reduce(
+            className={`roadmap-tag ${liveFeedbacks?.reduce(
               (acc, item) => item.status.toLowerCase(),
               []
             )}`}
@@ -49,7 +49,7 @@ const RoadmapMenu = () => {
             {liveFeedbacks?.reduce((acc, item) => item.status, [])}
           </p>
         </div>
-        <span className="roadmap-span">{liveFeedbacks.length}</span>
+        <span className="roadmap-span">{liveFeedbacks?.length}</span>
       </div>
     </div>
   );
