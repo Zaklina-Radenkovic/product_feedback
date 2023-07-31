@@ -5,12 +5,11 @@ import CommentsIcon from "../comments/CommentsIcon";
 import { Feedback } from "@/types/models";
 
 interface iSuggestionItem {
-  sortedFeedback: Feedback;
+  feedback: Feedback;
 }
 
-const FeedbackCard = ({ sortedFeedback }: iSuggestionItem) => {
-  const { upvotes, title, description, category, comments, id } =
-    sortedFeedback;
+const FeedbackCard = ({ feedback }: iSuggestionItem) => {
+  const { upvotes, title, description, category, comments, id } = feedback;
   return (
     <div className="feedback">
       <ButtonVote className="btn-upvote">{upvotes}</ButtonVote>

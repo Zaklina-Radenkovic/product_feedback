@@ -16,7 +16,7 @@ const Feedbacks = () => {
           return (
             <FeedbackCard
               key={sortedFeedback.id}
-              sortedFeedback={sortedFeedback}
+              feedback={sortedFeedback}
             />
           );
         })
