@@ -12,7 +12,7 @@ module.exports = {
     colors: {
       red: "#d73737",
       "orange-planned": "#f49f85",
-      gray: "#647196",
+      "font-color": "#647196",
       secondary: "#3a4374",
       tertiary: "#ad1fea",
       white: "#fff",
@@ -20,7 +20,7 @@ module.exports = {
       "gray-light": "#f7f8fd",
       primary: "#4661e6",
       // blue: "#373f68",
-      background: "#f2f4ff",
+      // background: "#f2f4ff",
     },
     container: {
       center: true,
