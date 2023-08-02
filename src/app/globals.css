@@ -72,8 +72,8 @@ pre {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --background-rgb: rgb(242, 244, 255);
-  --bg-color: rgb(100, 113, 150);
+  --background-color: rgb(242, 244, 255);
+  --font-color: rgb(100, 113, 150);
   --font-size: 1rem;
 }
 
@@ -86,8 +86,8 @@ pre {
 } */
 
 body {
-  color: var(--bg-color);
-  background-color: var(--background-rgb);
+  color: var(--font-color);
+  background-color: var(--background-color);
   font-size: var(--font-size);
   padding: 95px 11.4%;
   max-width: 144rem;
@@ -136,13 +136,19 @@ body {
   }
 
   .button-feedback {
-    @apply bg-tertiary text-white font-semibold rounded-lg  opacity-80 hover:bg-tertiary hover:opacity-100 transition-all;
+    @apply btn bg-tertiary hover:bg-tertiary;
     font-size: 0.93rem;
     padding: 0.875rem 1.375rem;
   }
 
-  .button-edit {
-    @apply button-feedback bg-primary hover:bg-primary;
+  .button-sbm {
+    @apply button-feedback;
+    padding: 0.875rem 1.25rem;
+  }
+
+  .button {
+    @apply btn;
+    padding: 0.875rem 1.25rem;
   }
 }
 
@@ -189,6 +195,13 @@ body {
 }
 
 @layer utilities {
+  .box {
+    @apply bg-white rounded-lg;
+  }
+
+  .btn {
+    @apply text-white font-semibold opacity-80 rounded-lg hover:opacity-100 transition-all;
+  }
 }
 
 @layer components {
@@ -196,7 +209,7 @@ body {
     @apply bg-secondary text-white py-3.5 rounded-lg mb-6 flex justify-between items-center;
   }
   .feedback {
-    @apply bg-white text-gray py-[1.56rem] pl-8 pr-9 flex rounded-lg my-5 items-baseline;
+    @apply box py-[1.56rem] pl-8 pr-9 flex my-5 items-baseline;
   }
 
   .feedback-content {
@@ -273,9 +286,15 @@ body {
   background-color: #fff;
 }
 
-.edit-icon {
+.icon {
   position: absolute;
   top: 0;
   left: 40px;
   transform: translate(0, -50%);
+}
+
+
+
+input::placeholder {
+  @apply text-secondary;
 }
