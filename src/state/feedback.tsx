@@ -101,43 +101,48 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
   }
 
   //sorted feedbacks by status property
-  const plannedFeedbacks = filteredFeedbacks
-    .filter((item) => item.status === "planned")
+  const plannedFeedbacks =
+    feedbacks &&
+    feedbacks
+      .filter((item) => item.status === "planned")
 
-    .map((item) => {
-      console.log(item.status);
-      return {
-        ...item,
-        status: item.status.replace(/(^\w|-\w)/g, (s: string) =>
-          s.toUpperCase()
-        ),
-        color: "orange-planned",
-      };
-    });
+      .map((item) => {
+        return {
+          ...item,
+          status: item.status.replace(/(^\w|-\w)/g, (s: string) =>
+            s.toUpperCase()
+          ),
+          color: "orange-planned",
+        };
+      });
 
-  const inProgressFeedbacks = filteredFeedbacks
-    .filter((item) => item.status === "in-progress")
-    .map((item) => {
-      return {
-        ...item,
-        status: item.status.replace(/(^\w|-\w)/g, (s: string) =>
-          s.toUpperCase()
-        ),
-        color: "blue-live",
-      };
-    });
+  const inProgressFeedbacks =
+    feedbacks &&
+    feedbacks
+      .filter((item) => item.status === "in-progress")
+      .map((item) => {
+        return {
+          ...item,
+          status: item.status.replace(/(^\w|-\w)/g, (s: string) =>
+            s.toUpperCase()
+          ),
+          color: "blue-live",
+        };
+      });
 
-  const liveFeedbacks = filteredFeedbacks
-    .filter((item) => item.status === "live")
-    .map((item) => {
-      return {
-        ...item,
-        status: item.status.replace(/(^\w|-\w)/g, (s: string) =>
-          s.toUpperCase()
-        ),
-        color: "tertiary",
-      };
-    });
+  const liveFeedbacks =
+    feedbacks &&
+    feedbacks
+      .filter((item) => item.status === "live")
+      .map((item) => {
+        return {
+          ...item,
+          status: item.status.replace(/(^\w|-\w)/g, (s: string) =>
+            s.toUpperCase()
+          ),
+          color: "tertiary",
+        };
+      });
 
   return (
     <FeedbackContext.Provider
