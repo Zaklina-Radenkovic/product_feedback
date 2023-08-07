@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ButtonFeedback from "@/components/button/ButtonFeedback";
 import GoBackButton from "@/components/button/GoBackButton";
@@ -7,7 +8,7 @@ import { useFeedbackContext } from "@/state/feedback";
 
 import { useParams } from "next/navigation";
 import Comments from "@/components/comments/Comments";
-import Form from "@/components/form/Form";
+import TextForm from "@/components/form/TextForm";
 
 const page = () => {
   const router = useRouter();
@@ -19,28 +20,23 @@ const page = () => {
   const currentFeedback = feedbacks?.find(
     (feedback) => feedback.id === feedbackId
   );
-  console.log(currentFeedback);
+
   if (currentFeedback)
     return (
       <div className="w-[51.5rem] mx-auto">
         <header className="flex flex-row justify-between items-center">
-          <GoBackButton
-            className=" text-gray"
-            stroke="blue"
-            onClick={() => router.back()}
-          />
-          <ButtonFeedback
-            className="button-edit"
-            onClick={() => router.push(`${feedbackId}/edit`)}
-          >
-            Edit Feedback
-          </ButtonFeedback>
+          <GoBackButton stroke="blue" onClick={() => router.back()} />
+          <Link href={`${feedbackId}/edit`}>
+            <ButtonFeedback className="button-feedback bg-primary px-[1.875rem] hover:bg-primary">
+              Edit Feedback
+            </ButtonFeedback>
+          </Link>
         </header>
         <FeedbackCard feedback={currentFeedback} />
         {currentFeedback.comments?.length >= 1 && (
           <Comments feedback={currentFeedback} />
         )}
-        <Form />
+        <TextForm />
       </div>
     );
 };
