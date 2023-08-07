@@ -1,5 +1,5 @@
 export type Feedback = {
-  id: string;
+  id: string | null;
   title: string;
   category: string;
   upvotes: number;
@@ -26,3 +26,14 @@ export type ReplyType = {
   replayingTo: string;
   user: UserType;
 };
+
+export interface iFeedbackToAdd extends Feedback {
+  id: any;
+  title: string;
+  category: string;
+  upvotes: number;
+  status: string;
+  description: string;
+  comments: [];
+  replies: [];
+}
