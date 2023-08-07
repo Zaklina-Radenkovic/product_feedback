@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { PRODUCT_REQUESTS } from "@/_fake-api__/feedbacks";
+
+import { iFeedbackToAdd } from "@/types/models";
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -9,6 +10,7 @@ import {
   getDocs,
   deleteDoc,
   query,
+  addDoc,
   collection,
   updateDoc,
   DocumentData,
@@ -70,4 +72,38 @@ export const getFeedbacksAndDocuments = async (arg: any) => {
   }, []);
   // console.log(documentMap);
   return documentMap;
+};
+
+/// getting single document from collection by ID
+export const getDocument = async (id) => {
+  const documentRef = doc(db, "feedbacks", id);
+  const docSnap = await getDoc(documentRef);
+  if (docSnap.exists()) return docSnap.data();
+};
+
+///adding document to collection
+export const addDocument = async (data: iFeedbackToAdd) => {
+  const feedbacksCollectionRef = doc(collection(db, "feedbacks"));
+  console.log(feedbacksCollectionRef.id);
+  return await setDoc(feedbacksCollectionRef, {
+    ...data,
+    title: data.title.charAt(0).toUpperCase() + data.title.slice(1),
+    category: data.category.charAt(0).toUpperCase() + data.category.slice(1),
+    description:
+      data.description.charAt(0).toUpperCase() + data.description.slice(1),
+    upvotes: 0,
+    status: "suggestion",
+    comments: [],
+    // replies: [],
+    id: feedbacksCollectionRef.id,
+  });
+};
+
+//updating document
+export const updateFeedback = async (id, data = {}) => {
+  const feedbacksCollectionRef = doc(db, "feedbacks", id);
+  return await updateDoc(feedbacksCollectionRef, {
+    id,
+    ...data,
+  });
 };
