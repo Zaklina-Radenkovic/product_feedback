@@ -2,7 +2,7 @@ import Button from "./Button";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick: (e: any) => Promise<void>;
 }
 
 const ButtonFeedback = ({ onClick, children, ...props }: Props) => {

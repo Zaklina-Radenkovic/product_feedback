@@ -1,13 +1,13 @@
 import Button from "./Button";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  className: string | undefined;
   stroke: string;
+  onClick: () => void;
 }
 
-const GoBackButton = ({ className, stroke, ...props }: Props) => {
+const GoBackButton = ({ stroke, onClick, ...props }: Props) => {
   return (
-    <Button className="flex items-center">
+    <Button className="flex items-center" onClick={onClick}>
       <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M6 9L2 5l4-4"
@@ -18,9 +18,8 @@ const GoBackButton = ({ className, stroke, ...props }: Props) => {
         />
       </svg>
       <span
-        className={
-          `text-xs/3 ml-3.5 hover:underline  font-semibold ` + className
-        }
+        // className={`text-xs/3 ml-[15px] hover:underline font-bold ` + className}
+        className="text-xs/3 ml-[15px] hover:underline font-bold"
       >
         Go Back
       </span>
