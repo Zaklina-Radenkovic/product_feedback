@@ -10,10 +10,10 @@ const CategoriesMenu = () => {
   };
 
   return (
-    <div className="bg-white p-6 my-[25px] rounded-lg flex flex-wrap gap-x-2 gap-y-3">
+    <div className="box p-6 my-[25px] flex flex-wrap gap-x-2 gap-y-3">
       <Button
         className="button-category"
-        data-filter="all"
+        data-filter="All"
         onClick={filterTasks}
       >
         All
@@ -41,14 +41,14 @@ const CategoriesMenu = () => {
       </Button>
       <Button
         className="button-category ml-3"
-        data-filter="bug"
+        data-filter="Bug"
         onClick={filterTasks}
       >
         Bug
       </Button>
       <Button
         className="button-category"
-        data-filter="feature"
+        data-filter="Feature"
         onClick={filterTasks}
       >
         Feature
