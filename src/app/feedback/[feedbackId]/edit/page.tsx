@@ -14,11 +14,14 @@ const page = () => {
   const currentFeedback = feedbacks?.find(
     (feedback) => feedback.id === feedbackId
   );
-
+  console.log("edit page ", feedbackId);
   if (currentFeedback) {
     return (
       <div className="w-[490px] mx-auto text-sm/3 tracking-tight">
-        <GoBackButton stroke="blue" onClick={() => router.back()} />
+        <GoBackButton
+          stroke="blue"
+          onClick={() => router.push(`/feedback/${feedbackId}`)}
+        />
         <Form
           type="edit"
           title=""

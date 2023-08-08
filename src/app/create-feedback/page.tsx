@@ -39,15 +39,15 @@ const page = () => {
   return (
     <div className="w-[490px] mx-auto text-sm/3 tracking-tight">
       <GoBackButton stroke="blue" onClick={() => router.back()} />
-      {/* <Form
+      <Form
         submitting={submitting}
         type="new"
         title="Create New Feedback"
         // handleSubmit={createFeedback}
         feedback={feedback}
         setFeedback={setFeedback}
-      /> */}
-      <AddFeedback />
+      />
+      {/* <AddFeedback /> */}
     </div>
   );
 };

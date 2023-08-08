@@ -25,7 +25,7 @@ const page = () => {
     return (
       <div className="w-[51.5rem] mx-auto">
         <header className="flex flex-row justify-between items-center">
-          <GoBackButton stroke="blue" onClick={() => router.back()} />
+          <GoBackButton stroke="blue" onClick={() => router.push("/")} />
           <Link href={`${feedbackId}/edit`}>
             <ButtonFeedback className="button-feedback bg-primary px-[1.875rem] hover:bg-primary">
               Edit Feedback
