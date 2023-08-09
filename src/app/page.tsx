@@ -3,7 +3,6 @@ import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 import Suggestions from "@/components/feedbacks/Suggestions";
 import { Suspense, lazy } from "react";
-import Loading from "./loading";
 import LoadingSpinnner from "../components/LoadingSpinnner";
 
 // const Suggestions = lazy(() => import("@/components/feedbacks/Suggestions"));
