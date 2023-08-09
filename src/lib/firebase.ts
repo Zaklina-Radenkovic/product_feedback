@@ -16,7 +16,6 @@ import {
   DocumentData,
   writeBatch,
 } from "firebase/firestore";
-import { useEffect } from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDEtBkoLCeYrhP6jY1iwvoqxp4wGuhRms8",
@@ -31,6 +30,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore();
+
+export const autoID = doc(collection(db, "feedbacks")).id;
 
 //writing feedbacks onto firebase
 export const addCollectionAndDocuments = async (
@@ -75,34 +76,29 @@ export const getFeedbacksAndDocuments = async (arg: any) => {
 };
 
 /// getting single document from collection by ID
-export const getDocument = async (id) => {
+export const getDocument = async (id: any) => {
   const documentRef = doc(db, "feedbacks", id);
   const docSnap = await getDoc(documentRef);
   if (docSnap.exists()) return docSnap.data();
 };
 
 ///adding document to collection
-export const addDocument = async (data: iFeedbackToAdd) => {
-  const feedbacksCollectionRef = doc(collection(db, "feedbacks"));
-  console.log(feedbacksCollectionRef.id);
-  return await setDoc(feedbacksCollectionRef, {
+export const addDocument = async (id: any, data: iFeedbackToAdd) => {
+  // const feedbacksCollectionRef = doc(collection(db, "feedbacks"));
+  // return await addDoc(collection(db, "feedbacks"), {
+  //   ...data,
+  //   id: feedbacksCollectionRef.id,
+  // });
+  const documentRef = doc(db, "feedbacks", id);
+  return await setDoc(documentRef, {
     ...data,
-    title: data.title.charAt(0).toUpperCase() + data.title.slice(1),
-    category: data.category.charAt(0).toUpperCase() + data.category.slice(1),
-    description:
-      data.description.charAt(0).toUpperCase() + data.description.slice(1),
-    upvotes: 0,
-    status: "suggestion",
-    comments: [],
-    // replies: [],
-    id: feedbacksCollectionRef.id,
   });
 };
 
 //updating document
 export const updateFeedback = async (id, data = {}) => {
-  const feedbacksCollectionRef = doc(db, "feedbacks", id);
-  return await updateDoc(feedbacksCollectionRef, {
+  const documentRef = doc(db, "feedbacks", id);
+  return await updateDoc(documentRef, {
     id,
     ...data,
   });
