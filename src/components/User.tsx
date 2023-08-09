@@ -10,6 +10,7 @@ const User = ({ image, name, username }: User) => {
         width="35"
         height="35"
         className="user-img"
+        priority={true}
       />
 
       <h5 className="text-secondary font-bold">{name}</h5>
