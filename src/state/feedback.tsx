@@ -46,8 +46,9 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
         const productFeedback = {
           ...feedback,
           category:
-            feedback.category.charAt(0).toUpperCase() +
-            feedback.category.slice(1),
+            // feedback.category?.charAt(0).toUpperCase() +
+            // feedback.category?.slice(1),
+            feedback.category,
           description: feedback.description,
           id: feedback.id,
           status: feedback.status,
@@ -55,35 +56,46 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
           upvotes: feedback.upvotes,
           comments: feedback.comments,
         };
-        acc.push(productFeedback);
+        if (productFeedback) {
+          acc.push(productFeedback);
+        }
         return acc;
       }, []);
       //   console.log(feedbacksArr);
-      setFeedbacks(feedbacksArr);
+      if (feedbacksArr) {
+        setFeedbacks(feedbacksArr);
+      }
     };
     getFeedbacksMap();
   }, []);
+  //TODO:
+  //NOT TO CALL ALL FEEDBACKS WHEN PRESS CATEGORY BUTTON
+  console.log(feedbacks);
 
   //sorted feedbacks by category property
-  let filteredFeedbacks: any[] = [...feedbacks];
+  let filteredFeedbacks: any[] = [...feedbacks].filter(
+    (item) => item.status === "suggestion"
+  );
 
   switch (category) {
-    case "all":
-      filteredFeedbacks = [...feedbacks];
+    case "All":
+      filteredFeedbacks = [...filteredFeedbacks];
       break;
-    case "bug":
+    //TODO:
+    //TO ADDFEEDBACK MAKE CATEGORY FIRST LETTER CAPITALIZE
+    case "Bug":
       filteredFeedbacks = filteredFeedbacks.filter(
-        (feedback) => feedback.category === "Bug"
+        (feedback) => feedback.category === "bug"
       );
       break;
     case "Enhancement":
       filteredFeedbacks = filteredFeedbacks.filter(
-        (feedback) => feedback.category === "Enhancement"
+        (feedback) => feedback.category === "enhancement"
       );
       break;
-    case "feature":
+    case "Feature":
       filteredFeedbacks = filteredFeedbacks.filter(
-        (feedback) => feedback.category === "Feature"
+        (feedback) => feedback.category === "feature"
       );
       break;
     case "UI":
@@ -97,7 +109,7 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
       );
       break;
     default:
-      filteredFeedbacks = [...feedbacks];
+      filteredFeedbacks = [...filteredFeedbacks];
   }
 
   //sorted feedbacks by status property
@@ -105,7 +117,6 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
     feedbacks &&
     feedbacks
       .filter((item) => item.status === "planned")
-
       .map((item) => {
         return {
           ...item,

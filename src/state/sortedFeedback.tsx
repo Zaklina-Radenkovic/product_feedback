@@ -34,34 +34,32 @@ export const SortedFeedbackProvider = ({
   const { filteredFeedbacks } = useFeedbackContext();
 
   //feedbacks with status 'suggestion' sorted by most/least upvotes and comments
-  const sortedFeedbacks = filteredFeedbacks
-    .filter((item) => item.status === "suggestion")
-    .sort((a, b) => {
-      switch (sort) {
-        case "mostUpvotes":
-          return a.upvotes - b.upvotes;
-        case "leastUpvotes":
-          return b.upvotes - a.upvotes;
-        case "mostComments":
-          if (!a.comments) {
-            return -1;
-          }
-          if (!b.comments) {
-            return 1;
-          }
-          return a.comments.length - b.comments.length;
-        case "leastComments":
-          if (!a.comments) {
-            return 1;
-          }
-          if (!b.comments) {
-            return -1;
-          }
-          return b.comments.length - a.comments.length;
-        default:
-          return a.upvotes - b.upvotes;
-      }
-    });
+  const sortedFeedbacks = filteredFeedbacks.sort((a, b) => {
+    switch (sort) {
+      case "mostUpvotes":
+        return a.upvotes - b.upvotes;
+      case "leastUpvotes":
+        return b.upvotes - a.upvotes;
+      case "mostComments":
+        if (!a.comments) {
+          return -1;
+        }
+        if (!b.comments) {
+          return 1;
+        }
+        return a.comments.length - b.comments.length;
+      case "leastComments":
+        if (!a.comments) {
+          return 1;
+        }
+        if (!b.comments) {
+          return -1;
+        }
+        return b.comments.length - a.comments.length;
+      default:
+        return a.upvotes - b.upvotes;
+    }
+  });
 
   useEffect(() => {
     setCount(sortedFeedbacks.length);
