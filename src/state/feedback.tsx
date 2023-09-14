@@ -1,3 +1,4 @@
+"use client";
 import {
   createContext,
   useState,
@@ -20,96 +21,104 @@ const FeedbackContext = createContext<{
   plannedFeedbacks: any[];
   inProgressFeedbacks: any[];
   liveFeedbacks: any[];
+  loading: boolean;
 }>({
   feedbacks: [],
-  setFeedbacks: () => null,
+  setFeedbacks: (): Feedback[] => [],
   category: "",
-  setCategory: () => null,
+  setCategory: (): string => "",
   filteredFeedbacks: [],
   plannedFeedbacks: [],
   inProgressFeedbacks: [],
   liveFeedbacks: [],
+  loading: false,
 });
 
 export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
   const [feedbacks, setFeedbacks] = useState<Feedback[] | []>([]);
   const [category, setCategory] = useState<string>("all");
-
+  const [loading, setLoading] = useState(false);
+  //ONLY ONE TIME!
   // useEffect(() => {
   //   addCollectionAndDocuments("feedbacks", PRODUCT_REQUESTS);
   // }, []);
 
   useEffect(() => {
-    const getFeedbacksMap = async () => {
-      const data: DocumentData = await getFeedbacksAndDocuments("feedbacks");
-      const feedbacksArr = data.reduce((acc: {}[], feedback: Feedback) => {
-        const productFeedback = {
-          ...feedback,
-          category:
-            // feedback.category?.charAt(0).toUpperCase() +
-            // feedback.category?.slice(1),
-            feedback.category,
-          description: feedback.description,
-          id: feedback.id,
-          status: feedback.status,
-          title: feedback.title,
-          upvotes: feedback.upvotes,
-          comments: feedback.comments,
-        };
-        if (productFeedback) {
-          acc.push(productFeedback);
-        }
-        return acc;
-      }, []);
-      //   console.log(feedbacksArr);
-      if (feedbacksArr) {
-        setFeedbacks(feedbacksArr);
+    //STARI NACIN
+    // const getFeedbacksMap = async () => {
+    //   const data: DocumentData = await getFeedbacksAndDocuments("feedbacks");
+    //   const feedbacksArr = data.reduce((acc: {}[], feedback: Feedback) => {
+    //     const productFeedback = {
+    //       ...feedback,
+    //       category: feedback.category,
+    //       description: feedback.description,
+    //       id: feedback.id,
+    //       status: feedback.status,
+    //       title: feedback.title,
+    //       upvotes: feedback.upvotes,
+    //       comments: feedback.comments,
+    //     };
+    //     if (productFeedback) {
+    //       acc.push(productFeedback);
+    //     }
+    //     return acc;
+    //   }, []);
+
+    const getFeedbacks = async () => {
+      setLoading(true);
+      const feedbacksData: Feedback[] = await getFeedbacksAndDocuments(
+        "feedbacks"
+      );
+      if (feedbacksData) {
+        setFeedbacks(feedbacksData);
       }
     };
-    getFeedbacksMap();
+    setLoading(false);
+    getFeedbacks();
   }, []);
+
+  useEffect(() => {
+    setFeedbacks(feedbacks);
+    // console.log("state ", feedbacks);
+  }, [feedbacks]);
   //TODO:
   //NOT TO CALL ALL FEEDBACKS WHEN PRESS CATEGORY BUTTON
-  console.log(feedbacks);
+  // console.log(feedbacks);
 
   //sorted feedbacks by category property
-  let filteredFeedbacks: any[] = [...feedbacks].filter(
-    (item) => item.status === "suggestion"
-  );
+  let filteredFeedbacks = [...feedbacks];
 
   switch (category) {
     case "All":
-      filteredFeedbacks = [...filteredFeedbacks];
+      filteredFeedbacks = [...feedbacks];
       break;
-    //TODO:
-    //TO ADDFEEDBACK MAKE CATEGORY FIRST LETTER CAPITALIZE
     case "Bug":
-      filteredFeedbacks = filteredFeedbacks.filter(
+      filteredFeedbacks = feedbacks.filter(
         (feedback) => feedback.category === "bug"
       );
       break;
     case "Enhancement":
-      filteredFeedbacks = filteredFeedbacks.filter(
+      filteredFeedbacks = feedbacks.filter(
         (feedback) => feedback.category === "enhancement"
       );
       break;
     case "Feature":
-      filteredFeedbacks = filteredFeedbacks.filter(
+      filteredFeedbacks = feedbacks.filter(
         (feedback) => feedback.category === "feature"
       );
       break;
     case "UI":
-      filteredFeedbacks = filteredFeedbacks.filter(
+      filteredFeedbacks = feedbacks.filter(
         (feedback) => feedback.category === "UI"
       );
       break;
     case "UX":
-      filteredFeedbacks = filteredFeedbacks.filter(
+      filteredFeedbacks = feedbacks.filter(
         (feedback) => feedback.category === "UX"
       );
       break;
     default:
-      filteredFeedbacks = [...filteredFeedbacks];
+      filteredFeedbacks = [...feedbacks];
   }
 
   //sorted feedbacks by status property
@@ -158,6 +167,7 @@ export const FeedbackProvider = ({ children }: { children: ReactNode }) => {
   return (
     <FeedbackContext.Provider
       value={{
+        loading,
         feedbacks,
         setFeedbacks,
         category,
