@@ -1,4 +1,4 @@
-import LoadingSpinnner from "@/components/LoadingSpinnner";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const Loading = () => {
   return (
@@ -10,7 +10,7 @@ const Loading = () => {
         alt="loader"
         className="object-contain"
       /> */}
-      <LoadingSpinnner />
+      <LoadingSpinner />
     </div>
   );
 };
