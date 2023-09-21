@@ -1,5 +1,5 @@
-import RoadmapHeader from "@/components/roadmap/RoadmapHeader";
-import Roadmap from "@/components/roadmap/Roadmap";
+import RoadmapHeader from "./components/RoadmapHeader";
+import Roadmap from "./components/Roadmap";
 
 export default function RoadmapPage() {
   return (
