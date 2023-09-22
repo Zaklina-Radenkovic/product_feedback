@@ -1,7 +1,7 @@
-import { User } from "@/types/models";
+import { UserType } from "@/types/models";
 import Image from "next/image";
 
-const User = ({ image, name, username }: User) => {
+const User = ({ image, name, username }: UserType) => {
   return (
     <div className="user">
       <Image
