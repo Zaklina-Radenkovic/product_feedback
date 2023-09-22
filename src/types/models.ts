@@ -5,6 +5,7 @@ export type Feedback = {
   upvotes: number;
   status: string;
   description: string;
+  color: string | undefined;
   comments: CommentType[];
 };
 
@@ -35,5 +36,4 @@ export interface iFeedbackToAdd extends Feedback {
   status: string;
   description: string;
   comments: [];
-  replies: [];
 }
