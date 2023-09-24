@@ -5,8 +5,8 @@ const LoadingSpinner = () => {
     <div className="">
       <Image
         src={loader}
-        width={50}
-        height={50}
+        width={100}
+        height={100}
         alt="loader"
         className="object-contain"
         priority
