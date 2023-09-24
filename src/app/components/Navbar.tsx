@@ -1,11 +1,10 @@
 "use client";
 import { useRouter } from "next/navigation";
-import GoBackButton from "@/components/button/GoBackButton";
 import { useState } from "react";
 import Image from "next/image";
-import suggestions from "../../public/assets/images/icon-suggestions.svg";
+import suggestions from "../../../public/assets/images/icon-suggestions.svg";
 import { useSortedFeedbackContext } from "@/state/sortedFeedback";
-import ButtonFeedback from "./button/ButtonFeedback";
+import ButtonFeedback from "../../components/button/ButtonFeedback";
 
 const sortOptions = [
   {
@@ -46,26 +45,30 @@ const Navbar = () => {
           alt="icon"
           className="inline-block "
         />
-        <span className="ml-3 font-bold">{count} Suggestions</span>
+        <div className="ml-3 font-bold ">
+          <span className="inline-block mr-3">{count}</span> Suggestions
+        </div>
+        <div>
+          <label className="ml-8 text-sm " htmlFor="search">
+            Sort by:
+          </label>
 
-        <label className="ml-8 text-sm" htmlFor="search">
-          Sort by:
-        </label>
-
-        <select
-          onChange={handleSortChange}
-          name="sort"
-          value={sortKey}
-          className="bg-secondary border-none text-gray-900 text-sm font-bold rounded-lg focus:outline-none visited:border-none p-2.5"
-        >
-          {sortOptions.map((option) => {
-            return (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            );
-          })}
-        </select>
+          <select
+            onChange={handleSortChange}
+            id="search"
+            name="sort"
+            value={sortKey}
+            className="bg-secondary border-none text-gray-900 text-sm font-bold rounded-lg focus:outline-none visited:border-none p-2.5"
+          >
+            {sortOptions.map((option) => {
+              return (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              );
+            })}
+          </select>
+        </div>
       </div>
       <ButtonFeedback onClick={() => router.push("/create-feedback")}>
         {" "}

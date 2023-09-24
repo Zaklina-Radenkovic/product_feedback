@@ -1,6 +1,6 @@
 import Header from "./Header";
-import CategoriesMenu from "./CategoriesMenu";
-import RoadmapMenu from "@/components/roadmap/RoadmapMenu";
+import CategoriesMenu from "../../components/CategoriesMenu";
+import RoadmapMenu from "../roadmap/components/RoadmapMenu";
 
 const Sidebar = () => {
   return (

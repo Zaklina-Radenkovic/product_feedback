@@ -1,5 +1,3 @@
-import React from "react";
-
 const Header = () => {
   return (
     <div className="bg-header bg-cover bg-no-repeat pl-[25px] pt-[65px] pb-[30px] rounded-lg">
