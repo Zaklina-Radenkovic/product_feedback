@@ -2,14 +2,7 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 
 const Loading = () => {
   return (
-    <div className="w-full flex-center">
-      {/* <Image
-        src="assets/loader.svg"
-        width={50}
-        height={50}
-        alt="loader"
-        className="object-contain"
-      /> */}
+    <div className="h-screen flex items-center justify-center">
       <LoadingSpinner />
     </div>
   );

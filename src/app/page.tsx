@@ -1,9 +1,10 @@
 // "use client";
-import Sidebar from "@/components/Sidebar";
-import Navbar from "@/components/Navbar";
-import Suggestions from "@/components/feedbacks/Suggestions";
+import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
+import Suggestions from "./feedback/components/Suggestions";
 import { Suspense, lazy } from "react";
-import LoadingSpinnner from "../components/LoadingSpinnner";
+import Loading from "./loading";
+import Main from "./components/Main";
 
 // const Suggestions = lazy(() => import("@/components/feedbacks/Suggestions"));
 // const Navbar = lazy(() => import("@/components/Navbar"));
@@ -12,14 +13,12 @@ import LoadingSpinnner from "../components/LoadingSpinnner";
 export default async function Home() {
   return (
     //Unsupported Server Component type: {...}? checking is it suspense/useclient
-    <Suspense fallback={<LoadingSpinnner />}>
-      <div className="container flex gap-x-[30px]">
-        <Sidebar />
-        <main className="basis-3/4">
-          <Navbar />
-          <Suggestions />
-        </main>
-      </div>
-    </Suspense>
+    <div className="container flex gap-x-[30px]">
+      <Sidebar />
+      <Main>
+        <Navbar />
+        <Suggestions />
+      </Main>
+    </div>
   );
 }
