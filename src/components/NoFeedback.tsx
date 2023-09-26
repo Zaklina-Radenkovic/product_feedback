@@ -1,8 +1,12 @@
+// "use client";
 import Image from "next/image";
 import emptyIllustration from "../../public/assets/images/illustration-empty.svg";
 import ButtonFeedback from "./button/ButtonFeedback";
+import { useRouter } from "next/navigation";
 
 const NoFeedback = () => {
+  const router = useRouter();
+
   return (
     <div className="grid py-28 content-center justify-items-center suggestion">
       <Image
@@ -18,7 +22,10 @@ const NoFeedback = () => {
         Got a suggestion? Found a bug that needs to be squashed? <br />
         We love hearing about new ideas to improve our app.
       </p>
-      <ButtonFeedback />
+      <ButtonFeedback onClick={() => router.push("/create-feedback")}>
+        {" "}
+        &#43; Add feedback{" "}
+      </ButtonFeedback>
     </div>
   );
 };
