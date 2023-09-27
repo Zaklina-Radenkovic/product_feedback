@@ -1,8 +1,8 @@
+"use client";
 import {
   useContext,
   createContext,
   useState,
-  useEffect,
   ReactNode,
   Dispatch,
   SetStateAction,
@@ -11,17 +11,14 @@ import { Feedback } from "@/types/models";
 
 const SortedFeedbackContext = createContext<{
   sortedFeedbacks: Feedback[] | null;
-  sort: string;
-  setSort: Dispatch<SetStateAction<string>>;
-  count: number;
-  setCount: Dispatch<SetStateAction<number>>;
+  sortBy: string;
+  setSortBy: Dispatch<SetStateAction<string>>;
 }>({
   sortedFeedbacks: [],
-  sort: "",
-  setSort: () => null,
-  count: 0,
-  setCount: () => null,
+  sortBy: "",
+  setSortBy: () => null,
 });
+
 import { useFeedbackContext } from "./feedback";
 
 export const SortedFeedbackProvider = ({
@@ -29,45 +26,48 @@ export const SortedFeedbackProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [sort, setSort] = useState<string>("");
-  const [count, setCount] = useState(0);
+  const [sortBy, setSortBy] = useState<string>("mostUpvotes");
+
   const { filteredFeedbacks } = useFeedbackContext();
 
   //feedbacks with status 'suggestion' sorted by most/least upvotes and comments
-  const sortedFeedbacks = filteredFeedbacks.sort((a, b) => {
-    switch (sort) {
-      case "mostUpvotes":
-        return a.upvotes - b.upvotes;
-      case "leastUpvotes":
-        return b.upvotes - a.upvotes;
-      case "mostComments":
-        if (!a.comments) {
-          return -1;
-        }
-        if (!b.comments) {
-          return 1;
-        }
-        return a.comments.length - b.comments.length;
-      case "leastComments":
-        if (!a.comments) {
-          return 1;
-        }
-        if (!b.comments) {
-          return -1;
-        }
-        return b.comments.length - a.comments.length;
-      default:
-        return a.upvotes - b.upvotes;
-    }
-  });
 
-  useEffect(() => {
-    setCount(sortedFeedbacks.length);
-  }, [sortedFeedbacks]);
+  const sortedFeedbacks = filteredFeedbacks
+    .filter((item) => item.status === "suggestion")
+    .sort((a, b) => {
+      switch (sortBy) {
+        case "mostUpvotes":
+          return b.upvotes - a.upvotes;
+        case "leastUpvotes":
+          return a.upvotes - b.upvotes;
+        case "mostComments":
+          // if (!a.comments) {
+          //   return -1;
+          // }
+          // if (!b.comments) {
+          //   return 1;
+          // }
+          return b.comments.length - a.comments.length;
+        case "leastComments":
+          // if (!a.comments) {
+          //   return 1;
+          // }
+          // if (!b.comments) {
+          //   return -1;
+          // }
+          return a.comments.length - b.comments.length;
+        default:
+          return b.upvotes - a.upvotes;
+      }
+    });
 
   return (
     <SortedFeedbackContext.Provider
-      value={{ sortedFeedbacks, sort, setSort, count, setCount }}
+      value={{
+        sortedFeedbacks,
+        sortBy,
+        setSortBy,
+      }}
     >
       {children}
     </SortedFeedbackContext.Provider>

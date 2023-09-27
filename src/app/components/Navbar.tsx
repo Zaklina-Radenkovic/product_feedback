@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+
 import Image from "next/image";
 import suggestions from "../../../public/assets/images/icon-suggestions.svg";
 import { useSortedFeedbackContext } from "@/state/sortedFeedback";
@@ -26,14 +26,14 @@ const sortOptions = [
 ];
 
 const Navbar = () => {
-  const { setSort, count } = useSortedFeedbackContext();
-  const [sortKey, setSortKey] = useState("mostUpvotes");
+  const { setSortBy, sortBy, sortedFeedbacks } = useSortedFeedbackContext();
 
   const router = useRouter();
 
+  const count = sortedFeedbacks?.length;
+
   const handleSortChange = (event: React.BaseSyntheticEvent) => {
-    setSortKey(event.target.value);
-    setSort(sortKey);
+    setSortBy(event.target.value);
   };
 
   return (
@@ -54,10 +54,10 @@ const Navbar = () => {
           </label>
 
           <select
-            onChange={handleSortChange}
+            onChange={(e) => setSortBy(e.target.value)}
             id="search"
             name="sort"
-            value={sortKey}
+            value={sortBy}
             className="bg-secondary border-none text-gray-900 text-sm font-bold rounded-lg focus:outline-none visited:border-none p-2.5"
           >
             {sortOptions.map((option) => {
