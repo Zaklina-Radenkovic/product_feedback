@@ -2,27 +2,60 @@ import Link from "next/link";
 import ButtonVote from "../../../components/button/ButtonVote";
 import Button from "../../../components/button/Button";
 import CommentsIcon from "../../../components/comments/CommentsIcon";
+import { useFeedbackContext } from "@/state/feedback";
 import { Feedback } from "@/types/models";
 import { useEffect, useState } from "react";
+import {
+  getDocument,
+  updateFeedback,
+  getFeedbacksAndDocuments,
+} from "@/lib/firebase";
 
 interface iSuggestionItem {
   feedback: Feedback;
-  onAddingUpvotes: (id) => void;
-  getCurrentUpvotes: (id) => void;
 }
 
-const FeedbackCard = ({
-  feedback,
-  onAddingUpvotes,
-  getCurrentUpvotes,
-}: iSuggestionItem) => {
-  const { upvotes, title, description, category, comments, id } = feedback;
-  const currentUpvotes = getCurrentUpvotes(id);
+const FeedbackCard = ({ feedback }: iSuggestionItem) => {
+  const { upvotes, title, description, category, comments, id, upvoted } =
+    feedback;
+  // const [upvoted, setUpvoted] = useState(false);
+  const [feedbackVotes, setFeedbackVotes] = useState(upvotes);
+  const { setFeedbacks } = useFeedbackContext();
+  const handleUpvote = async () => {
+    // const feedback = await getDocument(id);
+
+    if (upvoted === undefined || upvoted === false) {
+      setFeedbackVotes((upvotes) => feedback?.upvotes + 1);
+      // setUpvoted(true);
+
+      const data = {
+        upvoted: true,
+        upvotes: feedback?.upvotes + 1,
+      };
+      await updateFeedback(id || "", data);
+      const feedbacks = await getFeedbacksAndDocuments("feedbacks");
+      setFeedbacks(feedbacks);
+    }
+
+    if (upvoted === true) {
+      setFeedbackVotes((upvotes) => feedback?.upvotes - 1);
+      const data = {
+        upvoted: false,
+        upvotes: feedback?.upvotes - 1,
+      };
+      await updateFeedback(id || "", data);
+      const feedbacks = await getFeedbacksAndDocuments("feedbacks");
+      setFeedbacks(feedbacks);
+    }
+  };
 
   return (
     <div className="feedback">
-      <ButtonVote className="btn-upvote" onClick={() => onAddingUpvotes(id)}>
-        {currentUpvotes}
+      <ButtonVote
+        className={`btn-upvote ${upvoted ? "bg-red/50" : "bg-gray-light"}`}
+        onClick={handleUpvote}
+      >
+        {feedbackVotes}
       </ButtonVote>
       <div className="feedback-content">
         <Link href={`/feedback/${id}`}>
