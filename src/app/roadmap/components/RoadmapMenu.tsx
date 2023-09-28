@@ -2,10 +2,26 @@
 import Link from "next/link";
 import { useFeedbackContext } from "../../../state/feedback";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import { useStatusFeedbacks } from "@/hooks/useStatusFeedbacks";
+import { useEffect } from "react";
+
+type plannedFeedbacksType =
+  | {
+      status: string;
+      color: string;
+      id: string | null;
+      title: string;
+      category: string;
+      upvotes: number;
+      description: string;
+      // comments: CommentType[];
+    }[]
+  | null;
 
 const RoadmapMenu = () => {
-  const { plannedFeedbacks, inProgressFeedbacks, liveFeedbacks, loading } =
-    useFeedbackContext();
+  const { loading } = useFeedbackContext();
+  const { plannedFeedbacks, inProgressFeedbacks, liveFeedbacks } =
+    useStatusFeedbacks();
 
   const loader = (
     <div className="flex items-center justify-center">
@@ -37,41 +53,37 @@ const RoadmapMenu = () => {
           <div className="flex pb-3">
             <span
               className={`roadmap-tag ${plannedFeedbacks?.reduce(
-                (acc, item) => item.status.toLowerCase(),
-                []
+                (_, item) => item.status.toLowerCase(),
+                " "
               )}`}
             ></span>
-            <p>{plannedFeedbacks?.reduce((acc, item) => item.status, [])}</p>
+            <p>{plannedFeedbacks?.reduce((_, item) => item.status, " ")}</p>
           </div>
-          <span className="roadmap-span">
-            {plannedFeedbacks?.length || null}
-          </span>
+          <span className="roadmap-span">{plannedFeedbacks?.length}</span>
 
           <div className="flex pb-3">
             <span
               className={`roadmap-tag ${inProgressFeedbacks?.reduce(
-                (acc, item) => item.status.toLowerCase(),
-                []
+                (_, item) => item.status.toLowerCase(),
+                " "
               )}`}
             ></span>
-            <p>{inProgressFeedbacks?.reduce((acc, item) => item.status, [])}</p>
+            <p>{inProgressFeedbacks?.reduce((_, item) => item.status, " ")}</p>
           </div>
-          <span className="roadmap-span">
-            {inProgressFeedbacks?.length || null}
-          </span>
+          <span className="roadmap-span">{inProgressFeedbacks?.length}</span>
 
           <div className="flex self-baseline">
             <span
               className={`roadmap-tag ${liveFeedbacks?.reduce(
-                (acc, item) => item.status.toLowerCase(),
-                []
+                (_, item) => item.status.toLowerCase(),
+                " "
               )}`}
             ></span>
             <p className="self-center">
-              {liveFeedbacks?.reduce((acc, item) => item.status, [])}
+              {liveFeedbacks?.reduce((_, item) => item.status, " ")}
             </p>
           </div>
-          <span className="roadmap-span">{liveFeedbacks?.length || null}</span>
+          <span className="roadmap-span">{liveFeedbacks?.length}</span>
         </div>
       )}
     </div>

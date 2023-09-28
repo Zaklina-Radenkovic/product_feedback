@@ -2,10 +2,12 @@
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { useFeedbackContext } from "../../../state/feedback";
 import RoadmapListItems from "./RoadmapListItems";
+import { useStatusFeedbacks } from "@/hooks/useStatusFeedbacks";
 
 const Roadmap = () => {
-  const { plannedFeedbacks, inProgressFeedbacks, liveFeedbacks, loading } =
-    useFeedbackContext();
+  const { loading } = useFeedbackContext();
+  const { plannedFeedbacks, inProgressFeedbacks, liveFeedbacks } =
+    useStatusFeedbacks();
 
   if (!loading) {
     return (
@@ -21,21 +23,21 @@ const Roadmap = () => {
       name: "Planned",
       description: "Ideas prioritized for research",
       color: "orange-planned",
-      feedbacks: plannedFeedbacks,
+      feedbacks: plannedFeedbacks || [],
     },
     {
       id: 2,
       name: "In-Progress",
       description: "Currently being developed",
       color: "blue-live",
-      feedbacks: inProgressFeedbacks,
+      feedbacks: inProgressFeedbacks || [],
     },
     {
       id: 3,
       name: "Live",
       description: "Release features",
       color: "tertiary",
-      feedbacks: liveFeedbacks,
+      feedbacks: liveFeedbacks || [],
     },
   ];
 
