@@ -29,6 +29,7 @@ Remove the margin in all browsers.
 body {
   margin: 0;
   overflow-y: scroll;
+  fill: currentColor;
 }
 
 /**
@@ -218,14 +219,21 @@ body {
     @apply ml-auto self-center flex items-center;
   }
   .btn-upvote {
-    @apply flex flex-col bg-gray-light w-10 h-[50px] items-center rounded-lg p-2.5 mr-10 gap-2.5;
+    @apply flex flex-col bg-gray-light w-10 h-[50px] items-center rounded-lg p-2.5 mr-10 gap-2.5 text-secondary font-bold text-[13px];
   }
+
+  .btn-upvoted {
+    @apply bg-primary text-white
+    flex flex-col w-10 h-[50px] items-center rounded-lg p-2.5 mr-10 gap-2.5 font-bold text-[13px];
+  }
+
   .btn-upvote-x {
     @apply btn-upvote flex flex-row justify-center mr-0 w-[60px] h-10 gap-2;
   }
 }
 
 .comment {
+  width: 100%;
   padding-top: 25px;
   display: flex;
   flex-direction: column;
@@ -246,6 +254,7 @@ body {
   padding-bottom: 30px;
   margin-left: 64px;
   position: relative;
+  overflow: hidden;
 }
 
 .reply-content {

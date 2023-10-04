@@ -52,7 +52,9 @@ const FeedbackCard = ({ feedback }: iSuggestionItem) => {
   return (
     <div className="feedback">
       <ButtonVote
-        className={`btn-upvote ${upvoted ? "bg-red/50" : "bg-gray-light"}`}
+        upvoted={upvoted}
+        // className={`btn-upvote ${upvoted ? "bg-red/50" : "bg-gray-light"}`}
+        className={`${upvoted ? "btn-upvoted" : "btn-upvote"}`}
         onClick={handleUpvote}
       >
         {feedbackVotes}

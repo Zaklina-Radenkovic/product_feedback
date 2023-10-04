@@ -5,16 +5,24 @@ import arrowIconUp from "../../../public/icon-arrow-up.svg";
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   onClick: () => void;
+  className: string | undefined;
+  upvoted: boolean | undefined;
 }
 
-const ButtonVote = ({ children, onClick, className, ...props }: Props) => {
+const ButtonVote = ({ children, onClick, className, upvoted }: Props) => {
   return (
-    <div className={className}>
-      <Button {...props}>
-        <Image priority src={arrowIconUp} alt="icon" />
-      </Button>
-      <span className="text-secondary font-bold text-[13px]">{children}</span>
-    </div>
+    <Button className={className} onClick={onClick}>
+      <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M1 6l4-4 4 4"
+          stroke={upvoted ? "#fff" : "#4661E6"}
+          stroke-width="2"
+          fill="none"
+          fill-rule="evenodd"
+        />
+      </svg>
+      {children}
+    </Button>
   );
 };
 
