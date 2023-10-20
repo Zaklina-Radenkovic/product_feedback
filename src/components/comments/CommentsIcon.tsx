@@ -1,7 +1,13 @@
 import Image from "next/image";
 import commentsIcon from "../../../public/icon-comments.svg";
 
-const CommentsIcon = ({ children, className }) => {
+const CommentsIcon = ({
+  children,
+  className,
+}: {
+  children: any;
+  className: string;
+}) => {
   return (
     <div className="msg">
       <Image priority src={commentsIcon} alt="icon" />

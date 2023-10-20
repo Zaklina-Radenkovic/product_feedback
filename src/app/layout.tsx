@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import { FeedbackProvider } from "@/state/feedback";
+import { SortedFeedbackProvider } from "@/state/sortedFeedback";
+import { CommentsProvider } from "@/state/comments";
 import "./globals.css";
 
 import { Jost } from "next/font/google";
-import { SortedFeedbackProvider } from "@/state/sortedFeedback";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -25,7 +26,9 @@ export default function RootLayout({
     <html lang="en" className={`${jost.variable}`}>
       <body>
         <FeedbackProvider>
-          <SortedFeedbackProvider>{children}</SortedFeedbackProvider>
+          <SortedFeedbackProvider>
+            <CommentsProvider>{children}</CommentsProvider>
+          </SortedFeedbackProvider>
         </FeedbackProvider>
       </body>
     </html>
