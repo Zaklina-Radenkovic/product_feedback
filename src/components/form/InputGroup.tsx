@@ -1,17 +1,36 @@
 import Input from "./Input";
+import { ChangeEvent } from "react";
 
 type InputGroupProps = {
-  type: string | "dropdown" | "textarea";
+  type: string;
   title: string;
-  placeholder: string | undefined;
   label: string;
+  value: string;
+  dropdownSelections: string;
+  name: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const InputGroup = ({ title, placeholder, label, type }: InputGroupProps) => {
+const InputGroup = ({
+  title,
+  label,
+  type,
+  value,
+  onChange,
+  name,
+  dropdownSelections,
+}: InputGroupProps) => {
   return (
     <>
       <h5 className="pb-2.5 text-secondary font-bold">{title}</h5>
-      <Input type="text" placeholder={placeholder} label={label} />
+      <Input
+        type={type}
+        label={label}
+        value={value}
+        onChange={onChange}
+        name={name}
+        dropdownSelections={dropdownSelections}
+      />
     </>
   );
 };

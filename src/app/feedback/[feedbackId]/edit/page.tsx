@@ -1,10 +1,14 @@
 "use client";
-import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import GoBackButton from "@/components/button/GoBackButton";
 import { useParams } from "next/navigation";
-import EditForm from "@/components/form/EditForm";
+import Form from "@/components/form/Form";
 import { useFeedbackContext } from "@/state/feedback";
+import {
+  getFeedbacksAndDocuments,
+  updateFeedback,
+  deleteFeedback,
+} from "@/lib/firebase";
 
 const page = () => {
   const router = useRouter();
@@ -14,19 +18,25 @@ const page = () => {
   const currentFeedback = feedbacks?.find(
     (feedback) => feedback.id === feedbackId
   );
-  // const [editFeedback, setEditFeedback] = useState(currentFeedback);
-  // console.log("Edit page 1 ", editFeedback);
-  // useEffect(() => {
-  //   if (editFeedback)
-  //     setFeedbacks((prev) => {
-  //       return [...prev, editFeedback];
-  //     });
-  // }, [currentFeedback]);
 
-  // console.log("Edit page 2 ", editFeedback);
-  // useEffect(() => {
-  //   console.log("Edit page ", currentFeedback);
-  // }, [currentFeedback]);
+  const deleteHandler = async () => {
+    await deleteFeedback(feedbackId);
+    const feedbacks = await getFeedbacksAndDocuments("feedbacks");
+    setFeedbacks(feedbacks);
+    router.push("/");
+  };
+
+  const handleSubmitForm = async (editFeedback) => {
+    try {
+      await updateFeedback(feedbackId, editFeedback);
+
+      const feedbacks = await getFeedbacksAndDocuments("feedbacks");
+      setFeedbacks(feedbacks);
+      router.push(`/feedback/${feedbackId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   if (currentFeedback) {
     return (
@@ -36,11 +46,12 @@ const page = () => {
           onClick={() => router.push(`/feedback/${feedbackId}`)}
         />
 
-        <EditForm
-          type="edit"
-          title=""
+        <Form
+          variant="edit"
           currentFeedback={currentFeedback}
           feedbackId={feedbackId}
+          onSubmit={handleSubmitForm}
+          onDelete={deleteHandler}
         />
       </div>
     );
