@@ -12,26 +12,24 @@ import { nanoid } from "nanoid";
 import { useFeedbackContext } from "@/state/feedback";
 import { ReplyType, CommentType } from "@/types/models";
 import { useCommentsContext } from "@/state/comments";
-import { comment } from "postcss";
 
 type ReplyFormProps = {
   comment: CommentType;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  reply: {};
 };
 
-const ReplyForm = ({ comment, setOpen, reply = {} }: ReplyFormProps) => {
+const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
   const { user, id } = comment;
   const [text, setText] = useState("");
   const { setFeedbacks } = useFeedbackContext();
   const { currentFeedback, feedbackId } = useCommentsContext();
   const [error, setError] = useState("");
 
-  const textHandler = (e) => {
+  const textHandler = (e: { target: { value: SetStateAction<string> } }) => {
     setText(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     if (text.trim() === "") return setError(`Reply can't be empty!`);
@@ -45,7 +43,6 @@ const ReplyForm = ({ comment, setOpen, reply = {} }: ReplyFormProps) => {
         username: "soccerviewer8",
       },
       id: nanoid(),
-      replies2: [],
     };
 
     // const replyToReply = {
@@ -65,11 +62,11 @@ const ReplyForm = ({ comment, setOpen, reply = {} }: ReplyFormProps) => {
           (comment) => comment.id === id
         );
         //first we need to remove it, because we will have a duplicate comment
-        await removeItem(feedbackId, comment);
+        await removeItem(feedbackId as any, comment as any);
         const { replies } = comment || {};
         replies && replies.push(newReply);
         const newComment = { ...comment, replies };
-        await updateComments(feedbackId, newComment);
+        await updateComments(feedbackId as any, newComment);
         setOpen(false);
       }
 

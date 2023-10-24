@@ -28,7 +28,7 @@ const page = () => {
 
   const handleSubmitForm = async (editFeedback: {}) => {
     try {
-      await updateFeedback(feedbackId, editFeedback);
+      await updateFeedback(feedbackId as any, editFeedback);
 
       const feedbacks = await getFeedbacksAndDocuments("feedbacks");
       setFeedbacks(feedbacks);
@@ -51,6 +51,9 @@ const page = () => {
           currentFeedback={currentFeedback}
           onSubmit={handleSubmitForm}
           onDelete={deleteHandler}
+          type={null}
+          title={""}
+          submitting={false}
         />
       </div>
     );

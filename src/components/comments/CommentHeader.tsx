@@ -8,7 +8,6 @@ type CommentHeaderProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   comment: any;
-  reply: {};
 };
 
 const CommentHeader = ({
@@ -16,7 +15,6 @@ const CommentHeader = ({
   setOpen,
   user,
   comment,
-  reply,
 }: CommentHeaderProps) => {
   return (
     <div className="comment-header">

@@ -4,27 +4,22 @@ interface InputProps {
   type: string;
   label: string | null;
   value: string;
-  // name: string;
-  // error: boolean;
   disabled?: boolean;
-  onChange: (
-    e: ChangeEvent<HTMLInputElement>
-  ) => void | ChangeEventHandler<HTMLSelectElement>;
+  onChange: any;
+  dropdownSelections: string[];
 }
 
 const Input: FC<InputProps> = ({
   type,
   label,
   value,
-  name,
-  // error,
   disabled,
   onChange,
   dropdownSelections,
 }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const toggleDropdown = (e) => {
+  const toggleDropdown = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setDropdownOpen(!dropdownOpen);
   };
@@ -35,9 +30,7 @@ const Input: FC<InputProps> = ({
           <label className="pb-5">{label}</label>
           <input
             type={type}
-            // id={label}
             value={value}
-            name={name}
             onChange={onChange}
             disabled={disabled}
             className="py-3 pl-5 bg-gray-light rounded-lg mb-6 focus:outline-primary focus:outline-1"
@@ -54,8 +47,7 @@ const Input: FC<InputProps> = ({
           <select
             onChange={onChange}
             value={value}
-            type={type}
-            name={name}
+            // type={type}
             id="search"
             className="w-full p-3 pl-5 bg-gray-light rounded-lg mb-6 focus:outline-primary focus:outline-1"
           >

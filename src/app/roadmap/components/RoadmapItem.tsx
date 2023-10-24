@@ -42,7 +42,11 @@ const RoadmapItem = ({ feedback, name }: RoadmapItemProps) => {
       <p className="leading-5 pb-5">{description}</p>
       <Button className="button-category">{category}</Button>
       <div className="flex flex-row justify-between items-center mt-3.5">
-        <ButtonVote className="btn-upvote-x" onClick={() => {}}>
+        <ButtonVote
+          className="btn-upvote-x"
+          onClick={() => {}}
+          upvoted={undefined}
+        >
           {upvotes}
         </ButtonVote>
         <CommentsIcon

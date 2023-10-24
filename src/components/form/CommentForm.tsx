@@ -36,7 +36,7 @@ const CommentForm = () => {
 
   const characterLimit = 255;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (text.trim() === "") return setError(`Reply can't be empty!`);
 

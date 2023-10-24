@@ -27,6 +27,7 @@ export type ReplyType = {
   content: string;
   replayingTo: string;
   user: UserType;
+  id: string;
 };
 
 export interface iFeedbackToAdd extends Feedback {

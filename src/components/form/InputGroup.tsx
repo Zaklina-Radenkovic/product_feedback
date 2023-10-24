@@ -6,7 +6,7 @@ type InputGroupProps = {
   title: string;
   label: string;
   value: string;
-  dropdownSelections: string;
+  dropdownSelections: string[];
   name: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
@@ -17,7 +17,6 @@ const InputGroup = ({
   type,
   value,
   onChange,
-  name,
   dropdownSelections,
 }: InputGroupProps) => {
   return (
@@ -28,7 +27,6 @@ const InputGroup = ({
         label={label}
         value={value}
         onChange={onChange}
-        name={name}
         dropdownSelections={dropdownSelections}
       />
     </>

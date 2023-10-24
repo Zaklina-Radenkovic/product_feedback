@@ -24,11 +24,11 @@ const Reply = ({ reply, open, setOpen }: ReplyProps) => {
   const [openReply, setOpenReply] = useState(false);
   const { currentFeedback, feedbackId } = useCommentsContext();
 
-  const textHandler = (e) => {
+  const textHandler = (e: { target: { value: SetStateAction<string> } }) => {
     setText(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     const collectionRef = collection(db, "feedbacks");
@@ -48,8 +48,8 @@ const Reply = ({ reply, open, setOpen }: ReplyProps) => {
       <CommentHeader
         user={user}
         open={openReply}
-        reply={reply}
         setOpen={setOpenReply}
+        comment={undefined}
       />
       <div>
         <p className="pt-4 pb-[30px] ml-16">

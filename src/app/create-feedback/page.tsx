@@ -37,19 +37,22 @@ const page = () => {
         variant="new"
         onSubmit={handleSubmitForm}
         title="Create New Feedback"
-        //  type={null} currentFeedback={{
-        //   id: null,
-        //   title: '',
-        //   category: '',
-        //   upvotes: 0,
-        //   status: '',
-        //   description: '',
-        //   color: undefined,
-        //   comments: [],
-        //   upvoted: undefined
-        // }} submitting={false} onDelete={function (): null | undefined {
-        //   throw new Error('Function not implemented.');
-        // } }
+        type={null}
+        currentFeedback={{
+          id: null,
+          title: "",
+          category: "",
+          upvotes: 0,
+          status: "",
+          description: "",
+          color: undefined,
+          comments: [],
+          upvoted: undefined,
+        }}
+        submitting={false}
+        onDelete={function (): Promise<void> {
+          throw new Error("Function not implemented.");
+        }}
       />
     </div>
   );

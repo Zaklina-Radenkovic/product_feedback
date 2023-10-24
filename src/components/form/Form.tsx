@@ -63,17 +63,22 @@ const Form: FC<FormProps> = ({
   //   if (feedbackId) editHandler();
   // }, [feedbackId]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const data: iFeedbackToAdd = {
+    const data: {
+      title: string;
+      category: string;
+      description: string;
+      status: string;
+    } = {
       title: feedbackTitle,
       category: category.toLowerCase(),
       description: description,
       status: status.toLowerCase(),
     };
 
-    onSubmit(data);
+    onSubmit(data as any);
 
     setCategory("");
     setFeedbackTitle("");
@@ -100,6 +105,8 @@ const Form: FC<FormProps> = ({
           type="text"
           label="Add a short, descriptive headline"
           onChange={(e) => setFeedbackTitle(e.target.value)}
+          dropdownSelections={[]}
+          name={""}
         />
         <InputGroup
           value={
@@ -112,6 +119,7 @@ const Form: FC<FormProps> = ({
           label="Choose a category for your feedback"
           dropdownSelections={categorySelections}
           onChange={(e) => setCategory(e.target.value)}
+          name={""}
         />
 
         <InputGroup
@@ -121,6 +129,7 @@ const Form: FC<FormProps> = ({
           label="Change feature state"
           dropdownSelections={statusSelections}
           onChange={(e) => setStatus(e.target.value)}
+          name={""}
         />
 
         <InputGroup
@@ -129,6 +138,8 @@ const Form: FC<FormProps> = ({
           title="Feedback detail"
           label="Include any specific comments on what should be improved, added, etc."
           onChange={(e) => setDescription(e.target.value)}
+          dropdownSelections={[]}
+          name={""}
         />
 
         <div className="flex items-center justify-between">
