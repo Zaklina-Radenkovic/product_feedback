@@ -16,9 +16,9 @@ const ButtonVote = ({ children, onClick, className, upvoted }: Props) => {
         <path
           d="M1 6l4-4 4 4"
           stroke={upvoted ? "#fff" : "#4661E6"}
-          stroke-width="2"
+          strokeWidth="2"
           fill="none"
-          fill-rule="evenodd"
+          fillRule="evenodd"
         />
       </svg>
       {children}

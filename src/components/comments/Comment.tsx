@@ -16,7 +16,12 @@ const Comment = ({ comment }: CommentProps) => {
 
   return (
     <div className="comment">
-      <CommentHeader user={comment.user} open={open} setOpen={setOpen} />
+      <CommentHeader
+        comment={comment}
+        user={comment.user}
+        open={open}
+        setOpen={setOpen}
+      />
       {/* {replies?.length > 0 && <div className="horizontal-line"></div>} */}
 
       <p className="comment-content">{comment?.content}</p>

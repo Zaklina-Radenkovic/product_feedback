@@ -20,13 +20,13 @@ const page = () => {
   );
 
   const deleteHandler = async () => {
-    await deleteFeedback(feedbackId);
+    await deleteFeedback(feedbackId as string);
     const feedbacks = await getFeedbacksAndDocuments("feedbacks");
     setFeedbacks(feedbacks);
     router.push("/");
   };
 
-  const handleSubmitForm = async (editFeedback) => {
+  const handleSubmitForm = async (editFeedback: {}) => {
     try {
       await updateFeedback(feedbackId, editFeedback);
 
@@ -49,7 +49,6 @@ const page = () => {
         <Form
           variant="edit"
           currentFeedback={currentFeedback}
-          feedbackId={feedbackId}
           onSubmit={handleSubmitForm}
           onDelete={deleteHandler}
         />

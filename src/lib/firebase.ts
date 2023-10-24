@@ -15,6 +15,8 @@ import {
   updateDoc,
   DocumentData,
   writeBatch,
+  arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -30,8 +32,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore();
-
-export const autoID = doc(collection(db, "feedbacks")).id;
 
 //writing feedbacks onto firebase
 export const addCollectionAndDocuments = async (
@@ -52,17 +52,9 @@ export const addCollectionAndDocuments = async (
 
 //reading feedbacks
 export const getFeedbacksAndDocuments = async (arg: any) => {
-  //we want collectionRef of 'categories'
   const collectionRef = collection(db, "feedbacks");
-  //we apply 'query' method on collectionRef which gives us object 'q'
   const q = query(collectionRef);
-
-  //we get querysnapshot from getDocs on'q';
   const querySnapshot = await getDocs(q);
-
-  //from 'querySnapshot.docs' we have an array of all our categories which we reduce over (we reduce over that arr) in order to structure we want (an arr of objects with 'items.title' and items) = in order to end up with an object
-
-  // querySnapshot.docs.reduce(()=>{},{}) we need obj at the end
   const documentMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
     const data = docSnapshot.data();
     if (data) {
@@ -76,14 +68,14 @@ export const getFeedbacksAndDocuments = async (arg: any) => {
 };
 
 /// getting single document from collection by ID
-export const getDocument = async (id: any) => {
+export const getDocument = async (id: string) => {
   const documentRef = doc(db, "feedbacks", id);
   const docSnap = await getDoc(documentRef);
   if (docSnap.exists()) return docSnap.data();
 };
 
 ///adding document to collection
-export const addDocument = async (id: any, data: iFeedbackToAdd) => {
+export const addDocument = async (id: string, data: iFeedbackToAdd) => {
   // const feedbacksCollectionRef = doc(collection(db, "feedbacks"));
   // return await addDoc(collection(db, "feedbacks"), {
   //   ...data,
@@ -96,10 +88,32 @@ export const addDocument = async (id: any, data: iFeedbackToAdd) => {
 };
 
 //updating document
-export const updateFeedback = async (id, data = {}) => {
+export const updateFeedback = async (id: string, data = {}) => {
   const documentRef = doc(db, "feedbacks", id);
   return await updateDoc(documentRef, {
     id,
     ...data,
+  });
+};
+
+///delete document
+export const deleteFeedback = async (id: string) => {
+  const documentRef = doc(db, "feedbacks", id);
+  return await deleteDoc(documentRef);
+};
+
+////update comments array
+export const updateComments = async (id: string, newComment: {}) => {
+  const documentRef = doc(db, "feedbacks", id);
+  return await updateDoc(documentRef, {
+    comments: arrayUnion(newComment),
+  });
+};
+
+///Remove item from array
+export const removeItem = async (id: string, comment: {}) => {
+  const documentRef = doc(db, "feedbacks", id);
+  return await updateDoc(documentRef, {
+    comments: arrayRemove(comment),
   });
 };

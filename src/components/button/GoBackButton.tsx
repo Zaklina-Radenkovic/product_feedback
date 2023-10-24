@@ -2,7 +2,7 @@ import Button from "./Button";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   stroke: string;
-  onClick: () => void;
+  // onClick: () => void;
 }
 
 const GoBackButton = ({ stroke, onClick, ...props }: Props) => {

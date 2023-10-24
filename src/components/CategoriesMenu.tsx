@@ -1,9 +1,11 @@
 "use client";
 import { useFeedbackContext } from "@/state/feedback";
 import Button from "./button/Button";
+import { useSortedFeedbackContext } from "@/state/sortedFeedback";
 
 const CategoriesMenu = () => {
-  const { setCategory, loading } = useFeedbackContext();
+  const { loading } = useFeedbackContext();
+  const { setCategory } = useSortedFeedbackContext();
 
   const filterTasks = (event: React.BaseSyntheticEvent) => {
     setCategory(event.currentTarget.dataset["filter"]);

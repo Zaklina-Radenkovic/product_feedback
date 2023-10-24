@@ -7,20 +7,30 @@ type CommentHeaderProps = {
   user: UserType;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  comment: any;
+  reply: {};
 };
 
-const CommentHeader = ({ open, setOpen, user }: CommentHeaderProps) => {
+const CommentHeader = ({
+  open,
+  setOpen,
+  user,
+  comment,
+  reply,
+}: CommentHeaderProps) => {
   return (
     <div className="comment-header">
       <User user={user} />
-      <button
-        className="text-primary font-bold ml-auto"
-        onClick={() => {
-          setOpen(!open);
-        }}
-      >
-        {!open ? "Reply" : "Cancel"}
-      </button>
+      {comment?.user ? (
+        <button
+          className="text-primary font-bold ml-auto"
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
+          {!open ? "Reply" : "Cancel"}
+        </button>
+      ) : null}
     </div>
   );
 };

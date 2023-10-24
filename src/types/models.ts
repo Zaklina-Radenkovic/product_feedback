@@ -7,6 +7,7 @@ export type Feedback = {
   description: string;
   color: string | undefined;
   comments: CommentType[];
+  upvoted: boolean | undefined;
 };
 
 export type CommentType = {

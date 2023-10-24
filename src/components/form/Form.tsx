@@ -14,11 +14,11 @@ const statusSelections = ["Suggestion", "Planned", "In-Progress", "Live"];
 interface FormProps {
   type: React.JSX.Element | null | string;
   title: string;
-  currentFeedback: Feedback;
+  currentFeedback: Feedback | undefined;
   submitting: boolean;
   variant: string;
-  onDelete: () => null;
-  onSubmit: () => null;
+  onDelete: () => Promise<void>;
+  onSubmit: (data: iFeedbackToAdd) => Promise<void>;
 }
 
 const Form: FC<FormProps> = ({
@@ -30,7 +30,6 @@ const Form: FC<FormProps> = ({
   onSubmit,
   onDelete,
 }) => {
-  const { setFeedbacks } = useFeedbackContext();
   const [feedbackTitle, setFeedbackTitle] = useState(
     currentFeedback ? currentFeedback.title : ""
   );

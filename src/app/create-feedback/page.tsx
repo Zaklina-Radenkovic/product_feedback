@@ -2,15 +2,16 @@
 import { useRouter } from "next/navigation";
 import GoBackButton from "@/components/button/GoBackButton";
 import { addDocument } from "@/lib/firebase";
-import EditForm from "@/components/form/Form";
+import Form from "@/components/form/Form";
 import { useFeedbackContext } from "@/state/feedback";
 import { nanoid } from "nanoid";
+import { iFeedbackToAdd } from "@/types/models";
 
 const page = () => {
   const router = useRouter();
   const { setFeedbacks } = useFeedbackContext();
 
-  const handleSubmitForm = async (data) => {
+  const handleSubmitForm = async (data: iFeedbackToAdd) => {
     const newFeedback: iFeedbackToAdd = {
       ...data,
       upvotes: 0,
@@ -32,10 +33,23 @@ const page = () => {
   return (
     <div className="w-[490px] mx-auto text-sm/3 tracking-tight">
       <GoBackButton stroke="blue" onClick={() => router.back()} />
-      <EditForm
+      <Form
         variant="new"
         onSubmit={handleSubmitForm}
         title="Create New Feedback"
+        //  type={null} currentFeedback={{
+        //   id: null,
+        //   title: '',
+        //   category: '',
+        //   upvotes: 0,
+        //   status: '',
+        //   description: '',
+        //   color: undefined,
+        //   comments: [],
+        //   upvoted: undefined
+        // }} submitting={false} onDelete={function (): null | undefined {
+        //   throw new Error('Function not implemented.');
+        // } }
       />
     </div>
   );

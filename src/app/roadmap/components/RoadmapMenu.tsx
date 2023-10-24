@@ -3,20 +3,6 @@ import Link from "next/link";
 import { useFeedbackContext } from "../../../state/feedback";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { useStatusFeedbacks } from "@/hooks/useStatusFeedbacks";
-import { useEffect } from "react";
-
-type plannedFeedbacksType =
-  | {
-      status: string;
-      color: string;
-      id: string | null;
-      title: string;
-      category: string;
-      upvotes: number;
-      description: string;
-      // comments: CommentType[];
-    }[]
-  | null;
 
 const RoadmapMenu = () => {
   const { loading } = useFeedbackContext();

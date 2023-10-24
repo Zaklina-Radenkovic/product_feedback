@@ -52,7 +52,7 @@ const CommentForm = () => {
     };
 
     try {
-      await updateComments(feedbackId, newComment);
+      await updateComments(feedbackId as string, newComment);
       setText("");
       const feedbacks = await getFeedbacksAndDocuments("feedbacks");
       setFeedbacks(feedbacks);

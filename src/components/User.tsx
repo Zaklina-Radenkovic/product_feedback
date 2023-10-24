@@ -1,7 +1,13 @@
 import { UserType } from "@/types/models";
 import Image from "next/image";
 
-const User = ({ image, name, username }: UserType) => {
+type UserProps = {
+  user: UserType;
+};
+
+const User = ({ user }: UserProps) => {
+  const { image, name, username } = user || {};
+
   return (
     <div className="user">
       <Image
