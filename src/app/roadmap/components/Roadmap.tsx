@@ -47,7 +47,8 @@ const Roadmap = () => {
         roadmapData.map((data) => (
           <div key={data.id}>
             <h3 className="font-bold text-secondary mb-3.5">
-              {data.name} ({data.feedbacks.length > 0 && data.feedbacks.length})
+              {data.name} (
+              {data.feedbacks.length > 0 ? data.feedbacks.length : 0})
             </h3>
             <p className="mb-9">{data.description}</p>
             <RoadmapListItems
