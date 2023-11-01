@@ -1,10 +1,10 @@
-import Header from "./Header";
-import CategoriesMenu from "../../components/CategoriesMenu";
-import RoadmapMenu from "../roadmap/components/RoadmapMenu";
+import Header from './Header';
+import CategoriesMenu from '../../components/CategoriesMenu';
+import RoadmapMenu from '../roadmap/components/RoadmapMenu';
 
 const Sidebar = () => {
   return (
-    <div className="basis-[255px] shrink-0">
+    <div className="gap-2.5 md:mb-10 md:flex lg:block lg:shrink-0 lg:basis-[255px]">
       <Header />
       <CategoriesMenu />
       <RoadmapMenu />

@@ -1,20 +1,20 @@
-"use client";
-import { useFeedbackContext } from "@/state/feedback";
-import Button from "./button/Button";
-import { useSortedFeedbackContext } from "@/state/sortedFeedback";
+'use client';
+import { useFeedbackContext } from '@/state/feedback';
+import Button from './button/Button';
+import { useSortedFeedbackContext } from '@/state/sortedFeedback';
 
 const CategoriesMenu = () => {
   const { loading } = useFeedbackContext();
   const { setCategory } = useSortedFeedbackContext();
 
   const filterTasks = (event: React.BaseSyntheticEvent) => {
-    setCategory(event.currentTarget.dataset["filter"]);
+    setCategory(event.currentTarget.dataset['filter']);
   };
 
   return (
     <div
-      className={`box p-6 my-[25px] flex flex-wrap gap-x-2 gap-y-3 ${
-        !loading ? "blur-[2px]" : "blur-none"
+      className={`box flex flex-wrap gap-x-2 gap-y-3 p-6 md:flex-1 md:items-center lg:my-[25px] ${
+        !loading ? 'blur-[2px]' : 'blur-none'
       }`}
     >
       <Button

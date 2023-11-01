@@ -1,10 +1,10 @@
 // "use client";
-import Sidebar from "./components/Sidebar";
-import Navbar from "./components/Navbar";
-import Suggestions from "./feedback/components/Suggestions";
-import { Suspense, lazy } from "react";
-import Loading from "./loading";
-import Main from "./components/Main";
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
+import Suggestions from './feedback/components/Suggestions';
+import { Suspense, lazy } from 'react';
+import Loading from './loading';
+import Main from './components/Main';
 
 // const Suggestions = lazy(() => import("@/components/feedbacks/Suggestions"));
 // const Navbar = lazy(() => import("@/components/Navbar"));
@@ -13,7 +13,7 @@ import Main from "./components/Main";
 export default async function Home() {
   return (
     //Unsupported Server Component type: {...}? checking is it suspense/useclient
-    <div className="container flex gap-x-[30px]">
+    <div className="container flex  md:flex-col lg:flex-row lg:gap-x-[30px]">
       <Sidebar />
       <Main>
         <Navbar />

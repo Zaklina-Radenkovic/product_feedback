@@ -1,8 +1,8 @@
 const Header = () => {
   return (
-    <div className="bg-header bg-cover bg-no-repeat pl-[25px] pt-[65px] pb-[30px] rounded-lg">
-      <h2 className="text-white font-bold">Frontend Mentor</h2>
-      <p className="text-gray-light text-[15px] pt-1.5">Feedback board</p>
+    <div className="rounded-lg  bg-header bg-cover bg-no-repeat pb-[30px] pl-[25px] pt-[65px] md:flex-1">
+      <h2 className="font-bold text-white">Frontend Mentor</h2>
+      <p className="pt-1.5 text-[15px] text-gray-light">Feedback board</p>
     </div>
   );
 };
