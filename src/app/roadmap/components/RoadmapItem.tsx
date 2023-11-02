@@ -1,9 +1,10 @@
 // "use client";
-import Link from "next/link";
-import Button from "../../../components/button/Button";
-import ButtonVote from "../../../components/button/ButtonVote";
-import CommentsIcon from "../../../components/comments/CommentsIcon";
-import { Feedback } from "@/types/models";
+import Link from 'next/link';
+import Button from '../../../components/button/Button';
+import ButtonVote from '../../../components/button/ButtonVote';
+import CommentsIcon from '../../../components/comments/CommentsIcon';
+import { Feedback } from '@/types/models';
+import FeedbackCard from '@/app/feedback/components/FeedbackCard';
 
 interface RoadmapItemProps {
   feedback: Feedback;
@@ -11,19 +12,28 @@ interface RoadmapItemProps {
 }
 
 const RoadmapItem = ({ feedback, name }: RoadmapItemProps) => {
-  const { status, title, description, category, upvotes, comments, color, id } =
-    feedback;
+  const {
+    status,
+    title,
+    description,
+    category,
+    upvotes,
+    comments,
+    color,
+    id,
+    upvoted,
+  } = feedback;
 
   type BorderColor = {
-    "orange-planned": string;
-    "blue-live": string;
+    'orange-planned': string;
+    'blue-live': string;
     tertiary: string;
   };
 
   const borderColor: BorderColor = {
-    "orange-planned": "border-orange-planned",
-    "blue-live": "border-blue-live",
-    tertiary: "border-tertiary",
+    'orange-planned': 'border-orange-planned',
+    'blue-live': 'border-blue-live',
+    tertiary: 'border-tertiary',
   };
 
   return (
@@ -37,26 +47,27 @@ const RoadmapItem = ({ feedback, name }: RoadmapItemProps) => {
         <p className="pt-7.5">{name}</p>
       </div>
       <Link href={`/feedback/${id}`}>
-        <h3 className="text-secondary font-bold pb-3">{title}</h3>
+        <h3 className="pb-3 font-bold text-secondary">{title}</h3>
       </Link>
-      <p className="leading-5 pb-5">{description}</p>
+      <p className="pb-5 leading-5">{description}</p>
       <Button className="button-category">{category}</Button>
-      <div className="flex flex-row justify-between items-center mt-3.5">
+      <div className="mt-3.5 flex flex-row items-center justify-between">
         <ButtonVote
-          className="btn-upvote-x"
+          className="md:btn-upvote-x"
           onClick={() => {}}
-          upvoted={undefined}
+          upvoted={upvoted}
         >
           {upvotes}
         </ButtonVote>
         <CommentsIcon
           className={`ml-1.5 font-bold ${
-            !comments?.length ? "text-secondary/50" : "text-secondary"
+            !comments?.length ? 'text-secondary/50' : 'text-secondary'
           }`}
         >
           {comments?.length > 0 ? comments.length : 0}
         </CommentsIcon>
       </div>
+      {/* <FeedbackCard feedback={feedback} /> */}
     </div>
   );
 };

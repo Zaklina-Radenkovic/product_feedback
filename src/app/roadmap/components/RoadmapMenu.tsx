@@ -1,8 +1,8 @@
-"use client";
-import Link from "next/link";
-import { useFeedbackContext } from "../../../state/feedback";
-import LoadingSpinner from "@/components/LoadingSpinner";
-import { useStatusFeedbacks } from "@/hooks/useStatusFeedbacks";
+'use client';
+import Link from 'next/link';
+import { useFeedbackContext } from '../../../state/feedback';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import { useStatusFeedbacks } from '@/hooks/useStatusFeedbacks';
 
 const RoadmapMenu = () => {
   const { loading } = useFeedbackContext();
@@ -11,21 +11,21 @@ const RoadmapMenu = () => {
 
   const loader = (
     <div className="flex items-center justify-center">
-      {" "}
+      {' '}
       <LoadingSpinner />
     </div>
   );
 
   return (
-    <div className="box p-[25px] pb-[30px] flex flex-col">
-      <div className="flex justify-between items-center gap-2 pb-6">
+    <div className="md:box hidden md:flex md:flex-col md:p-[25px] md:pb-[30px]">
+      <div className="flex items-center justify-between gap-2 pb-6">
         <h3 className="font-bold text-secondary">Roadmap</h3>
         <Link
-          href={!loading ? {} : "/roadmap"}
+          href={!loading ? {} : '/roadmap'}
           className={`text-xs/3 underline  
             ${
-              !loading ? "text-primary/50" : "text-primary"
-            } hover:text-primary/75 font-semibold hover:transition`}
+              !loading ? 'text-primary/50' : 'text-primary'
+            } font-semibold hover:text-primary/75 hover:transition`}
         >
           View
         </Link>
@@ -40,10 +40,10 @@ const RoadmapMenu = () => {
             <span
               className={`roadmap-tag ${plannedFeedbacks?.reduce(
                 (_, item) => item.status.toLowerCase(),
-                " "
+                ' ',
               )}`}
             ></span>
-            <p>{plannedFeedbacks?.reduce((_, item) => item.status, " ")}</p>
+            <p>{plannedFeedbacks?.reduce((_, item) => item.status, ' ')}</p>
           </div>
           <span className="roadmap-span">{plannedFeedbacks?.length}</span>
 
@@ -51,10 +51,10 @@ const RoadmapMenu = () => {
             <span
               className={`roadmap-tag ${inProgressFeedbacks?.reduce(
                 (_, item) => item.status.toLowerCase(),
-                " "
+                ' ',
               )}`}
             ></span>
-            <p>{inProgressFeedbacks?.reduce((_, item) => item.status, " ")}</p>
+            <p>{inProgressFeedbacks?.reduce((_, item) => item.status, ' ')}</p>
           </div>
           <span className="roadmap-span">{inProgressFeedbacks?.length}</span>
 
@@ -62,11 +62,11 @@ const RoadmapMenu = () => {
             <span
               className={`roadmap-tag ${liveFeedbacks?.reduce(
                 (_, item) => item.status.toLowerCase(),
-                " "
+                ' ',
               )}`}
             ></span>
             <p className="self-center">
-              {liveFeedbacks?.reduce((_, item) => item.status, " ")}
+              {liveFeedbacks?.reduce((_, item) => item.status, ' ')}
             </p>
           </div>
           <span className="roadmap-span">{liveFeedbacks?.length}</span>

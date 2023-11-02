@@ -89,13 +89,14 @@ body {
   color: var(--font-color);
   background-color: var(--background-color);
   font-size: var(--font-size);
-  padding: 95px 11.4%;
   max-width: 144rem;
 }
 
-.container {
+/* .container {
   max-width: 111rem;
-}
+ 
+  padding: 95px 11.4%;
+} */
 
 /* @media (min-width: 1024px) {
   .container {
@@ -132,7 +133,7 @@ body {
 
 @layer components {
   .button-category {
-    @apply bg-gray-light py-2.5 px-[1rem] text-primary font-semibold rounded-lg hover:text-white hover:bg-primary focus:bg-primary focus:text-white text-xs/3 hover:transition focus:transition-all;
+    @apply rounded-lg bg-gray-light px-[1rem] py-2.5 text-xs/3 font-semibold text-primary hover:bg-primary hover:text-white hover:transition focus:bg-primary focus:text-white focus:transition-all;
   }
 
   .button-feedback {
@@ -160,10 +161,11 @@ body {
 }
 
 .roadmap-item {
-  background-color: white;
+  @apply box;
+  /* background-color: white; */
   padding: 28px 24px;
   max-width: 18.5rem;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   min-height: 250px;
   margin-bottom: 20px;
 }
@@ -196,39 +198,44 @@ body {
 
 @layer utilities {
   .box {
-    @apply bg-white rounded-lg;
+    @apply rounded-lg bg-white;
   }
 
   .btn {
-    @apply text-white font-semibold opacity-80 rounded-lg hover:opacity-100 transition-all;
+    @apply rounded-lg font-semibold text-white opacity-80 transition-all hover:opacity-100;
   }
 }
 
 @layer components {
   .navbar {
-    @apply bg-secondary text-white py-3.5 rounded-lg mb-6 flex justify-between items-center;
+    @apply mb-6 flex items-center  justify-between bg-secondary py-3.5 text-white;
   }
+  /* .feedback {
+    @apply box flex items-baseline py-[1.56rem] pl-8 pr-9;
+  } */
+
   .feedback {
-    @apply box py-[1.56rem] pl-8 pr-9 flex my-5 items-baseline;
+    @apply box grid grid-cols-6 items-baseline py-[1.56rem] pl-8 pr-9;
   }
 
   .feedback-content {
-    @apply flex flex-col items-start col-span-4;
-  }
-  .msg {
-    @apply ml-auto self-center flex items-center;
-  }
-  .btn-upvote {
-    @apply flex flex-col bg-gray-light w-10 h-[50px] items-center rounded-lg p-2.5 mr-10 gap-2.5 text-secondary font-bold text-[13px];
+    @apply col-span-6 flex flex-col items-start md:col-span-4;
   }
 
-  .btn-upvoted {
-    @apply bg-primary text-white
-    flex flex-col w-10 h-[50px] items-center rounded-lg p-2.5 mr-10 gap-2.5 font-bold text-[13px];
+  .msg {
+    @apply col-start-6 ml-auto flex items-center self-center;
   }
+
+  .btn-upvote-md {
+    @apply col-start-1 row-start-1 mr-10 flex h-[50px] w-10 flex-col;
+  }
+
+  /* .btn-upvoted {
+    @apply bg-primary text-white;
+  } */
 
   .btn-upvote-x {
-    @apply btn-upvote flex flex-row justify-center mr-0 w-[60px] h-10 gap-2;
+    @apply col-start-1 row-start-2 mr-0 flex h-10 w-[60px] flex-row justify-center;
   }
 }
 
@@ -266,7 +273,7 @@ body {
 }
 
 .replies::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   bottom: 35px;

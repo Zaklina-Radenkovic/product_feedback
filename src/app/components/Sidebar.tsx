@@ -4,7 +4,7 @@ import RoadmapMenu from '../roadmap/components/RoadmapMenu';
 
 const Sidebar = () => {
   return (
-    <div className="gap-2.5 md:mb-10 md:flex lg:block lg:shrink-0 lg:basis-[255px]">
+    <div className="md:mb-10 md:flex md:gap-2.5 lg:block lg:shrink-0 lg:basis-[255px]">
       <Header />
       <CategoriesMenu />
       <RoadmapMenu />
