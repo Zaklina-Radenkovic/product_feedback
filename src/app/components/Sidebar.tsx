@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 
 import CategoriesMenu from '../../components/CategoriesMenu';
 import RoadmapMenu from '../roadmap/components/RoadmapMenu';
-import MobileMenu from './MobileMenu';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
