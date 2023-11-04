@@ -17,7 +17,7 @@ const RoadmapMenu = () => {
   );
 
   return (
-    <div className="md:box hidden md:flex md:flex-col md:p-[25px] md:pb-[30px]">
+    <div className="box flex flex-col px-[25px] md:w-full">
       <div className="flex items-center justify-between gap-2 pb-6">
         <h3 className="font-bold text-secondary">Roadmap</h3>
         <Link
@@ -36,7 +36,7 @@ const RoadmapMenu = () => {
         loader
       ) : (
         <div className="grid grid-cols-2 grid-rows-3 justify-items-start">
-          <div className="flex pb-3">
+          <div className="flex items-center pb-3">
             <span
               className={`roadmap-tag ${plannedFeedbacks?.reduce(
                 (_, item) => item.status.toLowerCase(),

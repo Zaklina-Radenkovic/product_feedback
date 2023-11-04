@@ -13,7 +13,7 @@ import Main from './components/Main';
 export default async function Home() {
   return (
     //Unsupported Server Component type: {...}? checking is it suspense/useclient
-    <div className="flex flex-col md:px-[11.4%]  md:py-[95px] lg:flex-row lg:gap-x-[30px]">
+    <div className="relative flex flex-col md:px-[11.4%] md:py-[95px] lg:flex-row lg:gap-x-[30px]">
       <Sidebar />
       <Main>
         <Navbar />

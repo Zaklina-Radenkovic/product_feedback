@@ -13,7 +13,7 @@ const CategoriesMenu = () => {
 
   return (
     <div
-      className={`md:box hidden md:flex md:flex-1 md:flex-wrap md:items-center md:gap-x-2 md:gap-y-3 md:p-6 lg:my-[25px] ${
+      className={`box flex flex-wrap items-center gap-x-2 gap-y-3 md:w-full  lg:my-[25px] ${
         !loading ? 'blur-[2px]' : 'blur-none'
       }`}
     >
