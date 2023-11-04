@@ -1,5 +1,5 @@
-import { useState } from "react";
-import ButtonFeedback from "../button/ButtonFeedback";
+import { useState } from 'react';
+import ButtonFeedback from '../button/ButtonFeedback';
 import {
   doc,
   getDoc,
@@ -14,22 +14,22 @@ import {
   writeBatch,
   arrayUnion,
   DocumentReference,
-} from "firebase/firestore";
+} from 'firebase/firestore';
 import {
   getFeedbacksAndDocuments,
   updateComments,
   updateFeedback,
   getDocument,
   db,
-} from "@/lib/firebase";
-import { nanoid } from "nanoid";
-import { useFeedbackContext } from "@/state/feedback";
-import { CommentType } from "@/types/models";
-import { useCommentsContext } from "@/state/comments";
+} from '@/lib/firebase';
+import { nanoid } from 'nanoid';
+import { useFeedbackContext } from '@/state/feedback';
+import { CommentType } from '@/types/models';
+import { useCommentsContext } from '@/state/comments';
 
 const CommentForm = () => {
-  const [text, setText] = useState("");
-  const [error, setError] = useState("");
+  const [text, setText] = useState('');
+  const [error, setError] = useState('');
 
   const { feedbackId } = useCommentsContext();
   const { setFeedbacks } = useFeedbackContext();
@@ -38,14 +38,14 @@ const CommentForm = () => {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (text.trim() === "") return setError(`Reply can't be empty!`);
+    if (text.trim() === '') return setError(`Reply can't be empty!`);
 
     const newComment: CommentType = {
       content: text,
       user: {
-        image: "user-images/image-george.jpg",
-        name: "George Partridge",
-        username: "soccerviewer8",
+        image: 'user-images/image-george.jpg',
+        name: 'George Partridge',
+        username: 'soccerviewer8',
       },
       replies: [],
       id: nanoid(),
@@ -53,8 +53,8 @@ const CommentForm = () => {
 
     try {
       await updateComments(feedbackId as string, newComment);
-      setText("");
-      const feedbacks = await getFeedbacksAndDocuments("feedbacks");
+      setText('');
+      const feedbacks = await getFeedbacksAndDocuments('feedbacks');
       setFeedbacks(feedbacks);
     } catch (error) {
       console.log(error);
@@ -62,8 +62,8 @@ const CommentForm = () => {
   };
 
   return (
-    <div className="px-[1.87rem] pt-[1.56rem] pb-[1.87rem] box">
-      <h3 className="pb-[1.87rem] text-secondary font-bold">Add Comment</h3>
+    <div className="box">
+      <h3 className="pb-[1.87rem] font-bold text-secondary">Add Comment</h3>
       <form onSubmit={handleSubmit}>
         <textarea
           onChange={(e) => setText(e.target.value)}
@@ -71,7 +71,7 @@ const CommentForm = () => {
           rows={3}
           value={text}
           maxLength={characterLimit}
-          className="block p-5 w-full text-sm text-gray-900 bg-gray-light rounded-lg mb-[1.87rem]  focus:outline-primary focus:outline-1"
+          className="text-gray-900 mb-[1.87rem] block w-full rounded-lg bg-gray-light p-5 text-sm  focus:outline-1 focus:outline-primary"
           placeholder="Type your comment here..."
         ></textarea>
         {error && <p className="">{error}</p>}

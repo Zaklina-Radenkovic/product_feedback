@@ -1,6 +1,6 @@
-import { useCommentsContext } from "@/state/comments";
-import Comment from "./Comment";
-import { CommentType } from "@/types/models";
+import { useCommentsContext } from '@/state/comments';
+import Comment from './Comment';
+import { CommentType } from '@/types/models';
 
 type Comments = {
   comments: Comment[];
@@ -12,9 +12,9 @@ const Comments = () => {
 
   if (currentFeedback?.comments?.length) {
     return (
-      <div className="feedback flex-col">
-        <h3 className="text-secondary font-bold text-lg/6">
-          {currentFeedback?.comments && currentFeedback?.comments.length}{" "}
+      <div className="box">
+        <h3 className="text-lg/6 font-bold text-secondary">
+          {currentFeedback?.comments && currentFeedback?.comments.length}{' '}
           Comments
         </h3>
 

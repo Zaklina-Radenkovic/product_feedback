@@ -1,15 +1,15 @@
-import { FC, useState } from "react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import Button from "@/components/button/Button";
-import ButtonFeedback from "@/components/button/ButtonFeedback";
-import InputGroup from "./InputGroup";
-import { Feedback, iFeedbackToAdd } from "@/types/models";
-import Link from "next/link";
-import { useFeedbackContext } from "@/state/feedback";
+import { FC, useState } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import Button from '@/components/button/Button';
+import ButtonFeedback from '@/components/button/ButtonFeedback';
+import InputGroup from './InputGroup';
+import { Feedback, iFeedbackToAdd } from '@/types/models';
+import Link from 'next/link';
+import { useFeedbackContext } from '@/state/feedback';
 
-const categorySelections = ["Feature", "UI", "UX", "Enhancement", "Bug"];
-const statusSelections = ["Suggestion", "Planned", "In-Progress", "Live"];
+const categorySelections = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'];
+const statusSelections = ['Suggestion', 'Planned', 'In-Progress', 'Live'];
 
 interface FormProps {
   type: React.JSX.Element | null | string;
@@ -31,16 +31,16 @@ const Form: FC<FormProps> = ({
   onDelete,
 }) => {
   const [feedbackTitle, setFeedbackTitle] = useState(
-    currentFeedback ? currentFeedback.title : ""
+    currentFeedback ? currentFeedback.title : '',
   );
   const [category, setCategory] = useState(
-    currentFeedback ? currentFeedback.category : ""
+    currentFeedback ? currentFeedback.category : '',
   );
   const [status, setStatus] = useState(
-    currentFeedback ? currentFeedback.status : "suggestion"
+    currentFeedback ? currentFeedback.status : 'suggestion',
   );
   const [description, setDescription] = useState(
-    currentFeedback ? currentFeedback.description : ""
+    currentFeedback ? currentFeedback.description : '',
   );
 
   const router = useRouter();
@@ -80,14 +80,14 @@ const Form: FC<FormProps> = ({
 
     onSubmit(data as any);
 
-    setCategory("");
-    setFeedbackTitle("");
-    setDescription("");
-    setStatus("");
+    setCategory('');
+    setFeedbackTitle('');
+    setDescription('');
+    setStatus('');
   };
 
   return (
-    <div className="box mt-16 pt-[3.75rem] pl-10 pr-9 pb-9 relative">
+    <div className="box relative mt-16 pb-9 pt-[3.75rem]">
       <Image
         src={`../../../../icon-${variant}-feedback.svg`}
         alt={`${type}-icon`}
@@ -95,7 +95,7 @@ const Form: FC<FormProps> = ({
         width={40}
         height={40}
       />
-      <h2 className="pb-20 text-secondary font-bold">
+      <h2 className="pb-20 font-bold text-secondary">
         {title || `Editing '${currentFeedback?.title}'`}
       </h2>
       <form onSubmit={handleSubmit} className="flex flex-col">
@@ -106,7 +106,7 @@ const Form: FC<FormProps> = ({
           label="Add a short, descriptive headline"
           onChange={(e) => setFeedbackTitle(e.target.value)}
           dropdownSelections={[]}
-          name={""}
+          name={''}
         />
         <InputGroup
           value={
@@ -119,7 +119,7 @@ const Form: FC<FormProps> = ({
           label="Choose a category for your feedback"
           dropdownSelections={categorySelections}
           onChange={(e) => setCategory(e.target.value)}
-          name={""}
+          name={''}
         />
 
         <InputGroup
@@ -129,7 +129,7 @@ const Form: FC<FormProps> = ({
           label="Change feature state"
           dropdownSelections={statusSelections}
           onChange={(e) => setStatus(e.target.value)}
-          name={""}
+          name={''}
         />
 
         <InputGroup
@@ -139,18 +139,18 @@ const Form: FC<FormProps> = ({
           label="Include any specific comments on what should be improved, added, etc."
           onChange={(e) => setDescription(e.target.value)}
           dropdownSelections={[]}
-          name={""}
+          name={''}
         />
 
         <div className="flex items-center justify-between">
-          {variant === "edit" ? (
+          {variant === 'edit' ? (
             <Button className="button bg-red  hover:bg-red" onClick={onDelete}>
               Delete
             </Button>
           ) : null}
           <div className="ml-auto">
-            <Link href={"/"}>
-              <Button className="button bg-secondary mr-3  hover:bg-secondary ">
+            <Link href={'/'}>
+              <Button className="button mr-3 bg-secondary  hover:bg-secondary ">
                 Cancel
               </Button>
             </Link>
