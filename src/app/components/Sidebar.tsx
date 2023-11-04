@@ -21,9 +21,8 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="relative grid grid-cols-2 md:mb-10 md:flex md:gap-2.5      lg:block lg:shrink-0 lg:basis-[255px]">
+    <div className="relative grid grid-cols-2 md:mb-10 md:flex md:gap-2.5 lg:block lg:shrink-0 lg:basis-[255px]">
       <Header />
-
       <div
         className={
           isOpen
@@ -34,7 +33,6 @@ const Sidebar = () => {
         <CategoriesMenu />
         <RoadmapMenu />
       </div>
-
       <button
         className="col-[2_/_-1] row-span-full block cursor-pointer justify-self-end pr-6 md:hidden"
         id="hamburger-menu"
