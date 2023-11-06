@@ -195,7 +195,7 @@ body {
 
 @layer utilities {
   .box {
-    @apply rounded-lg bg-white py-[1.56rem] pl-8 pr-9;
+    @apply rounded-lg bg-white px-8 py-6;
   }
 
   .btn {
@@ -209,7 +209,7 @@ body {
   }
 
   .feedback {
-    @apply box grid grid-cols-6 items-baseline;
+    @apply box grid grid-cols-6 items-baseline gap-y-6;
   }
 
   .feedback-content {
