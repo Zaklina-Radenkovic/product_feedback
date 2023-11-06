@@ -95,7 +95,7 @@ const Form: FC<FormProps> = ({
         width={40}
         height={40}
       />
-      <h2 className="pb-20 font-bold text-secondary">
+      <h2 className="py-7 font-bold text-secondary md:pb-[70px] md:pt-7">
         {title || `Editing '${currentFeedback?.title}'`}
       </h2>
       <form onSubmit={handleSubmit} className="flex flex-col">
@@ -142,26 +142,26 @@ const Form: FC<FormProps> = ({
           name={''}
         />
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-stretch gap-x-3 gap-y-3 sm:flex-row sm:items-center sm:justify-end">
           {variant === 'edit' ? (
             <Button className="button bg-red  hover:bg-red" onClick={onDelete}>
               Delete
             </Button>
           ) : null}
-          <div className="ml-auto">
-            <Link href={'/'}>
-              <Button className="button mr-3 bg-secondary  hover:bg-secondary ">
-                Cancel
-              </Button>
-            </Link>
-            <ButtonFeedback
-              disabled={submitting}
-              className="button-sbm"
-              type="submit"
-            >
-              Save Changes
-            </ButtonFeedback>
-          </div>
+
+          <ButtonFeedback
+            disabled={submitting}
+            className="button-sbm"
+            type="submit"
+          >
+            Save Changes
+          </ButtonFeedback>
+          <Button
+            className="button bg-secondary  hover:bg-secondary"
+            onClick={() => router.back}
+          >
+            Cancel
+          </Button>
         </div>
       </form>
     </div>

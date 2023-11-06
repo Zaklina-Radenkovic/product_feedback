@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler, FC, useState } from "react";
+import { ChangeEvent, ChangeEventHandler, FC, useState } from 'react';
 
 interface InputProps {
   type: string;
@@ -25,7 +25,7 @@ const Input: FC<InputProps> = ({
   };
   return (
     <>
-      {type === "text" && (
+      {type === 'text' && (
         <>
           <label className="pb-5">{label}</label>
           <input
@@ -33,14 +33,14 @@ const Input: FC<InputProps> = ({
             value={value}
             onChange={onChange}
             disabled={disabled}
-            className="py-3 pl-5 bg-gray-light rounded-lg mb-6 focus:outline-primary focus:outline-1"
+            className="mb-6 rounded-lg bg-gray-light px-2.5 py-3 focus:outline-1 focus:outline-primary sm:px-5"
           />
         </>
       )}
 
-      {type === "dropdown" && (
+      {type === 'dropdown' && (
         <div>
-          <label className="pb-5 block" htmlFor="search">
+          <label className="block pb-5" htmlFor="search">
             {label}
           </label>
 
@@ -49,7 +49,7 @@ const Input: FC<InputProps> = ({
             value={value}
             // type={type}
             id="search"
-            className="w-full p-3 pl-5 bg-gray-light rounded-lg mb-6 focus:outline-primary focus:outline-1"
+            className="mb-6 w-full rounded-lg bg-gray-light px-2.5 py-3 focus:outline-1 focus:outline-primary sm:px-5"
           >
             {dropdownSelections &&
               dropdownSelections.map((s) => {
@@ -63,9 +63,9 @@ const Input: FC<InputProps> = ({
         </div>
       )}
 
-      {type === "textarea" && (
+      {type === 'textarea' && (
         <>
-          <label className="pb-5">{label}</label>
+          <label className="pb-5 leading-4">{label}</label>
           <textarea
             // onChange={(e) => setText(e.target.value)}
             // id="message"
@@ -79,7 +79,7 @@ const Input: FC<InputProps> = ({
             rows={3}
             value={value}
             // maxLength={characterLimit}
-            className="block p-5 w-full text-sm text-gray-900 bg-gray-light rounded-lg mb-[1.87rem]  focus:outline-primary focus:outline-1"
+            className="text-gray-900 mb-[1.87rem] block w-full rounded-lg bg-gray-light p-2.5 text-sm focus:outline-1  focus:outline-primary sm:p-5"
             // placeholder="Type your comment here..."
           ></textarea>
         </>

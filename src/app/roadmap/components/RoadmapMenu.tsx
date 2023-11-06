@@ -17,7 +17,7 @@ const RoadmapMenu = () => {
   );
 
   return (
-    <div className="box flex flex-col px-[25px] md:w-full">
+    <div className="box flex flex-col md:w-full">
       <div className="flex items-center justify-between gap-2 pb-6">
         <h3 className="font-bold text-secondary">Roadmap</h3>
         <Link

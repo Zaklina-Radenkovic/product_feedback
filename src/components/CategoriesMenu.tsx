@@ -13,7 +13,7 @@ const CategoriesMenu = () => {
 
   return (
     <div
-      className={`box flex flex-wrap items-center gap-x-2 gap-y-3 md:w-full  lg:my-[25px] ${
+      className={`box flex flex-wrap items-center gap-x-2 gap-y-3 md:w-full  xl:my-[25px] ${
         !loading ? 'blur-[2px]' : 'blur-none'
       }`}
     >
@@ -46,7 +46,7 @@ const CategoriesMenu = () => {
         Enhancement
       </Button>
       <Button
-        className="button-category ml-3"
+        className="button-category"
         data-filter="Bug"
         onClick={filterTasks}
       >
