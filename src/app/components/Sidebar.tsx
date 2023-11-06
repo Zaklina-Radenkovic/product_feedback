@@ -21,13 +21,13 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="relative grid grid-cols-2 md:mb-10 md:flex md:gap-2.5 lg:block lg:shrink-0 lg:basis-[255px]">
+    <div className="relative grid grid-cols-2 md:mb-10 md:flex md:gap-2.5 xl:block xl:shrink-0 xl:basis-[255px]">
       <Header />
       <div
         className={
           isOpen
             ? 'bg-background fixed top-[120px] z-10 col-[2_/_-1] flex h-full flex-col gap-2.5 p-6'
-            : 'hidden md:static md:flex md:flex-row md:items-stretch md:gap-2.5 lg:flex lg:flex-col lg:gap-0'
+            : 'hidden md:static md:flex md:flex-row md:items-stretch md:gap-2.5 xl:flex xl:flex-col xl:gap-0'
         }
       >
         <CategoriesMenu />
