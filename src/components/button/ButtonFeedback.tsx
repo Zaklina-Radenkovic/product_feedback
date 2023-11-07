@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from './Button';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const ButtonFeedback = ({ onClick, children, ...props }: Props) => {
   return (
     <Button
-      className="button-feedback text-[15px]"
+      className="button-feedback z-0 text-xs sm:text-[15px]"
       onClick={onClick}
       {...props}
     >
