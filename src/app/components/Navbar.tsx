@@ -37,7 +37,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar pl-[1.56rem] pr-[0.93rem] md:rounded-lg">
+    <div className="navbar pl-0 pr-[0.93rem] sm:pl-[1.56rem] md:rounded-lg">
       <div className="flex items-center">
         <Image
           priority
@@ -49,7 +49,7 @@ const Navbar = () => {
           <span className="mr-3 inline-block">{count}</span> Suggestions
         </div>
         <div>
-          <label className="ml-8 text-sm " htmlFor="search">
+          <label className="ml-7 text-xs sm:ml-8 " htmlFor="search">
             Sort by:
           </label>
 
@@ -58,7 +58,7 @@ const Navbar = () => {
             id="search"
             name="sort"
             value={sortBy}
-            className="text-gray-900 rounded-lg border-none bg-secondary p-2.5 text-sm font-bold visited:border-none focus:outline-none"
+            className="text-gray-900 rounded-lg border-none bg-secondary p-0 text-xs font-bold visited:border-none focus:outline-none sm:p-2.5 sm:text-sm"
             cursor-pointer
           >
             {sortOptions.map((option) => {
