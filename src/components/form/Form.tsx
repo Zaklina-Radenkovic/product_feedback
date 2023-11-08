@@ -157,7 +157,10 @@ const Form: FC<FormProps> = ({
             Cancel
           </Button>
           {variant === 'edit' ? (
-            <Button className="button bg-red  hover:bg-red" onClick={onDelete}>
+            <Button
+              className="button order-last ml-0 bg-red hover:bg-red sm:order-first sm:mr-auto"
+              onClick={onDelete}
+            >
               Delete
             </Button>
           ) : null}
