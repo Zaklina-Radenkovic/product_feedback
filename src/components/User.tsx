@@ -1,5 +1,5 @@
-import { UserType } from "@/types/models";
-import Image from "next/image";
+import { UserType } from '@/types/models';
+import Image from 'next/image';
 
 type UserProps = {
   user: UserType;
@@ -19,8 +19,8 @@ const User = ({ user }: UserProps) => {
         priority={true}
       />
 
-      <h5 className="text-secondary font-bold">{name}</h5>
-      <h6>@{username}</h6>
+      <h5 className="text-sm font-bold text-secondary sm:text-base">{name}</h5>
+      <h6 className="text-sm sm:text-base">@{username}</h6>
     </div>
   );
 };

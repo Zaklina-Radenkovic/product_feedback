@@ -25,7 +25,7 @@ export type UserType = {
 
 export type ReplyType = {
   content: string;
-  replayingTo: string;
+  replyingTo: string;
   user: UserType;
   id: string;
 };

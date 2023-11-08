@@ -198,6 +198,10 @@ body {
     @apply rounded-lg bg-white px-8 py-6;
   }
 
+  .inner-container {
+    @apply relative flex flex-col px-5 pt-8 sm:px-[11.4%] sm:py-[95px];
+  }
+
   .btn {
     @apply rounded-lg font-semibold text-white opacity-80 transition-all hover:opacity-100;
   }
@@ -250,10 +254,10 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
+
 .comment-content {
   padding-top: 16px;
   padding-bottom: 30px;
-  margin-left: 64px;
   position: relative;
   overflow: hidden;
 }

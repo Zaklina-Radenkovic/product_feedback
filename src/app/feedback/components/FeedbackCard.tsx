@@ -50,7 +50,7 @@ const FeedbackCard = ({ feedback }: iSuggestionItem) => {
   };
 
   return (
-    <div className="feedback m-10 md:mx-0 md:my-5">
+    <div className="feedback">
       <ButtonVote
         upvoted={upvoted}
         className={upvoted ? 'bg-primary text-white' : ''}
@@ -62,7 +62,7 @@ const FeedbackCard = ({ feedback }: iSuggestionItem) => {
         <Link href={`/feedback/${id}`}>
           <h3 className="text-lg/6 font-bold text-secondary">{title}</h3>
         </Link>
-        <p className="py-3 leading-6">{description}</p>
+        <p className="py-3 leading-5">{description}</p>
         <Button className="button-category">{category}</Button>
       </div>
       <CommentsIcon

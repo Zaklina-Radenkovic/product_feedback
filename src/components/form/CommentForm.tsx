@@ -62,7 +62,7 @@ const CommentForm = () => {
   };
 
   return (
-    <div className="box">
+    <div className="box mt-6">
       <h3 className="pb-[1.87rem] font-bold text-secondary">Add Comment</h3>
       <form onSubmit={handleSubmit}>
         <textarea
@@ -76,9 +76,11 @@ const CommentForm = () => {
         ></textarea>
         {error && <p className="">{error}</p>}
         <div className="flex flex-row items-center justify-between">
-          <span>{characterLimit - text.length} charachters left</span>
+          <span className="text-sm sm:text-base">
+            {characterLimit - text.length} charachters left
+          </span>
           <ButtonFeedback
-            className="button-feedback px-[1.875rem]"
+            className="button-feedback px-4 sm:px-[1.875rem]"
             type="submit"
             // disabled={submitting}
           >

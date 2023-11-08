@@ -1,17 +1,17 @@
-import { ReplyType } from "../../types/models";
-import CommentHeader from "../comments/CommentHeader";
-import ReplyForm from "../form/ReplyForm";
-import { useState, Dispatch, SetStateAction } from "react";
-import { useCommentsContext } from "@/state/comments";
+import { ReplyType } from '../../types/models';
+import CommentHeader from '../comments/CommentHeader';
+import ReplyForm from '../form/ReplyForm';
+import { useState, Dispatch, SetStateAction } from 'react';
+import { useCommentsContext } from '@/state/comments';
 import {
   getFeedbacksAndDocuments,
   db,
   updateComments,
   updateFeedback,
   removeItem,
-} from "@/lib/firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import ButtonFeedback from "../button/ButtonFeedback";
+} from '@/lib/firebase';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import ButtonFeedback from '../button/ButtonFeedback';
 type ReplyProps = {
   reply: ReplyType;
   open: boolean;
@@ -19,8 +19,8 @@ type ReplyProps = {
 };
 
 const Reply = ({ reply, open, setOpen }: ReplyProps) => {
-  const { content, replayingTo, user } = reply;
-  const [text, setText] = useState("");
+  const { content, replyingTo, user } = reply;
+  const [text, setText] = useState('');
   const [openReply, setOpenReply] = useState(false);
   const { currentFeedback, feedbackId } = useCommentsContext();
 
@@ -31,10 +31,10 @@ const Reply = ({ reply, open, setOpen }: ReplyProps) => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const collectionRef = collection(db, "feedbacks");
+    const collectionRef = collection(db, 'feedbacks');
     const desired_value = content;
 
-    const q = query(collectionRef, where("comments", "==", desired_value));
+    const q = query(collectionRef, where('comments', '==', desired_value));
 
     const querySnapshot = await getDocs(q);
     console.log(querySnapshot);
@@ -52,8 +52,9 @@ const Reply = ({ reply, open, setOpen }: ReplyProps) => {
         comment={undefined}
       />
       <div>
-        <p className="pt-4 pb-[30px] ml-16">
-          <span className="text-tertiary font-bold">{replayingTo}</span>{" "}
+        {/* <p className="ml-16 pb-[30px] pt-4 text-[13px] leading-4 sm:text-base sm:leading-5"> */}
+        <p className="comment-content ml-0 text-sm leading-4 sm:ml-16 sm:text-base sm:leading-5">
+          <span className="font-bold text-tertiary">{replyingTo}</span>{' '}
           {content}
         </p>
         {/* {openReply && <ReplyForm setOpen={setOpenReply} reply={reply} />} */}

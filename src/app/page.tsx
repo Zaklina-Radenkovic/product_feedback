@@ -17,6 +17,7 @@ export default async function Home() {
       <Sidebar />
       <Main>
         <Navbar />
+
         <Suggestions />
       </Main>
     </div>

@@ -31,7 +31,7 @@ const page = () => {
   };
 
   return (
-    <div className="relative flex flex-col px-5 pt-8 sm:px-[11.4%] sm:py-[95px]">
+    <div className="inner-container">
       <div className="mx-auto text-sm/3 tracking-tight sm:w-[490px]">
         <GoBackButton stroke="blue" onClick={() => router.back()} />
         <Form
