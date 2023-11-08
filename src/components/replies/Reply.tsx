@@ -53,7 +53,7 @@ const Reply = ({ reply, open, setOpen }: ReplyProps) => {
       />
       <div>
         {/* <p className="ml-16 pb-[30px] pt-4 text-[13px] leading-4 sm:text-base sm:leading-5"> */}
-        <p className="comment-content ml-0 text-sm leading-4 sm:ml-16 sm:text-base sm:leading-5">
+        <p className="comment-content ml-0 sm:ml-16 ">
           <span className="font-bold text-tertiary">{replyingTo}</span>{' '}
           {content}
         </p>

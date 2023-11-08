@@ -24,9 +24,7 @@ const Comment = ({ comment }: CommentProps) => {
       />
       {/* {replies?.length > 0 && <div className="horizontal-line"></div>} */}
 
-      <p className="comment-content ml-0 text-sm leading-4 sm:ml-16 sm:text-base sm:leading-5">
-        {comment?.content}
-      </p>
+      <p className="comment-content ml-0 sm:ml-16">{comment?.content}</p>
       {open && <ReplyForm comment={comment} setOpen={setOpen} />}
       <div className="replies">
         {comment?.replies &&

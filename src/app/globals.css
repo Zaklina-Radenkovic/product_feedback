@@ -258,6 +258,7 @@ body {
 .comment-content {
   padding-top: 16px;
   padding-bottom: 30px;
+  line-height: 1.25rem;
   position: relative;
   overflow: hidden;
 }
