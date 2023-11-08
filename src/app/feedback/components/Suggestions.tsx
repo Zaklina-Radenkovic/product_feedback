@@ -22,7 +22,11 @@ const Suggestions = () => {
       {sortedFeedbacks && sortedFeedbacks.length !== 0 ? (
         sortedFeedbacks?.map((sortedFeedback) => {
           return (
-            <FeedbackCard key={sortedFeedback.id} feedback={sortedFeedback} />
+            <FeedbackCard
+              key={sortedFeedback.id}
+              feedback={sortedFeedback}
+              name={''}
+            />
           );
         })
       ) : (
