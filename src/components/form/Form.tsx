@@ -143,12 +143,6 @@ const Form: FC<FormProps> = ({
         />
 
         <div className="flex flex-col items-stretch gap-x-3 gap-y-3 sm:flex-row sm:items-center sm:justify-end">
-          {variant === 'edit' ? (
-            <Button className="button bg-red  hover:bg-red" onClick={onDelete}>
-              Delete
-            </Button>
-          ) : null}
-
           <ButtonFeedback
             disabled={submitting}
             className="button-sbm"
@@ -158,10 +152,15 @@ const Form: FC<FormProps> = ({
           </ButtonFeedback>
           <Button
             className="button bg-secondary  hover:bg-secondary"
-            onClick={() => router.back}
+            onClick={() => router.back()}
           >
             Cancel
           </Button>
+          {variant === 'edit' ? (
+            <Button className="button bg-red  hover:bg-red" onClick={onDelete}>
+              Delete
+            </Button>
+          ) : null}
         </div>
       </form>
     </div>
