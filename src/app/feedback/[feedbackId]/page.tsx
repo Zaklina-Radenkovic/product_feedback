@@ -26,7 +26,7 @@ const page = () => {
             </Link>
           </header>
           <div className="pb-6 pt-10">
-            <FeedbackCard feedback={currentFeedback} />
+            <FeedbackCard feedback={currentFeedback} name={''} />
           </div>
           {currentFeedback.comments?.length >= 1 && <Comments />}
           <CommentForm />
