@@ -1,14 +1,14 @@
-"use client";
-import { useRouter } from "next/navigation";
-import GoBackButton from "@/components/button/GoBackButton";
-import { useParams } from "next/navigation";
-import Form from "@/components/form/Form";
-import { useFeedbackContext } from "@/state/feedback";
+'use client';
+import { useRouter } from 'next/navigation';
+import GoBackButton from '@/components/button/GoBackButton';
+import { useParams } from 'next/navigation';
+import Form from '@/components/form/Form';
+import { useFeedbackContext } from '@/state/feedback';
 import {
   getFeedbacksAndDocuments,
   updateFeedback,
   deleteFeedback,
-} from "@/lib/firebase";
+} from '@/lib/firebase';
 
 const page = () => {
   const router = useRouter();
@@ -16,21 +16,21 @@ const page = () => {
   const { feedbackId } = params;
   const { feedbacks, setFeedbacks } = useFeedbackContext();
   const currentFeedback = feedbacks?.find(
-    (feedback) => feedback.id === feedbackId
+    (feedback) => feedback.id === feedbackId,
   );
 
   const deleteHandler = async () => {
     await deleteFeedback(feedbackId as string);
-    const feedbacks = await getFeedbacksAndDocuments("feedbacks");
+    const feedbacks = await getFeedbacksAndDocuments('feedbacks');
     setFeedbacks(feedbacks);
-    router.push("/");
+    router.push('/');
   };
 
   const handleSubmitForm = async (editFeedback: {}) => {
     try {
       await updateFeedback(feedbackId as any, editFeedback);
 
-      const feedbacks = await getFeedbacksAndDocuments("feedbacks");
+      const feedbacks = await getFeedbacksAndDocuments('feedbacks');
       setFeedbacks(feedbacks);
       router.push(`/feedback/${feedbackId}`);
     } catch (error) {
@@ -40,21 +40,23 @@ const page = () => {
 
   if (currentFeedback) {
     return (
-      <div className="w-[490px] mx-auto text-sm/3 tracking-tight">
-        <GoBackButton
-          stroke="blue"
-          onClick={() => router.push(`/feedback/${feedbackId}`)}
-        />
+      <div className="inner-container">
+        <div>
+          <GoBackButton
+            stroke="blue"
+            onClick={() => router.push(`/feedback/${feedbackId}`)}
+          />
 
-        <Form
-          variant="edit"
-          currentFeedback={currentFeedback}
-          onSubmit={handleSubmitForm}
-          onDelete={deleteHandler}
-          type={null}
-          title={""}
-          submitting={false}
-        />
+          <Form
+            variant="edit"
+            currentFeedback={currentFeedback}
+            onSubmit={handleSubmitForm}
+            onDelete={deleteHandler}
+            type={null}
+            title={''}
+            submitting={false}
+          />
+        </div>
       </div>
     );
   }
