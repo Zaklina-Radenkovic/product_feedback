@@ -122,16 +122,17 @@ const Form: FC<FormProps> = ({
           name={''}
         />
 
-        <InputGroup
-          value={status.replace(/(^\w|-\w)/g, (s: string) => s.toUpperCase())}
-          type="dropdown"
-          title="Update status"
-          label="Change feature state"
-          dropdownSelections={statusSelections}
-          onChange={(e) => setStatus(e.target.value)}
-          name={''}
-        />
-
+        {variant === 'edit' && (
+          <InputGroup
+            value={status.replace(/(^\w|-\w)/g, (s: string) => s.toUpperCase())}
+            type="dropdown"
+            title="Update status"
+            label="Change feature state"
+            dropdownSelections={statusSelections}
+            onChange={(e) => setStatus(e.target.value)}
+            name={''}
+          />
+        )}
         <InputGroup
           value={description}
           type="textarea"

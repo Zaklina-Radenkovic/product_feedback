@@ -15,6 +15,7 @@ const page = () => {
     const newFeedback: iFeedbackToAdd = {
       ...data,
       upvotes: 0,
+      status: 'suggestion',
       comments: [],
       id: nanoid(),
     };
@@ -32,7 +33,7 @@ const page = () => {
 
   return (
     <div className="inner-container">
-      <div className="mx-auto text-sm/3 tracking-tight sm:w-[490px]">
+      <div className="mx-auto tracking-tight sm:w-[490px]">
         <GoBackButton stroke="blue" onClick={() => router.back()} />
         <Form
           variant="new"

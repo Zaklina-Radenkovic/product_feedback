@@ -41,7 +41,7 @@ const page = () => {
   if (currentFeedback) {
     return (
       <div className="inner-container">
-        <div>
+        <div className="mx-auto tracking-tight sm:w-[490px]">
           <GoBackButton
             stroke="blue"
             onClick={() => router.push(`/feedback/${feedbackId}`)}

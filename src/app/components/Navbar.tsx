@@ -59,7 +59,6 @@ const Navbar = () => {
             name="sort"
             value={sortBy}
             className="text-gray-900 rounded-lg border-none bg-secondary p-0 text-xs font-bold visited:border-none focus:outline-none sm:p-2.5 sm:text-sm"
-            cursor-pointer
           >
             {sortOptions.map((option) => {
               return (
