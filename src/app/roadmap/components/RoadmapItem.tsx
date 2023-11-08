@@ -46,28 +46,8 @@ const RoadmapItem = ({ feedback, name }: RoadmapItemProps) => {
         <span className={`roadmap-tag ${status.toLowerCase()}`}></span>
         <p className="pt-7.5">{name}</p>
       </div>
-      <Link href={`/feedback/${id}`}>
-        <h3 className="pb-3 font-bold text-secondary">{title}</h3>
-      </Link>
-      <p className="pb-5 leading-5">{description}</p>
-      <Button className="button-category">{category}</Button>
-      <div className="mt-3.5 flex flex-row items-center justify-between">
-        <ButtonVote
-          className="md:btn-upvote-x"
-          onClick={() => {}}
-          upvoted={upvoted}
-        >
-          {upvotes}
-        </ButtonVote>
-        <CommentsIcon
-          className={`ml-1.5 font-bold ${
-            !comments?.length ? 'text-secondary/50' : 'text-secondary'
-          }`}
-        >
-          {comments?.length > 0 ? comments.length : 0}
-        </CommentsIcon>
-      </div>
-      {/* <FeedbackCard feedback={feedback} /> */}
+
+      <FeedbackCard feedback={feedback} name={name} />
     </div>
   );
 };

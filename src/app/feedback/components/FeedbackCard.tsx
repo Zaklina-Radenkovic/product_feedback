@@ -13,9 +13,10 @@ import {
 
 interface iSuggestionItem {
   feedback: Feedback;
+  name: string;
 }
 
-const FeedbackCard = ({ feedback }: iSuggestionItem) => {
+const FeedbackCard = ({ feedback, name }: iSuggestionItem) => {
   const { upvotes, title, description, category, comments, id, upvoted } =
     feedback;
   // const [upvoted, setUpvoted] = useState(false);
@@ -48,6 +49,37 @@ const FeedbackCard = ({ feedback }: iSuggestionItem) => {
       setFeedbacks(feedbacks);
     }
   };
+
+  if (name) {
+    return (
+      <>
+        <Link href={`/feedback/${id}`}>
+          <h3 className="pb-3 font-bold text-secondary">{title}</h3>
+        </Link>
+        <p className="pb-5 leading-5">{description}</p>
+        <Button className="button-category">{category}</Button>
+        <div className="mt-3.5 flex flex-row items-center justify-between">
+          <ButtonVote
+            className={`md:btn-upvote-x ${
+              upvoted ? 'bg-primary text-white' : ''
+            }`}
+            // className="md:btn-upvote-x"
+            onClick={handleUpvote}
+            upvoted={upvoted}
+          >
+            {upvotes}
+          </ButtonVote>
+          <CommentsIcon
+            className={`ml-1.5 font-bold ${
+              !comments?.length ? 'text-secondary/50' : 'text-secondary'
+            }`}
+          >
+            {comments?.length > 0 ? comments.length : 0}
+          </CommentsIcon>
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className="feedback">
