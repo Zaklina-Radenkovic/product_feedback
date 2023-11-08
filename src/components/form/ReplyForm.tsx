@@ -1,5 +1,5 @@
-import ButtonFeedback from "../button/ButtonFeedback";
-import { useState, Dispatch, SetStateAction } from "react";
+import ButtonFeedback from '../button/ButtonFeedback';
+import { useState, Dispatch, SetStateAction } from 'react';
 import {
   getFeedbacksAndDocuments,
   getDocument,
@@ -7,11 +7,11 @@ import {
   updateComments,
   updateFeedback,
   removeItem,
-} from "@/lib/firebase";
-import { nanoid } from "nanoid";
-import { useFeedbackContext } from "@/state/feedback";
-import { ReplyType, CommentType } from "@/types/models";
-import { useCommentsContext } from "@/state/comments";
+} from '@/lib/firebase';
+import { nanoid } from 'nanoid';
+import { useFeedbackContext } from '@/state/feedback';
+import { ReplyType, CommentType } from '@/types/models';
+import { useCommentsContext } from '@/state/comments';
 
 type ReplyFormProps = {
   comment: CommentType;
@@ -20,10 +20,10 @@ type ReplyFormProps = {
 
 const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
   const { user, id } = comment;
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const { setFeedbacks } = useFeedbackContext();
   const { currentFeedback, feedbackId } = useCommentsContext();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const textHandler = (e: { target: { value: SetStateAction<string> } }) => {
     setText(e.target.value);
@@ -32,15 +32,15 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    if (text.trim() === "") return setError(`Reply can't be empty!`);
+    if (text.trim() === '') return setError(`Reply can't be empty!`);
 
     const newReply: ReplyType = {
       content: text,
-      replayingTo: "",
+      replyingTo: '',
       user: {
-        image: "user-images/image-george.jpg",
-        name: "George Partridge",
-        username: "soccerviewer8",
+        image: 'user-images/image-george.jpg',
+        name: 'George Partridge',
+        username: 'soccerviewer8',
       },
       id: nanoid(),
     };
@@ -59,7 +59,7 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
     try {
       if (newReply) {
         const comment = currentFeedback?.comments.find(
-          (comment) => comment.id === id
+          (comment) => comment.id === id,
         );
         //first we need to remove it, because we will have a duplicate comment
         await removeItem(feedbackId as any, comment as any);
@@ -108,7 +108,7 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
       // await updateFeedback(feedback?.id, { ...feedback, comments });
       //// reply to comment
 
-      const feedbacks = await getFeedbacksAndDocuments("feedbacks");
+      const feedbacks = await getFeedbacksAndDocuments('feedbacks');
       setFeedbacks(feedbacks);
     } catch (error) {
       console.log(error);
@@ -118,7 +118,7 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-row ml-16 justify-between"
+      className="ml-16 flex flex-row justify-between"
     >
       <textarea
         onChange={textHandler}
@@ -126,12 +126,12 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
         rows={2}
         value={text}
         maxLength={250}
-        className="block p-5 text-sm text-gray-900 bg-gray-light rounded-lg mb-[1.87rem] focus:outline-primary focus:outline-1 w-[85%]"
+        className="text-gray-900 mb-[1.87rem] block w-[85%] rounded-lg bg-gray-light p-5 text-sm focus:outline-1 focus:outline-primary"
         placeholder={`Reply to ${comment && user?.username}`}
       ></textarea>
       {error && <p className="">{error}</p>}
       <ButtonFeedback
-        className="button-feedback px-4 text-xs py-3 self-baseline"
+        className="button-feedback self-baseline px-4 py-3 text-xs"
         type="submit"
         // disabled={submitting}
       >
