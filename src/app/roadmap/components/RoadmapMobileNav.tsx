@@ -7,7 +7,7 @@ import RoadmapListItems from './RoadmapListItems';
 const RoadmapMobileNav = ({ data }: any) => {
   const [active, setActive] = useState(data[0]);
 
-  const activeBtn = (value) => {
+  const activeBtn = (value: any) => {
     setActive(value);
   };
 
