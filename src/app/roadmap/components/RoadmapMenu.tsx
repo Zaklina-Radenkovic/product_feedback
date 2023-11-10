@@ -4,7 +4,7 @@ import { useFeedbackContext } from '../../../state/feedback';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { useStatusFeedbacks } from '@/hooks/useStatusFeedbacks';
 
-const RoadmapMenu = ({ setIsOpen }) => {
+const RoadmapMenu = ({ setIsOpen }: any) => {
   const { loading } = useFeedbackContext();
   const { plannedFeedbacks, inProgressFeedbacks, liveFeedbacks } =
     useStatusFeedbacks();

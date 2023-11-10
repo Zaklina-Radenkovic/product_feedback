@@ -6,11 +6,11 @@ import RoadmapListItems from './RoadmapListItems';
 import { useStatusFeedbacks } from '@/hooks/useStatusFeedbacks';
 import RoadmapMobileNav from './RoadmapMobileNav';
 
-const Roadmap = ({ roadmapData }) => {
+const Roadmap = ({ roadmapData }: any) => {
   return (
     <div className="roadmap">
       {roadmapData.length > 0 &&
-        roadmapData.map((data) => (
+        roadmapData.map((data: any) => (
           <div key={data.id}>
             <h3 className="mb-3.5 font-bold text-secondary">
               {data.name} (
