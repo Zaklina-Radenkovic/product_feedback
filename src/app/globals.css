@@ -160,6 +160,12 @@ body {
   column-gap: 1.5rem;
 }
 
+.roadmap-mobile {
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(auto, 1fr));
+}
+
 .roadmap-item {
   @apply box;
   max-width: 18.5rem;

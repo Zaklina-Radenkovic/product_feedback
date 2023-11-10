@@ -4,7 +4,7 @@ import { useFeedbackContext } from '../../../state/feedback';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { useStatusFeedbacks } from '@/hooks/useStatusFeedbacks';
 
-const RoadmapMenu = () => {
+const RoadmapMenu = ({ setIsOpen }) => {
   const { loading } = useFeedbackContext();
   const { plannedFeedbacks, inProgressFeedbacks, liveFeedbacks } =
     useStatusFeedbacks();
@@ -21,6 +21,7 @@ const RoadmapMenu = () => {
       <div className="flex items-center justify-between gap-2 pb-6">
         <h3 className="font-bold text-secondary">Roadmap</h3>
         <Link
+          onClick={() => setIsOpen(false)}
           href={!loading ? {} : '/roadmap'}
           className={`text-xs/3 underline  
             ${
