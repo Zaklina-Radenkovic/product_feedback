@@ -1,9 +1,7 @@
-// "use client";
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import Suggestions from './feedback/components/Suggestions';
 import { Suspense, lazy } from 'react';
-import Loading from './loading';
 import Main from './components/Main';
 
 // const Suggestions = lazy(() => import("@/components/feedbacks/Suggestions"));
@@ -17,7 +15,6 @@ export default async function Home() {
       <Sidebar />
       <Main>
         <Navbar />
-
         <Suggestions />
       </Main>
     </div>
