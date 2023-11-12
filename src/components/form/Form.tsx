@@ -149,7 +149,7 @@ const Form: FC<FormProps> = ({
             className="button-sbm"
             type="submit"
           >
-            Save Changes
+            {variant === 'edit' ? 'Save Changes' : 'Add Feedback'}
           </ButtonFeedback>
           <Button
             className="button bg-secondary  hover:bg-secondary"
