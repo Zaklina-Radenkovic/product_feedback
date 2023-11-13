@@ -25,7 +25,13 @@ const Comment = ({ comment }: CommentProps) => {
       <div className="replies">
         {comment?.replies &&
           comment?.replies.map((reply, index) => (
-            <Reply key={index} reply={reply} open={open} setOpen={setOpen} />
+            <Reply
+              key={index}
+              reply={reply}
+              open={open}
+              setOpen={setOpen}
+              comment={comment}
+            />
           ))}
       </div>
     </div>

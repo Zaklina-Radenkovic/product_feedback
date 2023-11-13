@@ -1,4 +1,4 @@
-import { ReplyType } from '../../types/models';
+import { CommentType, ReplyType } from '../../types/models';
 import CommentHeader from '../comments/CommentHeader';
 import { useState, Dispatch, SetStateAction } from 'react';
 import { useCommentsContext } from '@/state/comments';
@@ -15,9 +15,10 @@ type ReplyProps = {
   reply: ReplyType;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  comment: CommentType;
 };
 
-const Reply = ({ reply, open, setOpen }: ReplyProps) => {
+const Reply = ({ reply, comment, open, setOpen }: ReplyProps) => {
   const { content, replyingTo, user } = reply;
   // const [text, setText] = useState('');
   const [openReply, setOpenReply] = useState(false);
@@ -47,7 +48,7 @@ const Reply = ({ reply, open, setOpen }: ReplyProps) => {
         user={user}
         open={openReply}
         setOpen={setOpenReply}
-        comment={undefined}
+        comment={comment}
       />
       <div>
         {/* <p className="ml-16 pb-[30px] pt-4 text-[13px] leading-4 sm:text-base sm:leading-5"> */}
