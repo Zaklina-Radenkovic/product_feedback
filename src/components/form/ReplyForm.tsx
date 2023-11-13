@@ -20,6 +20,7 @@ type ReplyFormProps = {
 
 const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
   const { user, id } = comment;
+  console.log(user.username);
   const [text, setText] = useState('');
   const { setFeedbacks } = useFeedbackContext();
   const { currentFeedback, feedbackId } = useCommentsContext();
@@ -36,7 +37,7 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
 
     const newReply: ReplyType = {
       content: text,
-      replyingTo: '',
+      replyingTo: user.username,
       user: {
         image: 'user-images/image-george.jpg',
         name: 'George Partridge',
