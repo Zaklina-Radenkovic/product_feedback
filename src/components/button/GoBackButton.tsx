@@ -1,8 +1,7 @@
-import Button from "./Button";
+import Button from './Button';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   stroke: string;
-  // onClick: () => void;
 }
 
 const GoBackButton = ({ stroke, onClick, ...props }: Props) => {
@@ -17,10 +16,7 @@ const GoBackButton = ({ stroke, onClick, ...props }: Props) => {
           fillRule="evenodd"
         />
       </svg>
-      <span
-        // className={`text-xs/3 ml-[15px] hover:underline font-bold ` + className}
-        className="text-xs/3 ml-[15px] hover:underline font-bold"
-      >
+      <span className="ml-[15px] text-xs/3 font-bold hover:underline">
         Go Back
       </span>
     </Button>

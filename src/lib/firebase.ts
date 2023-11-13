@@ -1,7 +1,5 @@
-// Import the functions you need from the SDKs you need
-
-import { iFeedbackToAdd } from "@/types/models";
-import { initializeApp } from "firebase/app";
+import { iFeedbackToAdd } from '@/types/models';
+import { initializeApp } from 'firebase/app';
 import {
   getFirestore,
   doc,
@@ -10,22 +8,21 @@ import {
   getDocs,
   deleteDoc,
   query,
-  addDoc,
   collection,
   updateDoc,
   DocumentData,
   writeBatch,
   arrayUnion,
   arrayRemove,
-} from "firebase/firestore";
+} from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDEtBkoLCeYrhP6jY1iwvoqxp4wGuhRms8",
-  authDomain: "product-feedback-66679.firebaseapp.com",
-  projectId: "product-feedback-66679",
-  storageBucket: "product-feedback-66679.appspot.com",
-  messagingSenderId: "785861883724",
-  appId: "1:785861883724:web:5b9a7bbf7ff1ce2e0541e9",
+  apiKey: 'AIzaSyDEtBkoLCeYrhP6jY1iwvoqxp4wGuhRms8',
+  authDomain: 'product-feedback-66679.firebaseapp.com',
+  projectId: 'product-feedback-66679',
+  storageBucket: 'product-feedback-66679.appspot.com',
+  messagingSenderId: '785861883724',
+  appId: '1:785861883724:web:5b9a7bbf7ff1ce2e0541e9',
 };
 
 // Initialize Firebase
@@ -36,7 +33,7 @@ export const db = getFirestore();
 //writing feedbacks onto firebase
 export const addCollectionAndDocuments = async (
   collectionKey: string,
-  objectsToAdd: DocumentData[]
+  objectsToAdd: DocumentData[],
 ) => {
   const batch = writeBatch(db);
   const collectionRef = collection(db, collectionKey);
@@ -51,8 +48,8 @@ export const addCollectionAndDocuments = async (
 };
 
 //reading feedbacks
-export const getFeedbacksAndDocuments = async (arg: any) => {
-  const collectionRef = collection(db, "feedbacks");
+export const getFeedbacksAndDocuments = async (nameOfCollection: string) => {
+  const collectionRef = collection(db, 'feedbacks');
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q);
   const documentMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
@@ -69,19 +66,14 @@ export const getFeedbacksAndDocuments = async (arg: any) => {
 
 /// getting single document from collection by ID
 export const getDocument = async (id: string) => {
-  const documentRef = doc(db, "feedbacks", id);
+  const documentRef = doc(db, 'feedbacks', id);
   const docSnap = await getDoc(documentRef);
   if (docSnap.exists()) return docSnap.data();
 };
 
 ///adding document to collection
 export const addDocument = async (id: string, data: iFeedbackToAdd) => {
-  // const feedbacksCollectionRef = doc(collection(db, "feedbacks"));
-  // return await addDoc(collection(db, "feedbacks"), {
-  //   ...data,
-  //   id: feedbacksCollectionRef.id,
-  // });
-  const documentRef = doc(db, "feedbacks", id);
+  const documentRef = doc(db, 'feedbacks', id);
   return await setDoc(documentRef, {
     ...data,
   });
@@ -89,7 +81,7 @@ export const addDocument = async (id: string, data: iFeedbackToAdd) => {
 
 //updating document
 export const updateFeedback = async (id: string, data = {}) => {
-  const documentRef = doc(db, "feedbacks", id);
+  const documentRef = doc(db, 'feedbacks', id);
   return await updateDoc(documentRef, {
     id,
     ...data,
@@ -98,13 +90,13 @@ export const updateFeedback = async (id: string, data = {}) => {
 
 ///delete document
 export const deleteFeedback = async (id: string) => {
-  const documentRef = doc(db, "feedbacks", id);
+  const documentRef = doc(db, 'feedbacks', id);
   return await deleteDoc(documentRef);
 };
 
 ////update comments array
 export const updateComments = async (id: string, newComment: {}) => {
-  const documentRef = doc(db, "feedbacks", id);
+  const documentRef = doc(db, 'feedbacks', id);
   return await updateDoc(documentRef, {
     comments: arrayUnion(newComment),
   });
@@ -112,7 +104,7 @@ export const updateComments = async (id: string, newComment: {}) => {
 
 ///Remove item from array
 export const removeItem = async (id: string, comment: {}) => {
-  const documentRef = doc(db, "feedbacks", id);
+  const documentRef = doc(db, 'feedbacks', id);
   return await updateDoc(documentRef, {
     comments: arrayRemove(comment),
   });

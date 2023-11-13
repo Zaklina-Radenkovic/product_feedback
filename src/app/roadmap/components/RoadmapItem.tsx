@@ -6,13 +6,13 @@ interface RoadmapItemProps {
   name: string;
 }
 
-const RoadmapItem = ({ feedback, name }: RoadmapItemProps) => {
-  type BorderColor = {
-    'orange-planned': string;
-    'blue-live': string;
-    tertiary: string;
-  };
+type BorderColor = {
+  'orange-planned': string;
+  'blue-live': string;
+  tertiary: string;
+};
 
+const RoadmapItem = ({ feedback, name }: RoadmapItemProps) => {
   const borderColor: BorderColor = {
     'orange-planned': 'border-orange-planned',
     'blue-live': 'border-blue-live',

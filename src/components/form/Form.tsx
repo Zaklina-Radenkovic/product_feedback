@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/button/Button';
 import ButtonFeedback from '@/components/button/ButtonFeedback';
 import InputGroup from './InputGroup';
-import { Feedback, iFeedbackToAdd } from '@/types/models';
+import { Feedback } from '@/types/models';
 
 const categorySelections = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'];
 const statusSelections = ['Suggestion', 'Planned', 'In-Progress', 'Live'];
@@ -16,7 +16,12 @@ interface FormProps {
   submitting: boolean;
   variant: string;
   onDelete: () => Promise<void>;
-  onSubmit: (data: iFeedbackToAdd) => Promise<void>;
+  onSubmit: (data: {
+    title: string;
+    category: string;
+    description: string;
+    status: string;
+  }) => Promise<void>;
 }
 
 const Form: FC<FormProps> = ({
@@ -76,7 +81,7 @@ const Form: FC<FormProps> = ({
       status: status.toLowerCase(),
     };
 
-    onSubmit(data as any);
+    onSubmit(data);
 
     setCategory('');
     setFeedbackTitle('');

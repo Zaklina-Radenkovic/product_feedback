@@ -11,13 +11,20 @@ const page = () => {
   const router = useRouter();
   const { setFeedbacks } = useFeedbackContext();
 
-  const handleSubmitForm = async (data: iFeedbackToAdd) => {
+  const handleSubmitForm = async (data: {
+    title: string;
+    category: string;
+    description: string;
+    status: string;
+  }) => {
     const newFeedback: iFeedbackToAdd = {
       ...data,
       upvotes: 0,
       status: 'suggestion',
       comments: [],
       id: nanoid(),
+      color: null,
+      upvoted: null,
     };
 
     try {
@@ -47,9 +54,9 @@ const page = () => {
             upvotes: 0,
             status: '',
             description: '',
-            color: undefined,
+            color: null,
             comments: [],
-            upvoted: undefined,
+            upvoted: null,
           }}
           submitting={false}
           onDelete={function (): Promise<void> {

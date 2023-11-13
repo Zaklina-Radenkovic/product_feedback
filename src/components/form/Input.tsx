@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 interface InputProps {
   type: string;
@@ -17,12 +17,6 @@ const Input: FC<InputProps> = ({
   onChange,
   dropdownSelections,
 }) => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggleDropdown = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    setDropdownOpen(!dropdownOpen);
-  };
   return (
     <>
       {type === 'text' && (

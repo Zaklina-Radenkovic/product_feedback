@@ -7,6 +7,25 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import { useStatusFeedbacks } from '@/hooks/useStatusFeedbacks';
 import { useWindowSize } from '@uidotdev/usehooks';
 import { useFeedbackContext } from '@/state/feedback';
+import { CommentType } from '@/types/models';
+
+export type RoadmapData = {
+  id: number;
+  name: string;
+  description: string;
+  color: string;
+  feedbacks: {
+    status: string;
+    color: string;
+    id: string | null;
+    title: string;
+    category: string;
+    upvotes: number;
+    description: string;
+    comments: CommentType[];
+    upvoted: boolean | null;
+  }[];
+};
 
 export default function RoadmapPage() {
   const size = useWindowSize();

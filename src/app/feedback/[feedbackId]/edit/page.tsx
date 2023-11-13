@@ -28,7 +28,7 @@ const page = () => {
 
   const handleSubmitForm = async (editFeedback: {}) => {
     try {
-      await updateFeedback(feedbackId as any, editFeedback);
+      await updateFeedback(feedbackId as string, editFeedback);
 
       const feedbacks = await getFeedbacksAndDocuments('feedbacks');
       setFeedbacks(feedbacks);

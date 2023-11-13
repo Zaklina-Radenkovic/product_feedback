@@ -4,7 +4,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   onClick: () => void;
   className: string | undefined;
-  upvoted: boolean | undefined;
+  upvoted: boolean | null;
 }
 
 const ButtonVote = ({ children, onClick, upvoted, className }: Props) => {

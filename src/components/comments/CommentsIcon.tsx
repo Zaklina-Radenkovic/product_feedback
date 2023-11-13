@@ -1,11 +1,11 @@
-import Image from "next/image";
-import commentsIcon from "../../../public/icon-comments.svg";
+import Image from 'next/image';
+import commentsIcon from '../../../public/icon-comments.svg';
 
 const CommentsIcon = ({
   children,
   className,
 }: {
-  children: any;
+  children: number;
   className: string;
 }) => {
   return (

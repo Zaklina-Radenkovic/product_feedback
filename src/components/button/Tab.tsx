@@ -1,6 +1,14 @@
-import React from 'react';
+import { RoadmapData } from '@/app/roadmap/page';
+import React, { ReactNode } from 'react';
 
-const Tab = ({ children, active, el, onActiveBtn }: any) => {
+type TabProps = {
+  children: ReactNode;
+  active: boolean;
+  el: RoadmapData;
+  onActiveBtn: (value: RoadmapData) => void;
+};
+
+const Tab = ({ children, active, el, onActiveBtn }: TabProps) => {
   return (
     <button
       className={`py-3 text-base outline-0 ${

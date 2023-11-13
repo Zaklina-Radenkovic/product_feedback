@@ -1,8 +1,8 @@
-"use client";
-import { createContext, ReactNode, useContext } from "react";
-import { useFeedbackContext } from "@/state/feedback";
-import { useParams } from "next/navigation";
-import { CommentType, Feedback } from "@/types/models";
+'use client';
+import { createContext, ReactNode, useContext } from 'react';
+import { useFeedbackContext } from '@/state/feedback';
+import { useParams } from 'next/navigation';
+import { Feedback } from '@/types/models';
 
 const CommentsContext = createContext<{
   currentFeedback: Feedback | undefined;
@@ -10,16 +10,16 @@ const CommentsContext = createContext<{
 }>({
   currentFeedback: {
     id: null,
-    title: "",
-    category: "",
+    title: '',
+    category: '',
     upvotes: 0,
-    status: "",
-    description: "",
-    color: undefined,
+    status: '',
+    description: '',
+    color: null,
     comments: [],
-    upvoted: undefined,
+    upvoted: null,
   },
-  feedbackId: "",
+  feedbackId: '',
 });
 
 export const CommentsProvider = ({ children }: { children: ReactNode }) => {
@@ -27,7 +27,7 @@ export const CommentsProvider = ({ children }: { children: ReactNode }) => {
   const params = useParams();
   const { feedbackId } = params;
   const currentFeedback = feedbacks?.find(
-    (feedback: Feedback) => feedback.id === feedbackId
+    (feedback: Feedback) => feedback.id === feedbackId,
   );
 
   return (

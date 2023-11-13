@@ -1,6 +1,5 @@
 'use client';
 import { useRouter } from 'next/navigation';
-
 import Image from 'next/image';
 import suggestions from '../../../public/assets/images/icon-suggestions.svg';
 import { useSortedFeedbackContext } from '@/state/sortedFeedback';

@@ -18,7 +18,7 @@ const FeedbackCard = ({ feedback, name }: iSuggestionItem) => {
   const [feedbackVotes, setFeedbackVotes] = useState(upvotes);
   const { setFeedbacks } = useFeedbackContext();
   const handleUpvote = async () => {
-    if (upvoted === undefined || upvoted === false) {
+    if (upvoted === null || upvoted === false) {
       setFeedbackVotes((upvotes) => feedback?.upvotes + 1);
 
       const data = {

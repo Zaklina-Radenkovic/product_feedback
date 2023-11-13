@@ -2,10 +2,7 @@ import ButtonFeedback from '../button/ButtonFeedback';
 import { useState, Dispatch, SetStateAction } from 'react';
 import {
   getFeedbacksAndDocuments,
-  getDocument,
-  db,
   updateComments,
-  updateFeedback,
   removeItem,
 } from '@/lib/firebase';
 import { nanoid } from 'nanoid';
@@ -20,7 +17,6 @@ type ReplyFormProps = {
 
 const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
   const { user, id } = comment;
-  console.log(user.username);
   const [text, setText] = useState('');
   const { setFeedbacks } = useFeedbackContext();
   const { currentFeedback, feedbackId } = useCommentsContext();
@@ -52,11 +48,11 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
           (comment) => comment.id === id,
         );
         //first we need to remove it, because we will have a duplicate comment
-        await removeItem(feedbackId as any, comment as any);
+        await removeItem(feedbackId as string, comment as {});
         const { replies } = comment || {};
         replies && replies.push(newReply);
         const newComment = { ...comment, replies };
-        await updateComments(feedbackId as any, newComment);
+        await updateComments(feedbackId as string, newComment);
         setOpen(false);
       }
 

@@ -8,7 +8,6 @@ type Comments = {
 
 const Comments = () => {
   const { currentFeedback } = useCommentsContext();
-  // const lastEl = feedback.comments.slice(-1);
 
   if (currentFeedback?.comments?.length) {
     return (

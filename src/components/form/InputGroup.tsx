@@ -1,5 +1,5 @@
-import Input from "./Input";
-import { ChangeEvent } from "react";
+import Input from './Input';
+import { ChangeEvent } from 'react';
 
 type InputGroupProps = {
   type: string;
@@ -21,7 +21,7 @@ const InputGroup = ({
 }: InputGroupProps) => {
   return (
     <>
-      <h5 className="pb-2.5 text-secondary font-bold">{title}</h5>
+      <h5 className="pb-2.5 font-bold text-secondary">{title}</h5>
       <Input
         type={type}
         label={label}

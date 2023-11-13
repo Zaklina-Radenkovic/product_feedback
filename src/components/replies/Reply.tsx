@@ -19,29 +19,28 @@ type ReplyProps = {
 
 const Reply = ({ reply, open, setOpen }: ReplyProps) => {
   const { content, replyingTo, user } = reply;
-  const [text, setText] = useState('');
+  // const [text, setText] = useState('');
   const [openReply, setOpenReply] = useState(false);
-  
 
-  const textHandler = (e: { target: { value: SetStateAction<string> } }) => {
-    setText(e.target.value);
-  };
+  // const textHandler = (e: { target: { value: SetStateAction<string> } }) => {
+  //   setText(e.target.value);
+  // };
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+  // const handleSubmit = async (e: { preventDefault: () => void }) => {
+  //   e.preventDefault();
 
-    const collectionRef = collection(db, 'feedbacks');
-    const desired_value = content;
+  //   const collectionRef = collection(db, 'feedbacks');
+  //   const desired_value = content;
 
-    const q = query(collectionRef, where('comments', '==', desired_value));
+  //   const q = query(collectionRef, where('comments', '==', desired_value));
 
-    const querySnapshot = await getDocs(q);
-    console.log(querySnapshot);
-    querySnapshot.forEach((doc) => {
-      //   // doc.data() is never undefined for query doc snapshots
-      console.log(doc.data());
-    });
-  };
+  //   const querySnapshot = await getDocs(q);
+  //   console.log(querySnapshot);
+  //   querySnapshot.forEach((doc) => {
+  //     //   // doc.data() is never undefined for query doc snapshots
+  //     console.log(doc.data());
+  //   });
+  // };
   return (
     <div className="reply-content">
       <CommentHeader

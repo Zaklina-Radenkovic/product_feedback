@@ -2,11 +2,16 @@
 import Tab from '@/components/button/Tab';
 import { useState } from 'react';
 import RoadmapListItems from './RoadmapListItems';
+import { RoadmapData } from '../page';
 
-const RoadmapMobileNav = ({ data }: any) => {
+type RoadmapMobileNavProps = {
+  data: RoadmapData[];
+};
+
+const RoadmapMobileNav = ({ data }: RoadmapMobileNavProps) => {
   const [active, setActive] = useState(data[0]);
 
-  const activeBtn = (value: any) => {
+  const activeBtn = (value: RoadmapData) => {
     setActive(value);
   };
 
@@ -14,7 +19,7 @@ const RoadmapMobileNav = ({ data }: any) => {
     <>
       <div className="roadmap-mobile border-b-2 border-b-secondary/10">
         {data.length > 0 &&
-          data.map((el: any) => (
+          data.map((el: RoadmapData) => (
             <Tab
               el={el}
               key={el.id}
@@ -34,11 +39,7 @@ const RoadmapMobileNav = ({ data }: any) => {
           {active.feedbacks.length > 0 ? active.feedbacks.length : 0})
         </h3>
         <p className="mb-9 mt-4">{active.description}</p>
-        <RoadmapListItems
-          key={data.id}
-          feedbacksList={active.feedbacks}
-          name={active.name}
-        />
+        <RoadmapListItems feedbacksList={active.feedbacks} name={active.name} />
       </div>
     </>
   );

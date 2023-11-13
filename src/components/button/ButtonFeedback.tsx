@@ -2,7 +2,6 @@ import Button from './Button';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  // onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
 const ButtonFeedback = ({ onClick, children, ...props }: Props) => {
@@ -12,7 +11,6 @@ const ButtonFeedback = ({ onClick, children, ...props }: Props) => {
       onClick={onClick}
       {...props}
     >
-      {/* &#43; Add feedback */}
       {children}
     </Button>
   );

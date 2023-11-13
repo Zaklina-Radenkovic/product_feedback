@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   useContext,
   createContext,
@@ -6,8 +6,8 @@ import {
   ReactNode,
   Dispatch,
   SetStateAction,
-} from "react";
-import { Feedback } from "@/types/models";
+} from 'react';
+import { Feedback } from '@/types/models';
 
 const SortedFeedbackContext = createContext<{
   sortedFeedbacks: Feedback[] | null;
@@ -18,53 +18,53 @@ const SortedFeedbackContext = createContext<{
   filteredFeedbacks: any[];
 }>({
   sortedFeedbacks: [],
-  sortBy: "",
+  sortBy: '',
   setSortBy: () => null,
-  category: "",
-  setCategory: (): string => "",
+  category: '',
+  setCategory: (): string => '',
   filteredFeedbacks: [],
 });
 
-import { useFeedbackContext } from "./feedback";
+import { useFeedbackContext } from './feedback';
 
 export const SortedFeedbackProvider = ({
   children,
 }: {
   children: ReactNode;
 }) => {
-  const [sortBy, setSortBy] = useState<string>("mostUpvotes");
-  const [category, setCategory] = useState<string>("all");
+  const [sortBy, setSortBy] = useState<string>('mostUpvotes');
+  const [category, setCategory] = useState<string>('all');
   const { feedbacks } = useFeedbackContext();
 
   let filteredFeedbacks = [...feedbacks];
 
   switch (category) {
-    case "All":
+    case 'All':
       filteredFeedbacks = [...feedbacks];
       break;
-    case "Bug":
+    case 'Bug':
       filteredFeedbacks = feedbacks.filter(
-        (feedback) => feedback.category === "bug"
+        (feedback) => feedback.category === 'bug',
       );
       break;
-    case "Enhancement":
+    case 'Enhancement':
       filteredFeedbacks = feedbacks.filter(
-        (feedback) => feedback.category === "enhancement"
+        (feedback) => feedback.category === 'enhancement',
       );
       break;
-    case "Feature":
+    case 'Feature':
       filteredFeedbacks = feedbacks.filter(
-        (feedback) => feedback.category === "feature"
+        (feedback) => feedback.category === 'feature',
       );
       break;
-    case "UI":
+    case 'UI':
       filteredFeedbacks = feedbacks.filter(
-        (feedback) => feedback.category === "UI"
+        (feedback) => feedback.category === 'UI',
       );
       break;
-    case "UX":
+    case 'UX':
       filteredFeedbacks = feedbacks.filter(
-        (feedback) => feedback.category === "UX"
+        (feedback) => feedback.category === 'UX',
       );
       break;
     default:
@@ -73,28 +73,16 @@ export const SortedFeedbackProvider = ({
 
   //feedbacks with status 'suggestion' sorted by most/least upvotes and comments
   const sortedFeedbacks = filteredFeedbacks
-    .filter((item) => item.status === "suggestion")
+    .filter((item) => item.status === 'suggestion')
     .sort((a, b) => {
       switch (sortBy) {
-        case "mostUpvotes":
+        case 'mostUpvotes':
           return b.upvotes - a.upvotes;
-        case "leastUpvotes":
+        case 'leastUpvotes':
           return a.upvotes - b.upvotes;
-        case "mostComments":
-          // if (!a.comments) {
-          //   return -1;
-          // }
-          // if (!b.comments) {
-          //   return 1;
-          // }
+        case 'mostComments':
           return b.comments.length - a.comments.length;
-        case "leastComments":
-          // if (!a.comments) {
-          //   return 1;
-          // }
-          // if (!b.comments) {
-          //   return -1;
-          // }
+        case 'leastComments':
           return a.comments.length - b.comments.length;
         default:
           return b.upvotes - a.upvotes;
