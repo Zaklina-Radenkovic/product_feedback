@@ -1,27 +1,6 @@
 import { useState } from 'react';
 import ButtonFeedback from '../button/ButtonFeedback';
-import {
-  doc,
-  getDoc,
-  setDoc,
-  getDocs,
-  deleteDoc,
-  query,
-  addDoc,
-  collection,
-  updateDoc,
-  DocumentData,
-  writeBatch,
-  arrayUnion,
-  DocumentReference,
-} from 'firebase/firestore';
-import {
-  getFeedbacksAndDocuments,
-  updateComments,
-  updateFeedback,
-  getDocument,
-  db,
-} from '@/lib/firebase';
+import { getFeedbacksAndDocuments, updateComments } from '@/lib/firebase';
 import { nanoid } from 'nanoid';
 import { useFeedbackContext } from '@/state/feedback';
 import { CommentType } from '@/types/models';

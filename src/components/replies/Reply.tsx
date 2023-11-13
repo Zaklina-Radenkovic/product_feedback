@@ -1,6 +1,5 @@
 import { ReplyType } from '../../types/models';
 import CommentHeader from '../comments/CommentHeader';
-import ReplyForm from '../form/ReplyForm';
 import { useState, Dispatch, SetStateAction } from 'react';
 import { useCommentsContext } from '@/state/comments';
 import {
@@ -22,7 +21,7 @@ const Reply = ({ reply, open, setOpen }: ReplyProps) => {
   const { content, replyingTo, user } = reply;
   const [text, setText] = useState('');
   const [openReply, setOpenReply] = useState(false);
-  const { currentFeedback, feedbackId } = useCommentsContext();
+  
 
   const textHandler = (e: { target: { value: SetStateAction<string> } }) => {
     setText(e.target.value);

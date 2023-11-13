@@ -181,7 +181,7 @@ body {
   }
 
   .inner-container {
-    @apply relative flex flex-col px-5 pt-8 sm:px-[11.4%] sm:py-[95px];
+    @apply relative flex flex-col px-5 pt-8 sm:py-[95px];
   }
 
   .btn {
@@ -224,7 +224,7 @@ body {
   padding-top: 25px;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #f7f8fd;
+  border-bottom: 1px solid var(--background-color);
 }
 
 .comment:last-child {
@@ -261,7 +261,7 @@ body {
   left: 16px;
   width: 1px;
   height: 115%;
-  background-color: #f7f8fd;
+  background-color: var(--background-color);
 }
 .user {
   display: grid;

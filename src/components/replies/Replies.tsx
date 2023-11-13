@@ -1,7 +1,7 @@
-import React, { Dispatch, SetStateAction } from "react";
-import Reply from "./Reply";
-import { ReplyType } from "../../types/models";
-import { useCommentsContext } from "@/state/comments";
+import React, { Dispatch, SetStateAction } from 'react';
+import Reply from './Reply';
+import { ReplyType } from '../../types/models';
+import { useCommentsContext } from '@/state/comments';
 
 type RepliesProps = {
   open: boolean;
@@ -11,7 +11,7 @@ type RepliesProps = {
   replies: [];
 };
 
-const Replies = ({ open, setOpen, id, feedbackId, replies }: RepliesProps) => {
+const Replies = ({ open, setOpen, replies }: RepliesProps) => {
   const { comment }: any = useCommentsContext();
   const {} = comment?.replies;
 

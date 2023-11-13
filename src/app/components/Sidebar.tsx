@@ -7,7 +7,7 @@ import RoadmapMenu from '../roadmap/components/RoadmapMenu';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  // const [width, setWidth] = useState<number>(window.innerWidth)
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';

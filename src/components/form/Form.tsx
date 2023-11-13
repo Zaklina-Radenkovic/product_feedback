@@ -5,8 +5,6 @@ import Button from '@/components/button/Button';
 import ButtonFeedback from '@/components/button/ButtonFeedback';
 import InputGroup from './InputGroup';
 import { Feedback, iFeedbackToAdd } from '@/types/models';
-import Link from 'next/link';
-import { useFeedbackContext } from '@/state/feedback';
 
 const categorySelections = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'];
 const statusSelections = ['Suggestion', 'Planned', 'In-Progress', 'Live'];

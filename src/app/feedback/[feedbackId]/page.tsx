@@ -16,7 +16,7 @@ const page = () => {
   if (currentFeedback)
     return (
       <div className="inner-container">
-        <div className="mx-auto tracking-tight sm:w-[490px]">
+        <div className="mx-auto tracking-tight sm:w-[490px] md:w-[730px]">
           <header className="flex flex-row items-center justify-between">
             <GoBackButton stroke="blue" onClick={() => router.push('/')} />
             <Link href={`${feedbackId}/edit`}>

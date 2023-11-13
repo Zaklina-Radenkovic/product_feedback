@@ -1,6 +1,5 @@
-// "use client";
-import RoadmapItem from "./RoadmapItem";
-import { Feedback } from "@/types/models";
+import RoadmapItem from './RoadmapItem';
+import { Feedback } from '@/types/models';
 
 type RoadmapListItems = {
   feedbacksList: Feedback[];

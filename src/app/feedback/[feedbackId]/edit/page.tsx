@@ -1,7 +1,7 @@
 'use client';
+import { useParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import GoBackButton from '@/components/button/GoBackButton';
-import { useParams } from 'next/navigation';
 import Form from '@/components/form/Form';
 import { useFeedbackContext } from '@/state/feedback';
 import {
@@ -41,7 +41,7 @@ const page = () => {
   if (currentFeedback) {
     return (
       <div className="inner-container">
-        <div className="mx-auto tracking-tight sm:w-[490px]">
+        <div className="mx-auto tracking-tight sm:w-[490px] md:w-[730px]">
           <GoBackButton
             stroke="blue"
             onClick={() => router.push(`/feedback/${feedbackId}`)}

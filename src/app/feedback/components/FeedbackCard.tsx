@@ -1,15 +1,11 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import ButtonVote from '../../../components/button/ButtonVote';
 import Button from '../../../components/button/Button';
 import CommentsIcon from '../../../components/comments/CommentsIcon';
 import { useFeedbackContext } from '@/state/feedback';
 import { Feedback } from '@/types/models';
-import { useEffect, useState } from 'react';
-import {
-  getDocument,
-  updateFeedback,
-  getFeedbacksAndDocuments,
-} from '@/lib/firebase';
+import { updateFeedback, getFeedbacksAndDocuments } from '@/lib/firebase';
 
 interface iSuggestionItem {
   feedback: Feedback;
@@ -19,15 +15,11 @@ interface iSuggestionItem {
 const FeedbackCard = ({ feedback, name }: iSuggestionItem) => {
   const { upvotes, title, description, category, comments, id, upvoted } =
     feedback;
-  // const [upvoted, setUpvoted] = useState(false);
   const [feedbackVotes, setFeedbackVotes] = useState(upvotes);
   const { setFeedbacks } = useFeedbackContext();
   const handleUpvote = async () => {
-    // const feedback = await getDocument(id);
-
     if (upvoted === undefined || upvoted === false) {
       setFeedbackVotes((upvotes) => feedback?.upvotes + 1);
-      // setUpvoted(true);
 
       const data = {
         upvoted: true,
@@ -63,7 +55,6 @@ const FeedbackCard = ({ feedback, name }: iSuggestionItem) => {
             className={`md:btn-upvote-x ${
               upvoted ? 'bg-primary text-white' : ''
             }`}
-            // className="md:btn-upvote-x"
             onClick={handleUpvote}
             upvoted={upvoted}
           >

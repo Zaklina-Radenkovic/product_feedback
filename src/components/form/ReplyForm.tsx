@@ -45,17 +45,6 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
       id: nanoid(),
     };
 
-    // const replyToReply = {
-    //   content: text,
-    //   replayingTo: "",
-    //   user: {
-    //     image: "user-images/image-george.jpg",
-    //     name: "George Partridge",
-    //     username: "soccerviewer8",
-    //   },
-    //   id: nanoid(),
-    // };
-
     try {
       if (newReply) {
         const comment = currentFeedback?.comments.find(
@@ -70,44 +59,6 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
         setOpen(false);
       }
 
-      // if (replyToReply) {
-      // console.log(reply);
-      //first we need to remove it, because we will have a duplicate comment
-      // await removeItem(feedbackId, comment);
-      // const { replies } = comment || {};
-      // replies && replies.push(newReply);
-      // const newComment = { ...comment, replies };
-      // await updateComments(feedbackId, newComment);
-      // }
-      // const feedback = await getDocument(feedbackId);
-      // const feedbackRef = doc(db, "feedbacks", feedbackId);
-      // await updateDoc(feedbackRef, {
-
-      //    feedback?.comments.map((comment) => {
-      //   let replies2 = [];
-      //   if (comment.replies) {
-      //     comment.replies.map((reply) => {
-      //       // if (reply.id === id) {
-      //       replies2.push(replyToReply);
-      //       // }
-
-      //       return reply;
-      //     });
-      //   }
-      //   return comment;
-      //   comments: arrayUnion(replies2);
-      // })
-
-      //  });
-
-      //       // Atomically add a new region to the "regions" array field.
-      // await updateDoc(washingtonRef, {
-      //   regions: arrayUnion("greater_virginia")
-      // });
-
-      // await updateFeedback(feedback?.id, { ...feedback, comments });
-      //// reply to comment
-
       const feedbacks = await getFeedbacksAndDocuments('feedbacks');
       setFeedbacks(feedbacks);
     } catch (error) {
@@ -118,7 +69,7 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="ml-16 flex flex-row justify-between"
+      className="ml-16 flex flex-row justify-between gap-3"
     >
       <textarea
         onChange={textHandler}
@@ -131,7 +82,7 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
       ></textarea>
       {error && <p className="">{error}</p>}
       <ButtonFeedback
-        className="button-feedback self-baseline px-4 py-3 text-xs"
+        className="button-feedback self-baseline px-2 py-3 text-xs"
         type="submit"
         // disabled={submitting}
       >

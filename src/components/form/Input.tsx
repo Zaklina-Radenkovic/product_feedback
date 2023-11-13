@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler, FC, useState } from 'react';
+import { FC, useState } from 'react';
 
 interface InputProps {
   type: string;
@@ -47,7 +47,6 @@ const Input: FC<InputProps> = ({
           <select
             onChange={onChange}
             value={value}
-            // type={type}
             id="search"
             className="mb-6 w-full rounded-lg bg-gray-light px-2.5 py-3 focus:outline-1 focus:outline-primary sm:px-5"
           >
@@ -67,20 +66,11 @@ const Input: FC<InputProps> = ({
         <>
           <label className="pb-5 leading-4">{label}</label>
           <textarea
-            // onChange={(e) => setText(e.target.value)}
-            // id="message"
-            // rows={3}
-            // value={text}
-            // maxLength={characterLimit}
-            // className="block p-5 w-full text-sm text-gray-900 bg-gray-light rounded-lg mb-[1.87rem]  focus:outline-primary focus:outline-1"
-            // placeholder="Type your comment here..."
             onChange={onChange}
             id="message"
             rows={3}
             value={value}
-            // maxLength={characterLimit}
-            className="text-gray-900 mb-[1.87rem] block w-full rounded-lg bg-gray-light p-2.5 text-sm focus:outline-1  focus:outline-primary sm:p-5"
-            // placeholder="Type your comment here..."
+            className="text-gray-900 mb-[1.87rem] block w-full rounded-lg bg-gray-light p-2.5 text-base focus:outline-1  focus:outline-primary sm:p-5"
           ></textarea>
         </>
       )}

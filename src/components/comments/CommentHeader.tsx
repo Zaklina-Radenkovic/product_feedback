@@ -1,7 +1,6 @@
-import { useCommentsContext } from "@/state/comments";
-import User from "../User";
-import { UserType } from "@/types/models";
-import { useState, Dispatch, SetStateAction } from "react";
+import User from '../User';
+import { UserType } from '@/types/models';
+import { Dispatch, SetStateAction } from 'react';
 
 type CommentHeaderProps = {
   user: UserType;
@@ -21,12 +20,12 @@ const CommentHeader = ({
       <User user={user} />
       {comment?.user ? (
         <button
-          className="text-primary font-bold ml-auto"
+          className="ml-auto font-bold text-primary"
           onClick={() => {
             setOpen(!open);
           }}
         >
-          {!open ? "Reply" : "Cancel"}
+          {!open ? 'Reply' : 'Cancel'}
         </button>
       ) : null}
     </div>
