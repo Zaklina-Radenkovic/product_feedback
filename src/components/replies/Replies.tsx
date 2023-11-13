@@ -18,7 +18,13 @@ const Replies = ({ open, setOpen, replies }: RepliesProps) => {
   return (
     <div className="replies">
       {replies?.map((reply, index) => (
-        <Reply key={index} reply={reply} open={open} setOpen={setOpen} />
+        <Reply
+          key={index}
+          reply={reply}
+          open={open}
+          setOpen={setOpen}
+          comment={comment}
+        />
       ))}
     </div>
   );
