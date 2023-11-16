@@ -22,9 +22,9 @@ const CommentForm = () => {
     const newComment: CommentType = {
       content: text,
       user: {
-        image: 'user-images/image-george.jpg',
-        name: 'George Partridge',
-        username: 'soccerviewer8',
+        image: 'user-images/image-jesse.jpg',
+        name: 'Jesse Ronda',
+        username: 'jesse10930',
       },
       replies: [],
       id: nanoid(),

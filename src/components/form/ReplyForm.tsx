@@ -35,9 +35,9 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
       content: text,
       replyingTo: user.username,
       user: {
-        image: 'user-images/image-george.jpg',
-        name: 'George Partridge',
-        username: 'soccerviewer8',
+        image: 'user-images/image-jesse.jpg',
+        name: 'Jesse Ronda',
+        username: 'jesse10930',
       },
       id: nanoid(),
     };
