@@ -36,9 +36,7 @@ const Form: FC<FormProps> = ({
   const [feedbackTitle, setFeedbackTitle] = useState(
     currentFeedback ? currentFeedback.title : '',
   );
-  const [category, setCategory] = useState(
-    currentFeedback ? currentFeedback.category : '',
-  );
+  const [category, setCategory] = useState('feature');
   const [status, setStatus] = useState(
     currentFeedback ? currentFeedback.status : 'suggestion',
   );
@@ -76,17 +74,18 @@ const Form: FC<FormProps> = ({
       status: string;
     } = {
       title: feedbackTitle,
-      category: category.toLowerCase(),
+      category:
+        category.length === 2 ? category.toUpperCase() : category.toLowerCase(),
       description: description,
       status: status.toLowerCase(),
     };
 
     onSubmit(data);
 
-    setCategory('');
+    setCategory('feature');
     setFeedbackTitle('');
     setDescription('');
-    setStatus('');
+    setStatus('status');
   };
 
   return (
@@ -112,11 +111,7 @@ const Form: FC<FormProps> = ({
           name={''}
         />
         <InputGroup
-          value={
-            category.length === 2
-              ? category.toUpperCase()
-              : category.charAt(0).toUpperCase() + category.slice(1)
-          }
+          value={category}
           type="dropdown"
           title="Category"
           label="Choose a category for your feedback"
