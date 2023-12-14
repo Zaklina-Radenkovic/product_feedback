@@ -1,14 +1,14 @@
+import { nanoid } from 'nanoid';
+import toast from 'react-hot-toast';
 import { useState } from 'react';
 import ButtonFeedback from '../button/ButtonFeedback';
 import { getFeedbacksAndDocuments, updateComments } from '@/lib/firebase';
-import { nanoid } from 'nanoid';
 import { useFeedbackContext } from '@/state/feedback';
 import { CommentType } from '@/types/models';
 import { useCommentsContext } from '@/state/comments';
 
 const CommentForm = () => {
   const [text, setText] = useState('');
-  const [error, setError] = useState('');
 
   const { feedbackId } = useCommentsContext();
   const { setFeedbacks } = useFeedbackContext();
@@ -17,7 +17,7 @@ const CommentForm = () => {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (text.trim() === '') return setError(`Reply can't be empty!`);
+    if (text.trim() === '') return toast.error(`Comment can't be empty!`);
 
     const newComment: CommentType = {
       content: text,
@@ -53,7 +53,7 @@ const CommentForm = () => {
           className="text-gray-900 mb-[1.87rem] block w-full rounded-lg bg-gray-light p-5 text-sm  focus:outline-1 focus:outline-primary"
           placeholder="Type your comment here..."
         ></textarea>
-        {error && <p className="">{error}</p>}
+
         <div className="flex flex-row items-center justify-between">
           <span className="text-sm sm:text-base">
             {characterLimit - text.length} charachters left

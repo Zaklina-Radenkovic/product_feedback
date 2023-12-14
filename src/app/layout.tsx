@@ -5,7 +5,7 @@ import { CommentsProvider } from '@/state/comments';
 import './globals.css';
 
 import { Jost } from 'next/font/google';
-// import { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 const jost = Jost({
   subsets: ['latin'],
@@ -31,7 +31,7 @@ export default function RootLayout({
             <CommentsProvider>{children}</CommentsProvider>
           </SortedFeedbackProvider>
         </FeedbackProvider>
-        {/* <Toaster
+        <Toaster
           position="top-center"
           gutter={12}
           containerStyle={{ margin: '8px' }}
@@ -50,7 +50,7 @@ export default function RootLayout({
               color: '#f7f8fd',
             },
           }}
-        /> */}
+        />
       </body>
     </html>
   );

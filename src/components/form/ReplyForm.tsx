@@ -1,14 +1,15 @@
-import ButtonFeedback from '../button/ButtonFeedback';
+import { nanoid } from 'nanoid';
+import toast from 'react-hot-toast';
 import { useState, Dispatch, SetStateAction } from 'react';
 import {
   getFeedbacksAndDocuments,
   updateComments,
   removeItem,
 } from '@/lib/firebase';
-import { nanoid } from 'nanoid';
+import ButtonFeedback from '../button/ButtonFeedback';
 import { useFeedbackContext } from '@/state/feedback';
-import { ReplyType, CommentType } from '@/types/models';
 import { useCommentsContext } from '@/state/comments';
+import { ReplyType, CommentType } from '@/types/models';
 
 type ReplyFormProps = {
   comment: CommentType;
@@ -20,7 +21,6 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
   const [text, setText] = useState('');
   const { setFeedbacks } = useFeedbackContext();
   const { currentFeedback, feedbackId } = useCommentsContext();
-  const [error, setError] = useState('');
 
   const textHandler = (e: { target: { value: SetStateAction<string> } }) => {
     setText(e.target.value);
@@ -29,7 +29,7 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    if (text.trim() === '') return setError(`Reply can't be empty!`);
+    if (text.trim() === '') return toast.error(`Reply can't be empty!`);
 
     const newReply: ReplyType = {
       content: text,
@@ -77,7 +77,7 @@ const ReplyForm = ({ comment, setOpen }: ReplyFormProps) => {
         className="text-gray-900 mb-[1.87rem] block w-[85%] rounded-lg bg-gray-light p-5 text-sm focus:outline-1 focus:outline-primary"
         placeholder={`Reply to ${comment && user?.username}`}
       ></textarea>
-      {error && <p className="">{error}</p>}
+
       <ButtonFeedback
         className="button-feedback self-baseline px-2 py-3 text-xs"
         type="submit"

@@ -1,5 +1,6 @@
-import { FC, useState } from 'react';
 import Image from 'next/image';
+import toast from 'react-hot-toast';
+import { FC, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/button/Button';
 import ButtonFeedback from '@/components/button/ButtonFeedback';
@@ -46,26 +47,11 @@ const Form: FC<FormProps> = ({
 
   const router = useRouter();
 
-  // const editHandler = async () => {
-  //   try {
-  //     const feedback = await getDocument(feedbackId);
-
-  //     if (feedback) {
-  //       setFeedbackTitle(feedback?.title);
-  //       setCategory(feedback?.category);
-  //       setStatus(feedback.status);
-  //       setDescription(feedback.description);
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // useEffect(() => {
-  //   if (feedbackId) editHandler();
-  // }, [feedbackId]);
-
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
+
+    if (!feedbackTitle || !description)
+      return toast.error('Please, add title and description');
 
     const data: {
       title: string;
@@ -81,7 +67,9 @@ const Form: FC<FormProps> = ({
     };
 
     onSubmit(data);
-
+    variant === 'edit'
+      ? toast.success('Feedback successfully edited')
+      : toast.success('Feedback successfully added');
     setCategory('feature');
     setFeedbackTitle('');
     setDescription('');

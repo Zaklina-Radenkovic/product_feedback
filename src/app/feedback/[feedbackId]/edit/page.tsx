@@ -9,6 +9,7 @@ import {
   updateFeedback,
   deleteFeedback,
 } from '@/lib/firebase';
+import toast from 'react-hot-toast';
 
 const page = () => {
   const router = useRouter();
@@ -23,6 +24,7 @@ const page = () => {
     await deleteFeedback(feedbackId as string);
     const feedbacks = await getFeedbacksAndDocuments('feedbacks');
     setFeedbacks(feedbacks);
+    toast.success('Feedback successfully deleted');
     router.push('/');
   };
 
