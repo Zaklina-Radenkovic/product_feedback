@@ -1,5 +1,5 @@
-import { useCommentsContext } from '@/state/comments';
 import Comment from './Comment';
+import { useCommentsContext } from '@/state/comments';
 import { CommentType } from '@/types/models';
 
 type Comments = {

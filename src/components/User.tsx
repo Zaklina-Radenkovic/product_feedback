@@ -1,5 +1,5 @@
-import { UserType } from '@/types/models';
 import Image from 'next/image';
+import { UserType } from '@/types/models';
 
 type UserProps = {
   user: UserType;

@@ -18,7 +18,7 @@ const CommentHeader = ({
   return (
     <div className="comment-header">
       <User user={user} />
-      {comment?.user ? (
+      {comment?.user && (
         <button
           className="ml-auto font-bold text-primary"
           onClick={() => {
@@ -27,7 +27,7 @@ const CommentHeader = ({
         >
           {!open ? 'Reply' : 'Cancel'}
         </button>
-      ) : null}
+      )}
     </div>
   );
 };

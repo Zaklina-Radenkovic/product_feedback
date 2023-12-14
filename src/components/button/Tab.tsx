@@ -1,5 +1,5 @@
-import { RoadmapData } from '@/app/roadmap/page';
 import React, { ReactNode } from 'react';
+import { RoadmapData } from '@/app/roadmap/page';
 
 type TabProps = {
   children: ReactNode;

@@ -1,7 +1,7 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import emptyIllustration from '../../public/assets/images/illustration-empty.svg';
 import ButtonFeedback from './button/ButtonFeedback';
-import { useRouter } from 'next/navigation';
 
 const NoFeedback = () => {
   const router = useRouter();

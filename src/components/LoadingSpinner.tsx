@@ -1,5 +1,6 @@
-import Image from "next/image";
-import loader from "../../public/assets/loader.svg";
+import Image from 'next/image';
+import loader from '../../public/assets/loader.svg';
+
 const LoadingSpinner = () => {
   return (
     <div className="">

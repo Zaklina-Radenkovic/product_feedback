@@ -68,7 +68,6 @@ const Input: FC<InputProps> = ({
           ></textarea>
         </>
       )}
-      {/* {error && <p className="error">Input filed can't be empty!</p>} */}
     </>
   );
 };
