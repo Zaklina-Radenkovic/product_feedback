@@ -1,5 +1,5 @@
 'use client';
-import { useParams } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import GoBackButton from '@/components/button/GoBackButton';
 import Form from '@/components/form/Form';
@@ -40,28 +40,30 @@ const page = () => {
     }
   };
 
-  if (currentFeedback) {
-    return (
-      <div className="inner-container">
-        <div className="mx-auto tracking-tight sm:w-[490px] md:w-[730px]">
-          <GoBackButton
-            stroke="blue"
-            onClick={() => router.push(`/feedback/${feedbackId}`)}
-          />
-
-          <Form
-            variant="edit"
-            currentFeedback={currentFeedback}
-            onSubmit={handleSubmitForm}
-            onDelete={deleteHandler}
-            type={null}
-            title={''}
-            submitting={false}
-          />
-        </div>
-      </div>
-    );
+  if (!currentFeedback) {
+    notFound();
   }
+
+  return (
+    <div className="inner-container">
+      <div className="mx-auto tracking-tight sm:w-[490px] md:w-[730px]">
+        <GoBackButton
+          stroke="blue"
+          onClick={() => router.push(`/feedback/${feedbackId}`)}
+        />
+
+        <Form
+          variant="edit"
+          currentFeedback={currentFeedback}
+          onSubmit={handleSubmitForm}
+          onDelete={deleteHandler}
+          type={null}
+          title={''}
+          submitting={false}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default page;
