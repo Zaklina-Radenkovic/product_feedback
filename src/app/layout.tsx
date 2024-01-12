@@ -27,9 +27,9 @@ export default function RootLayout({
     <html lang="en" className={`${jost.variable}`}>
       <body>
         <FeedbackProvider>
-          <SortedFeedbackProvider>
-            <CommentsProvider>{children}</CommentsProvider>
-          </SortedFeedbackProvider>
+          <CommentsProvider>
+            <SortedFeedbackProvider>{children}</SortedFeedbackProvider>
+          </CommentsProvider>
         </FeedbackProvider>
         <Toaster
           position="top-center"
