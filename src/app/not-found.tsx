@@ -1,10 +1,9 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import emptyIllustration from '../../public/assets/images/illustration-empty.svg';
 import ButtonFeedback from '../../src/components/button/ButtonFeedback';
-import { useRouter } from 'next/navigation';
-import GoBackButton from '@/components/button/GoBackButton';
 
 export default function NotFound() {
   const router = useRouter();
@@ -19,12 +18,13 @@ export default function NotFound() {
       <h2 className="pb-4 font-bold text-secondary">
         There is no page. Maybe you have a broken link.
       </h2>
-      <p className="pb-6 text-center leading-5">
+      <p className="text-center leading-5">
         Got a suggestion? Found a bug that needs to be squashed? <br />
-        Go to our home page
+        <Link className="font-bold" href="/feedback">
+          Go to our home page
+        </Link>
       </p>
 
-      <GoBackButton onClick={() => router.push('/')} stroke="currentColor" />
       <p className="py-6 text-center leading-5">
         Or add a feedback to improve our app.{' '}
         <svg
