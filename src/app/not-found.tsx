@@ -20,7 +20,7 @@ export default function NotFound() {
       </h2>
       <p className="text-center leading-5">
         Got a suggestion? Found a bug that needs to be squashed? <br />
-        <Link className="font-bold" href="/feedback">
+        <Link className="font-bold" href="/">
           Go to our home page
         </Link>
       </p>
@@ -42,7 +42,7 @@ export default function NotFound() {
           />
         </svg>
       </p>
-      <ButtonFeedback onClick={() => router.push('/create-feedback')}>
+      <ButtonFeedback onClick={() => router.push('/')}>
         {' '}
         &#43; Add feedback{' '}
       </ButtonFeedback>
