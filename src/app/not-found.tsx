@@ -1,9 +1,10 @@
 'use client';
-import Link from 'next/link';
+
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import emptyIllustration from '../../public/assets/images/illustration-empty.svg';
 import ButtonFeedback from '../../src/components/button/ButtonFeedback';
+import GoBackButton from '@/components/button/GoBackButton';
 
 export default function NotFound() {
   const router = useRouter();
@@ -20,10 +21,10 @@ export default function NotFound() {
       </h2>
       <p className="text-center leading-5">
         Got a suggestion? Found a bug that needs to be squashed? <br />
-        <Link className="font-bold" href="/">
-          Go to our home page
-        </Link>
       </p>
+      <GoBackButton stroke="blue" onClick={() => window.location.replace('/')}>
+        Go Back
+      </GoBackButton>
 
       <p className="py-6 text-center leading-5">
         Or add a feedback to improve our app.{' '}
