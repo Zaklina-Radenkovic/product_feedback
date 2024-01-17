@@ -19,8 +19,9 @@ export default function NotFound() {
       <h2 className="pb-4 font-bold text-secondary">
         There is no page. Maybe you have a broken link.
       </h2>
-      <p className="text-center leading-5">
+      <p className="pb-6 text-center leading-5">
         Got a suggestion? Found a bug that needs to be squashed? <br />
+        Go to our home page
       </p>
       <GoBackButton stroke="blue" onClick={() => window.location.replace('/')}>
         Go Back
@@ -43,7 +44,9 @@ export default function NotFound() {
           />
         </svg>
       </p>
-      <ButtonFeedback onClick={() => router.push('/')}>
+      <ButtonFeedback
+        onClick={() => window.location.replace('/create-feedback')}
+      >
         {' '}
         &#43; Add feedback{' '}
       </ButtonFeedback>
